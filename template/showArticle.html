@@ -1,0 +1,580 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
+        <title>Home</title>
+        <style>
+            body{
+                margin: 0;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover{
+                color: black;
+                text-decoration:none;
+            }
+            #banner{
+                z-index: -1;
+                position: relative;
+                width: 100%;
+            }
+            #banner-img{
+                width: 100%;
+                max-height: 212px;
+            }
+            #banner-title-w{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+            #banner-title{
+                position: absolute;
+                top: 36%;
+                left: 50%;
+                min-width: calc(25px + 5%);
+                margin-top: -12px;
+                font-size: 30px;
+                text-align: justify;
+                float: left;
+                display: hidden;
+                color: #2c3e50;
+            }
+            #banner-title:after{
+                content: '.';
+                width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                height: 0;
+            }
+            .header{
+                width: 100%;
+                left: 0;
+                top: 0;
+                z-index: 998;
+                background-color: rgba(255, 255, 255, 1);
+                height: 88px;
+                box-shadow: 0 -5px 30px 0px rgb(1, 0, 39);
+            }
+            #header-logo{
+                font-size: 32px;
+                color:rgb(22,21,88);
+                height: 88px;
+                line-height: 88px;
+                width: 100px;
+                text-align: center;
+                margin-left: 50px;
+                cursor:default;
+            }
+            #header-inner{
+                height: 100%;
+                width: 100%;
+                max-width: 1300px;
+                margin: auto;
+                display: flex;
+            }
+            #header-icons{
+                flex-grow: 1;
+            }
+            .header-icon{
+                font-size: 20px;
+                position: relative;
+                float: right;
+                margin-right: 42px;
+                line-height: 88px;
+                text-align: center;
+                color: #2a2a3a;
+                cursor: default;
+            }
+            .main-content{
+                position: relative;
+                width: 100%;
+                max-width: 1400px;
+                margin: 20px auto;
+                display: flex;
+                margin-bottom: 50px;
+            }
+            .main-leftpart{
+                flex: 16;
+            }
+            .article-wrapper{
+                position: relative;
+                margin: 120px 20px 20px 20px;
+                padding-bottom: 100px;
+                background-color: #fafbfd;
+            }
+            .article-coverimg-w{
+                width: 100%;
+                text-align: center;
+            }
+            #article-coverimg{
+                width: 69%;
+                margin: -80px auto 45px auto;
+                border-radius: 24px;
+                box-shadow: 0 0 20px -5px black;
+            }
+            #article-info{
+                font-size: 17px;
+                color: grey;
+                padding-left: 60px;
+            }
+            #article-title{
+                padding-left: 60px;
+                padding-top: 30px;
+                padding-bottom: 10px;
+                font-size: 26px;
+                font-weight: 600;
+            }
+            #article-content{
+                padding-left: 60px;
+                padding-right: 55px;
+                font-size: 18px;
+                line-height: 33px;
+                text-indent:2em;
+            }
+            #article-content p{
+                display: block;
+            }
+            #article-content img{
+                min-width: 120px;
+                max-width: 90%;
+                display: block;
+                margin: 0 auto;
+            }
+            /* table 样式 */
+            #article-content table {
+                border-top: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+            }
+            #article-content table td{
+                border-bottom: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                padding: 3px 5px;
+            }
+            #article-content table th {
+                border-bottom: 2px solid #ccc;
+                border-right: 1px solid #ccc;
+                padding: 3px 5px;
+                text-align: center;
+            }
+            #article-content blockquote {
+                display: block;
+                border-left: 8px solid #d0e5f2;
+                padding: 5px 10px;
+                margin: 10px 0;
+                line-height: 1.4;
+                font-size: 100%;
+                background-color: #f1f1f1;
+            }
+            #article-content code {
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+                background-color: #f1f1f1;
+                border-radius: 3px;
+                padding: 3px 5px;
+                margin: 0 3px;
+            }
+            #article-content pre code {
+                display: block;
+            }
+            #article-content ul, 
+            #article-content ol {
+                margin: 10px 0 10px 20px;
+            }
+            #article-operations{
+                padding-left: 60px;
+                line-height: 40px;
+                margin-bottom: 5px;
+            }
+            .article-subtitle{
+                padding: 10px 0 10px 80px;
+                font-size: 22px;
+                color: #2c3e50;
+            }
+            hr{
+                color: #2c3e50;
+            }
+            .article-comment{
+                margin: 10px 0 10px 90px;
+            }
+            .comment-wrapper{
+                margin: 10px 0 10px 0;
+            }
+            .comment-username{
+                font-weight: 600;
+                font-size: 17px;
+            }
+            .comment-content{
+                padding-top: 3px;
+                font-size: 17px;
+                line-height: 33px;
+                margin-left: 10px;
+            }
+            .comment-pager{
+                text-align: right;
+                margin-right: 60px;
+            }
+            .main-rightpart{
+                flex: 9;
+            }
+            #nav-postarticle{
+                width: calc(100% - 20px);
+                height: 60px;
+                line-height: 60px;
+                margin: 10px 10px 10px 10px;
+                background-color: #fafbfd;
+                font-size: 23.5px;
+                display: block;
+                text-align: center;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            #nav-wrapper{
+                width: calc(100% - 20px);
+                margin: 22px 10px 10px 10px;
+                border-radius: 10px;
+                background-color: #fafbfd;
+                min-height: 1000px;
+            }
+            #nav-search-w{
+                width: 100%;
+                position: relative;
+                padding-top: 22px;
+            }
+            #nav-search{
+                border: 1.5px solid rgb(1, 0, 48);
+                border-radius: 7px;
+                height: 40px;
+                width: 80%;
+                margin: 0 auto;
+                line-height: 40px;
+                font-size: 17px;
+                padding-left: 15px;
+                color: grey;
+            }
+            #nav-author-w{
+                margin-top: 30px;
+                width: calc(100% - 70px);
+                margin-left: 25px;
+                margin-right: 45px;
+                line-height: 30px;
+            }
+            #nav-search-button{
+                position: absolute;
+                right: calc(10% + 5px);
+                top: 30px;
+                cursor: pointer;
+            }
+            .nav-title{
+                font-size: 24px;
+                line-height: 50px;
+                cursor: default;
+            }
+            #nav-author-w > a{
+                font-size: 17px;
+                display: inline-block;
+                min-width: 40px;
+                text-align: justify;
+                margin-left: 12px;
+                margin-right: 10px;
+            }
+            #nav-author-w > a:after{
+                content: '.';
+                width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                height: 0;
+            }
+            #nav-hotest{
+                margin-top: 50px;
+                width: calc(100% - 50px);
+                margin-left: 25px;
+                margin-right: 25px;
+            }
+            #nav-hotest-title{
+                font-size: 24px;
+                text-align: center;
+            }
+            #nav-hotest-title > a{
+                margin-left: 5%;
+                margin-right: 5%;
+                color: #364856;
+                cursor: default;
+            }
+            #nav-hotest-bar{
+                display: flex;
+                height: 3px;
+                width: 50%;
+                margin: 6px auto;
+            }
+            #nav-newestbar{
+                flex: 1;
+                background-color:rgb(129, 129, 189);
+            }
+            #nav-hotestbar{
+                flex: 1;
+                background-color:rgb(205, 205, 255);
+            }
+            #nav-hotest-news{
+                margin: 25px 5px 0 5px;
+            }
+            .nav-hotest-new{
+                margin-left: 2px;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                color: #364856;
+                font-size: 17px;
+                -webkit-line-clamp:1;
+                line-height: 32px;
+                font-family: 宋体;
+                font-weight: bolder;
+            }
+            #nav-hotest-news > hr{
+                width: 96%;
+            }
+            #nav-perday-w{
+                margin-top: 30px;
+                width: calc(100% - 70px);
+                margin-left: 25px;
+                margin-right: 45px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div id="header-inner">
+                <div id="header-logo">
+                    <img src="/s/logo.jpg" style="height:100%;"/>
+                </div>
+                <div id="header-icons">
+                    {% if username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;">欢迎您，{{username}}。</a></div>
+                    {% else %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">公司介绍</a></div>
+                    {% for cat in cats %}
+                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a {%else%} rgb(66, 116, 255) {%endif%};" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    {% endfor %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/">首页</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="banner">
+            <img id="banner-img" src="/s/banner-3.png" />
+            <div id="banner-title-w">
+                <div id="banner-title">交易日记</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="main-leftpart">
+                <div class="article-wrapper">
+                    <div class="article-coverimg-w">
+                        <img id="article-coverimg" src="/s/coverimg-1.png" />
+                    </div>
+                    <div id="article-info">
+                        Category · {{category}} · {{author}} · {{date}} · 评论
+                    </div>
+                    <div id="article-title">
+                        {{title}}
+                    </div>
+                    <div id="article-content">
+                        {{content | safe}}
+                    </div>
+                    <div id="article-operations">
+                        {% if can_edit %}
+                        <svg x="0px" y="0px" width="18px" height="18px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <path xmlns="http://www.w3.org/2000/svg" fill="#1D1D1B" d="M62.463,1.543C61.446,0.526,60.06,0.001,58.633,0c-1.43,0.021-2.778,0.591-3.801,1.609l-2.446,2.443    c-0.01,0.012-0.015,0.025-0.024,0.035L20.453,35.906c-0.104,0.104-0.158,0.233-0.234,0.353c-0.131,0.152-0.245,0.317-0.327,0.505    l-3.254,7.5c-0.324,0.75-0.169,1.62,0.397,2.211c0.392,0.41,0.927,0.631,1.476,0.631c0.241,0,0.486-0.043,0.719-0.131l7.824-2.943    c0.217-0.081,0.406-0.209,0.579-0.352c0.126-0.08,0.262-0.14,0.367-0.245L60.035,11.49c0.006-0.006,0.008-0.014,0.015-0.02    l2.341-2.33C64.509,7.029,64.541,3.62,62.463,1.543z M26.558,39.119l-1.777-1.773L53.932,8.277l1.776,1.773L26.558,39.119z     M59.508,6.262l-0.916,0.912l-1.784-1.779l0.911-0.91c0.265-0.264,0.609-0.411,0.972-0.416c0.344-0.008,0.653,0.119,0.883,0.348    C60.065,4.907,60.033,5.736,59.508,6.262z"/>
+                            <path fill="#1D1D1B" d="M58.454,22.253c-1.128,0-2.04,0.911-2.04,2.034v33.611c0,1.121-0.915,2.033-2.04,2.033H6.12
+                            c-1.126,0-2.04-0.912-2.04-2.033V9.787c0-1.121,0.914-2.034,2.04-2.034h33.403c1.127,0,2.04-0.911,2.04-2.034
+                            s-0.913-2.034-2.04-2.034H6.12C2.745,3.685,0,6.422,0,9.787v48.111C0,61.263,2.745,64,6.12,64h48.254
+                            c3.374,0,6.12-2.737,6.12-6.102V24.287C60.494,23.164,59.581,22.253,58.454,22.253z"/>
+                        </svg>
+                        <span style="cursor: pointer" onclick="window.location.href='/edit-article?fid={{cat_id}}&aid={{a_id}}';">编辑</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <svg x="0px" y="0px" width="18px" height="18px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <path fill="#1D1D1B" d="M11.13,63.764h41.786c1.184,0,2.14-0.958,2.14-2.141V23.055h0.965c1.183,0,2.14-0.958,2.14-2.141V9.929
+                                c0-1.182-0.957-2.141-2.14-2.141H42.969V2.431c0-1.182-0.957-2.141-2.14-2.141H23.226c-1.184,0-2.142,0.958-2.142,2.141v5.357
+                                H8.026c-1.185,0-2.142,0.958-2.142,2.141v10.985c0,1.183,0.957,2.141,2.142,2.141h0.963v38.568
+                                C8.989,62.805,9.947,63.764,11.13,63.764z M25.365,4.572h13.323V7.16H25.365V4.572z M50.775,59.482H13.271V23.055h37.505V59.482z
+                                M10.166,12.069h43.713v6.704h-0.963H11.13h-0.964V12.069z"/>
+                            <rect x="20.098" y="27.548" fill="#1D1D1B" width="2.676" height="27.441"/>
+                            <rect x="30.414" y="27.548" fill="#1D1D1B" width="2.676" height="27.441"/>
+                            <rect x="40.723" y="27.548" fill="#1D1D1B" width="2.675" height="27.441"/>
+                        </svg>
+                        <span>删除</span>
+                        {% endif %}
+                        <br/>
+                        {% if has_fujian %}
+                        <svg x="0px" y="0px" width="18px" height="18px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <path fill="#1D1D1B" d="M64,41.733c0-1.345-1.089-2.435-2.435-2.435c-1.347,0-2.436,1.09-2.436,2.435v14.115H4.946V41.733
+                                c0-1.345-1.089-2.435-2.437-2.435c-1.346,0-2.435,1.09-2.435,2.435v15.535c0,0.18,0.067,0.338,0.103,0.507
+                                c-0.035,0.169-0.103,0.328-0.103,0.507c0,1.345,1.089,2.436,2.435,2.436h59.056c1.346,0,2.435-1.091,2.435-2.436
+                                c0-0.179-0.064-0.338-0.102-0.507C63.936,57.606,64,57.448,64,57.269V41.733z"/>
+                            <path fill="#1D1D1B" d="M32.19,2.967c-1.346,0-2.437,1.091-2.437,2.436v35.576L19.148,30.372c-0.951-0.951-2.492-0.951-3.443,0
+                                s-0.951,2.493,0,3.444l14.764,14.764c0.475,0.476,1.099,0.713,1.722,0.713c0.622,0,1.245-0.238,1.722-0.713l14.764-14.764
+                                c0.951-0.951,0.951-2.493,0-3.444c-0.952-0.951-2.493-0.951-3.443,0L34.625,40.979V5.403C34.625,4.058,33.536,2.967,32.19,2.967z"/>
+                        </svg>
+                        <span>附件：</span>
+                        {% endif %}
+                    </div>
+                    <hr style="width: 90%;">
+                    <div class="article-subtitle">
+                        评论
+                    </div>
+                    <hr style="width: 90%;">
+                    <div class="article-comment">
+                        {% if has_comment %}
+                        <div class="comment-wrapper">
+                            <div class="comment-username">
+                                John Doe
+                            </div>
+                            <div class="comment-content">
+                                本文令我印象深刻，请求网页端分享到微信。
+                            </div>
+                            <div class="comment-pager">
+                                <span>共1条评论，当前第1/1页。</span>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="comment-wrapper">
+                            <div class="comment-content">
+                                评论功能正在维护。
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <hr style="width: 90%;">
+                    <div class="article-subtitle">
+                        发表评论
+                    </div>
+                    <hr style="width: 90%;">
+                    <textarea id="my-comment" style="margin: 10px 60px 10px 90px;width: calc(100% - 150px);min-height: 150px; font-size: 17px;"></textarea>
+                    <div style="display: block;width:100%;">
+                        <button id="submit-comment" style="display: block;margin: 0 auto;font-size: 16px;">发表</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main-rightpart">
+                <div id="nav-postarticle">
+                    <svg style="margin-bottom: -4px;" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                        <path xmlns="http://www.w3.org/2000/svg" fill="#1D1D1B" d="M62.463,1.543C61.446,0.526,60.06,0.001,58.633,0c-1.43,0.021-2.778,0.591-3.801,1.609l-2.446,2.443    c-0.01,0.012-0.015,0.025-0.024,0.035L20.453,35.906c-0.104,0.104-0.158,0.233-0.234,0.353c-0.131,0.152-0.245,0.317-0.327,0.505    l-3.254,7.5c-0.324,0.75-0.169,1.62,0.397,2.211c0.392,0.41,0.927,0.631,1.476,0.631c0.241,0,0.486-0.043,0.719-0.131l7.824-2.943    c0.217-0.081,0.406-0.209,0.579-0.352c0.126-0.08,0.262-0.14,0.367-0.245L60.035,11.49c0.006-0.006,0.008-0.014,0.015-0.02    l2.341-2.33C64.509,7.029,64.541,3.62,62.463,1.543z M26.558,39.119l-1.777-1.773L53.932,8.277l1.776,1.773L26.558,39.119z     M59.508,6.262l-0.916,0.912l-1.784-1.779l0.911-0.91c0.265-0.264,0.609-0.411,0.972-0.416c0.344-0.008,0.653,0.119,0.883,0.348    C60.065,4.907,60.033,5.736,59.508,6.262z"/>
+                        <path fill="#1D1D1B" d="M58.454,22.253c-1.128,0-2.04,0.911-2.04,2.034v33.611c0,1.121-0.915,2.033-2.04,2.033H6.12
+                        c-1.126,0-2.04-0.912-2.04-2.033V9.787c0-1.121,0.914-2.034,2.04-2.034h33.403c1.127,0,2.04-0.911,2.04-2.034
+                        s-0.913-2.034-2.04-2.034H6.12C2.745,3.685,0,6.422,0,9.787v48.111C0,61.263,2.745,64,6.12,64h48.254
+                        c3.374,0,6.12-2.737,6.12-6.102V24.287C60.494,23.164,59.581,22.253,58.454,22.253z"/>
+                    </svg>
+                    <span>写文章</span>
+                </div>
+                <div id="nav-wrapper">
+                    <div id="nav-search-w">
+                        <div id="nav-search" contenteditable="true">
+                            输入关键词搜索文章...
+                        </div>
+                        <div id="nav-search-button">
+                            <svg x="0px" y="0px" width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <g id="1itt1edva">
+                                <path fill="#333" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
+                                    c0.513,0,1.025-0.196,1.418-0.587c0.392-0.393,0.588-0.904,0.588-1.418s-0.196-1.027-0.588-1.419L45.459,43.172
+                                    c3.853-4.5,6.197-10.331,6.197-16.707c0-14.194-11.549-25.741-25.741-25.741c-14.194,0-25.742,11.547-25.742,25.741
+                                    C0.173,40.658,11.721,52.205,25.915,52.205z M25.915,4.735c11.98,0,21.729,9.747,21.729,21.729c0,11.98-9.749,21.729-21.729,21.729
+                                    c-11.981,0-21.73-9.748-21.73-21.729C4.185,14.482,13.934,4.735,25.915,4.735z"/>
+                            </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="nav-author-w">
+                        <p class="nav-title">作者</p>
+                        <a>Valak</a>
+                        <a>熊鹏</a>
+                        <a>谢广坤</a>
+                        <a>熊二</a>
+                        <a>Valak</a>
+                        <a>熊鹏</a>
+                        <a>谢广坤</a>
+                        <a>熊二</a>
+                        <a>Valak</a>
+                        <a>熊鹏</a>
+                        <a>谢广坤</a>
+                        <a>熊二</a>
+                    </div>
+                    <div id="nav-hotest">
+                        <div id="nav-hotest-title">
+                            <a>最新</a>
+                            <a>最热</a>
+                        </div>
+                        <div id="nav-hotest-bar">
+                            <div id="nav-newestbar"></div>
+                            <div id="nav-hotestbar"></div>
+                        </div>
+                        <div id="nav-hotest-news">
+                            <div class="nav-hotest-new">这种解读的角度</div>
+                            <hr/>
+                            <div class="nav-hotest-new">谁是最好的报告解读员</div>
+                            <hr/>
+                            <div class="nav-hotest-new">对多控杠杆的思考</div>
+                            <hr/>
+                            <div class="nav-hotest-new">金融供给侧改革，会不会重蹈钢铁行业故事？</div>
+                            <hr/>
+                            <div class="nav-hotest-new">谁是最好的报告解读员，金融供给侧改革，会不会重蹈钢铁行业故事？</div>
+                        </div>
+                    </div>
+                    <div id="nav-perday-w">
+                        <p class="nav-title">
+                            按日检索
+                        </p>
+                        <input type="date" />
+                    </div>
+                    <div id="nav-perday-w">
+                        <p class="nav-title">
+                            按月检索
+                        </p>
+                        <input type="month" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/static/jquery.js"></script>
+        <script>
+            let banner_title = $('#banner-title');
+            banner_title.css('margin-left', -banner_title.width()/2);
+            banner_title.css('font-size', (27+$(window).width()*0.003)+'px');
+            banner_title.show();
+
+            let search_div = $('#nav-search');
+            console.log(search_div);
+            search_div.focus((event)=>{
+                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                    search_div.text("");
+                    search_div.css("color", "black");
+                }
+            });
+            search_div.keypress((event)=>{
+                var keyCode=(event.keyCode ? event.keyCode : event.which);
+                if(keyCode==13 || keyCode==108){
+                    return false;
+                }
+                return true;
+            });
+            $('#nav-postarticle').click((event)=>{
+                window.location.href = '/post-article?fid={{cat_id}}';
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,279 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
+        <title>Home</title>
+        <style>
+            body{
+                margin: 0;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover{
+                color: black;
+                text-decoration:none;
+            }
+            #banner{
+                z-index: -1;
+                position: relative;
+                width: 100%;
+            }
+            #banner-img{
+                width: 100%;
+            }
+            #banner-title:after{
+                content: '.';
+                width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                height: 0;
+            }
+            .header{
+                width: 100%;
+                left: 0;
+                top: 0;
+                z-index: 998;
+                background-color: rgba(255, 255, 255, 1);
+                height: 88px;
+            }
+            #header-logo{
+                font-size: 32px;
+                color:rgb(22,21,88);
+                height: 88px;
+                line-height: 88px;
+                width: 100px;
+                text-align: center;
+                margin-left: 50px;
+                cursor:default;
+            }
+            #header-inner{
+                height: 100%;
+                width: 100%;
+                max-width: 1300px;
+                margin: auto;
+                display: flex;
+            }
+            #header-icons{
+                flex-grow: 1;
+            }
+            .header-icon{
+                font-size: 20px;
+                position: relative;
+                float: right;
+                margin-right: 42px;
+                line-height: 88px;
+                text-align: center;
+                color: #2a2a3a;
+                cursor: default;
+            }
+            .banner-title{
+                color: white;
+                font-size: 80px;
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                margin-left: -297px;
+                font-family: Bower,Georgia,Times New Roman,serif;
+            }
+            .main-content{
+                position: relative;
+                width: 100%;
+                max-width: 1300px;
+                margin: 0 auto;
+                margin-bottom: 150px;
+                color: #333;
+                background-color: rgb(235, 238, 247);
+            }
+            .admin-w{
+                padding: 30px 50px 20px 50px;
+            }
+            .admin-title{
+                font-size: 28px;
+                line-height: 60px;
+                margin-bottom: 10px;
+                margin-top: 12px;
+            }
+            .admin-line{
+                font-size: 19px;
+                margin-left: 30px;
+                display: flex;
+            }
+            .admin-line td{
+                padding: 8px;
+            }
+            .admin-line .left{
+                flex: 1;
+            }
+            .admin-line .right{
+                flex: 7;
+            }
+            .admin-line input,b{
+                font-size: 19px;
+            }
+            .description{
+                font-size: 14px;
+                color: grey;
+            }
+            .admin-line .img-30{
+                width: 30%;
+            }
+            .admin-line .img-60{
+                width: 60%;
+            }
+            .admin-line .img-100{
+                width: 100%;
+            }
+            .pad-10{
+                padding-top: 10px;
+            }
+            .pad-20{
+                padding-top: 20px;
+            }
+            .pad-30{
+                padding-top: 30px;
+            }
+            .admin-line span,p,textarea{
+                font-size: 19px;
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
+        <script type="text/javascript" src="/static/jquery.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div id="header-inner">
+                <div id="header-logo">
+                    <img src="/s/logo.jpg" style="height:100%;"/>
+                </div>
+                <div id="header-icons">
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/">首页</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="admin-w">
+                <div class="admin-title">
+                    首页配置
+                </div>
+                <div class="admin-line">
+                    <span class="left">背景图片：</span>
+                    <div class="right">
+                        <table>
+                            {% for i in main_bg_list %}
+                            <tr>
+                                <td class="img-60">
+                                    <img src="{{i.src}}" class="img-100">
+                                </td>
+                                <td>
+                                    <input type="button" onclick="confirm('确定要删除该图片吗？')&&go('/admin_action?aid=1&pid={{i.id}}');" value="移除">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <form method="POST" action="/admin_action?aid=2" enctype="multipart/form-data">
+                                    <td>
+                                        <span>添加图片：</span>
+                                        <input type="file" name="pic">
+                                        <p class="description">仅支持jpg、jpeg、png、gif格式。请确保图片分辨率较高，否则在大屏幕上显示效果可能较差。</p>
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="提交">
+                                    </td>
+                                </form>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="admin-line pad-10">
+                    <span class="left">首页文字：</span>
+                    <div class="right">
+                        <input id="main-text" style="width: 30em;" value="{{main_text}}">
+                        <input type="submit" value="修改" onclick="go('/admin_action?aid=3&txt='+encodeURI($('#main-text').val()));">
+                    </div>
+                </div>
+
+                <div class="admin-title pad-30">
+                    账户设置
+                </div>
+                <div class="admin-line">
+                    <span class="left pad-10">会员管理：</span>
+                    <div class="right">
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>用户名</b>
+                                </td>
+                                <td>
+                                    <b>密码</b>
+                                </td>
+                                <td>
+                                    <b>最近登录时间</b>
+                                </td>
+                                <td>
+                                    <b>操作</b>
+                                </td>
+                            </tr>
+                            {% for i in user_list %}
+                            <tr>
+                                <td>
+                                    {{i.username}}
+                                </td>
+                                <td>
+                                    {{i.password}}
+                                </td>
+                                <td>
+                                    {{i.last_login_date}}
+                                </td>
+                                <td>
+                                    <input type="button" onclick="confirm('确定要删除该用户吗？该操作可能难以恢复。')&&confirm('删除用户后，该用户发表的文章、评论等信息也将被删除，是否确定？')&&go('/admin_action?aid=4&pid={{i.id}}');" value="移除账户">
+                                    <input type="button" onclick="confirm('{{i.username}}的密码将被随机重置，是否确定？')&&go('/admin_action?aid=5&pid={{i.id}}');" value="修改密码">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="admin-line pad-20">
+                    <span class="left">新建用户：</span>
+                    <div class="right">
+                        <textarea style="width: 40em; min-height: 100px;" id="new-users"></textarea>
+                        <input type="submit" value="新建用户" onclick="go('/admin_action?aid=6&txt='+encodeURI($('#new-users').val()));">
+                        <p class="description">在以上框中输入用户名。若创建多个用户，则每行输入一个用户名，可批量创建。</p>
+                    </div>
+                </div>
+                <div class="admin-line pad-20">
+                    <span class="left">修改管理员口令：</span>
+                    <div class="right">
+                        原口令　　：<input type="password" style="width: 12em;" value="{{main_text}}" id="aha1"><br/>
+                        新口令　　：<input type="password" style="width: 12em;" value="{{main_text}}" id="aha2"><br/>
+                        重复新口令：<input type="password" style="width: 12em;" value="{{main_text}}" id="aha3">
+                        <input type="submit" value="修改" onclick="$('#aha2').val()==$('#aha3').val()?go('/admin_action?aid=7&old='+encodeURI($('#aha1').val())+'&new='+encodeURI($('#aha2').val())):alert('两次输入的新密码不同。');"><br/>
+                        <p class="description">为了保障安全，管理员口令的长度应当不低于10位，且尽量避免纯数字/字母的组合。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function go(url){
+                window.location.href=url;
+            }
+        </script>
+    </body>
+</html>

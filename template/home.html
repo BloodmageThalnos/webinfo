@@ -1,0 +1,241 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+        <title>Home</title>
+        <script type="text/javascript" src="/static/jquery.js"></script>
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover{
+                color: black;
+                text-decoration:none;
+            }
+            #bg-pic-w{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -998;
+            }
+            #bg-pic{
+                height: 100%;
+                width: 100%;
+            }
+            #bg-animation-w{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -997;
+            }
+            #main-text-w{
+                position:fixed;
+                top:42%;
+                width:100%;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+            }
+            #main-text{
+                text-align: center;
+                color:seashell;
+                font-size:33px;
+                padding: 0 2px 0 2px;
+                font-family: sans-serif;
+                letter-spacing:2.5px;
+            }
+            #main-text-button-w{
+                padding-top: 30px;
+            }
+            #main-text-button{
+                margin:auto;
+                height: 41px;
+                width: 150px;
+                border-radius: 3px;
+                box-shadow: none;
+                outline: none;
+                background-color:rgb(59, 212, 192);
+                display:flex;
+                align-items: center;
+            }
+            #main-text-button-text{
+                color:white;
+                text-align: center;
+                font-size: 18px;
+                width:100%;
+                cursor: pointer;
+            }
+            #bg-animation{
+                /*background-color: yellow;*/
+            }
+            .header{
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 0;
+                z-index: 998;
+                background-color: rgba(255, 255, 255, 0.8);
+                height: 88px;
+            }
+            #header-logo{
+                font-size: 32px;
+                color:rgb(22,21,88);
+                height: 88px;
+                line-height: 88px;
+                width: 100px;
+                text-align: center;
+                margin-left: 50px;
+                cursor:default;
+            }
+            #header-inner{
+                height: 100%;
+                width: 100%;
+                max-width: 1300px;
+                margin: auto;
+                display: flex;
+            }
+            #header-icons{
+                flex-grow: 1;
+            }
+            .header-icon{
+                font-size: 20px;
+                position: relative;
+                float: right;
+                margin-right: 42px;
+                line-height: 88px;
+                text-align: center;
+                color: #2a2a3a;
+                cursor: default;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div id="header-inner">
+                <div id="header-logo">
+                    <img src="/s/logo-2.jpg" style="height:100%;"/>
+                </div>
+                <div id="header-icons">
+                    {% if username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;">欢迎您，{{username}}。</a></div>
+                    {% else %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">公司介绍</a></div>
+                    {% for cat in cats %}
+                    <div class="header-icon"><a style="color: #2a2a3a;" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    {% endfor %}
+                    <div class="header-icon"><a style="color:rgb(66, 116, 255);">首页</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="bg-pic-w">
+            <img id="bg-pic"/>
+        </div>
+        <div id="bg-animation-w">
+            <canvas id="bg-animation"></canvas>
+        </div>
+        <div id="main-text-w">
+            <div id="main-text">
+                提供全球经济和政治洞见
+            </div>
+            <div id="main-text-button-w">
+                <div id="main-text-button">
+                    <div id="main-text-button-text" onclick="window.location.href='/info';">
+                        公司介绍>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let randint = (a,b)=>(a+Math.floor(Math.random()*(b-a)));
+            let setbg = (id)=>{
+                let img_src = '/s/'+id+'-'+($(window).width()<900?800:$(window).width()<1400?1360:1920)+'.png';
+
+                let img = new Image();
+                img.src = img_src;
+                img.onload = function(){
+                    let wi = img.naturalWidth;
+                    let hi = img.naturalHeight;
+                    let theCanvas = document.getElementById('bg-animation');
+                    let wc = theCanvas.width = $(window).width();
+                    let hc = theCanvas.height = $(window).height();
+                    if(!wi || !hi){
+                        console.log('Animation failed: Image load failed.')
+                        console.log(img)
+                        $('#bg-pic').attr('src', img_src);
+                        return;
+                    }
+                    
+                    let animation_time = 900;
+                    let update_time = 1000/60;
+                    
+                    let context = theCanvas.getContext('2d');
+                    let column_cnt = wc<900?3:(wc<=1920?6:8);
+                    let column_wc = wc/column_cnt;
+                    let column_wi = wi/column_cnt;
+                    let column_time = animation_time/column_cnt;
+                    let hc_per_update = hc*update_time/column_time;
+                    let hi_per_update = hi*update_time/column_time;
+                    
+                    let column_i = 0;
+                    let hc_i = hc;
+                    let hi_i = hi;
+                    let handle = setInterval(function(){
+                        if(hc_i <= 0){
+                            //console.log('hc_i='+hc_i+'  hi_i='+hi_i);
+                            hc_i = hc;
+                            hi_i = hi;
+                            column_i++;
+                            if(column_i==column_cnt){
+                                console.log("OK.");
+                                $('#bg-pic').attr('src', img_src);
+                                //theCanvas.width = 0;
+                                clearInterval(handle);
+                                return;
+                            }
+                        }
+                        context.drawImage(img,
+                            column_wi*column_i,
+                            hi_i-hi_per_update,
+                            column_wi, 
+                            hi_per_update, 
+                            column_wc*column_i, 
+                            hc_i-hc_per_update, 
+                            column_wc, 
+                            hc_per_update
+                        );
+                        hc_i -= hc_per_update;
+                        hi_i -= hi_per_update;
+                    } ,update_time);
+                }
+            }
+            let pic_i = randint(1, 4);
+            setbg(pic_i);
+            setInterval(function(){
+                pic_i = pic_i % 4 + 1;
+                setbg(pic_i);
+            }, 15000);
+        </script>
+    </body>
+</html>

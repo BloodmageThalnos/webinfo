@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>发表文章</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+        }
+        .return-r{
+            font-size: 20.5px;
+            width: 1300px;
+            margin: 0 auto;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            color: #556576;
+        }
+        .main-content{
+            position: relative;
+            max-width: 100%;
+            width: 1300px;
+            margin: 0 auto;
+            background-color: #fafbfd;
+        }
+        .toolbar {
+        }
+        #title-w {
+            margin: 15px 0 5px 0;
+            height: 35px;
+            width:100%;
+        }
+        #title {
+            width: 100%;
+            height: 100%;
+            font-size: 23px;
+            font-weight: 600;
+            font-family: '宋体';
+            border: 0 solid black;
+            background-color: #fafbfd;
+            border-left: 1px solid #ccc;
+            padding-left: 6px;
+            color: grey;
+        }
+        .coverimg {
+            width: 100%;
+            height: 180px;
+            color: #25252939;
+            text-align: center;
+            background-color: #f6f6f6;
+            line-height: 180px;
+            cursor: pointer;
+        }
+        .text {
+            border-left: 1px solid #ccc;
+        }
+        #coverimg-text{
+            position: absolute;
+            top:75px;
+            left:0;
+            width:100%;
+            height: 1px;
+            text-align: center;
+            font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+            color: #9999a0;
+            -webkit-transition: all .2s;
+            transition: all .2s;
+        }
+        .choosepic-w{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1726369a;
+            z-index: 99998;
+        }
+        .choosepic-box{
+            position: relative;
+            left: 35%;
+            top: 32%;
+            margin-left: -150px;
+            margin-top: -160px;
+            width: calc(300px + 30%);
+            height: calc(320px + 30%);
+            background-color: whitesmoke;
+            z-index: 99999;
+            padding: 20px 50px 20px 50px;
+            font-size: 24px;
+        }
+        .choosepic-box td{
+        }
+        .choosepic-box td img{
+            margin: 5px;
+            width: calc(100% - 10px);
+        }
+        
+        
+        #editor-main{
+            width: 720px;
+            margin: 0 auto;
+            padding: 50px 0 50px 0;
+        }
+        #div2 p{
+            display: block;
+        }
+        #div2 img{
+            min-width: 120px;
+            max-width: 90%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="return-r">
+        <svg fill="currentColor" viewBox="0 0 64 64" width="16" height="16">
+            <path d="M45.539,63.41c0.394,0.394,0.908,0.59,1.424,0.59s1.031-0.197,1.424-0.59c0.787-0.787,0.787-2.061,0-2.848   L20.059,32.233L48.407,3.886c0.786-0.787,0.786-2.062,0-2.848c-0.787-0.787-2.062-0.787-2.849,0L15.822,30.773   c-0.205,0.206-0.384,0.506-0.484,0.778c-0.273,0.738-0.092,1.567,0.465,2.124L45.539,63.41z"/>
+        </svg>
+        <span id="returnSpan" style="cursor: pointer;" onclick="window.location.href='/list-article?fid={{cat_id}}'">返回 | 文章列表</span>
+        <div style="display:inline-block;float: right;margin-right: 20px;margin-top: -8px;">
+            <div id="submit" style="width: 80px; height: 40px; border: 1.5px solid #0084ff; color: #0074e0;border-radius: 10px;line-height:40px;text-align: center;cursor:pointer;">
+                发布
+            </div>
+        </div>
+    </div>
+    <div class="choosepic-w" style="display: none;">
+        <div class="choosepic-box">
+            <p>
+                上传封面图片：
+                <form id="aForm">
+                    <input type="file" style="font-size: 20px;" name="pic" id="chooseinput"/>
+                </form>
+            </p>
+            <div id="orchoose">
+                <p>
+                    或选择默认图片：
+                </p>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/s/coverimg-1.png" id="coverimg-1">
+                        </td>
+                        <td>
+                            <img src="/s/coverimg-2.png" id="coverimg-2">
+                        </td>
+                        <td>
+                            <img src="/s/coverimg-3.png" id="coverimg-3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/s/coverimg-4.png" id="coverimg-4">
+                        </td>
+                        <td>
+                            <img src="/s/coverimg-5.png" id="coverimg-5">
+                        </td>
+                        <td>
+                            <img src="/s/coverimg-6.png" id="coverimg-6">
+                        </td>
+                    </tr>
+                </table>
+                <div style="width:100%;text-align: center;">
+                    <input style="font-size: 20px;" type="submit" value="确认选择" id="choosepic">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="editor-main">
+            <div id="div0" class="coverimg">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="42" height="42">
+                    <path d="M20.094 6S22 6 22 8v10.017S22 20 19 20H4.036S2 20 2 18V7.967S2 6 4 6h3s1-2 2-2h6c1 0 2 2 2 2h3.094zM12 16a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm0 1.5a5 5 0 1 0-.001-10.001A5 5 0 0 0 12 17.5zm7.5-8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill-rule="evenodd"></path>
+                </svg>
+                <div id="coverimg-text">添加封面</div>
+            </div>
+            <div id="div0after">
+                <img id="div0afterimg" style="width:100%;">
+            </div>
+            <div id="title-w">
+                <input type="text" id="title" value="{% if title %}{{title}}{% else %}请输入标题{% endif %}"/>
+            </div>
+            <div id="div1" class="toolbar">
+            </div>
+            <div id="div2" class="text">
+                {% if text %}
+                {{text | safe}}
+                {% else %}
+                <p>在这里输入正文</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/wangEditor.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor;
+        var editor1 = new E('#div1', '#div2');
+        editor1.customConfig.uploadImgShowBase64 = true
+        editor1.create();
+
+        $('.coverimg').hover((e)=>{
+            $('#coverimg-text').css('opacity', '1');
+        },(e)=>{
+            $('#coverimg-text').css('opacity', '0');
+        });
+        $('#coverimg-text').css('opacity', '0');
+
+        let div = $('#title');
+        div.focus((event)=>{
+            if(div.val().trim()=="请输入标题"){
+                div.val("");
+                div.css("color", "black");
+            }
+        });
+
+        let choosediv = $('.choosepic-w');
+        $('.coverimg,#div0afterimg').click((event)=>{
+            choosediv.show();
+        });
+        chosen = "";
+        {%if cimg %}
+        cimg = "{{cimg}}";
+        $('#div0').hide();
+        $('#div0afterimg').prop("src", cimg);
+        $('#div0after').show();
+        {%else%}
+        cimg = "";
+        {%endif%}
+        $('#chooseinput').change((event)=>{
+            let formData = new FormData($("#aForm")[0]);
+            $('<p style="font-size: 22px; text-align: center;" id="chooseloading">上传中...</p>').insertAfter('#orchoose');
+            $('#orchoose').hide();
+            $('#chooseinput').prop('disabled', 'disabled');
+            $.ajax({
+                url: '/uploadimg',
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(msg) {
+                    console.log(msg);
+                    if(msg.success){
+                        cimg = msg.cimg;
+                        choosediv.hide();
+                        $('#div0').hide();
+                        $('#div0afterimg').prop("src", cimg);
+                        $('#chooseinput').prop('disabled', false);
+                        $('#div0after').show();
+                        $('#chooseloading').hide();
+                        $('#orchoose').show();
+                    }else{
+                        dofail();
+                    }
+                }
+            }).fail(dofail=function(){
+                alert('图片格式错误，或上传失败！\n请检查图片格式、后缀名，或稍后再试。');
+                choosediv.hide();
+                $('#chooseinput').prop('disabled', false);
+                $('#chooseloading').hide();
+                $('#orchoose').show();
+            })
+        });
+        $('.choosepic-box img').click((event)=>{
+            let me=$(event.target);
+            $('.choosepic-box img').css('opacity', '0.3');
+            me.css('opacity', '1');
+            chosen = me.prop("id");
+        });
+        $('#choosepic').click((event)=>{
+            cimg = '/s/'+chosen+'.png';
+            choosediv.hide();
+            $('#div0').hide();
+            $('#div0afterimg').prop("src", cimg);
+            $('#div0after').show();
+        });
+        choosediv.click((event)=>{
+            choosediv.hide();
+        });
+        $('.choosepic-box').click((event)=>{
+            event.stopImmediatePropagation();
+        })
+
+        let c = "{{cat_id}}";
+        let randint = (a,b)=>(a+Math.floor(Math.random()*(b-a)));
+        $('#submit').click((e)=>{
+            if($('#title').val().trim()=="请输入标题"){
+                alert("请输入标题。")
+                return false;
+            }
+            if(!cimg){
+                alert("请选择封面图片。")
+                return false;
+            }
+            let data = new FormData();
+            data.append("c", c);
+            data.append("t", $('#title').val().trim());
+            data.append("con", editor1.$textElem.html());
+            data.append("cimg", cimg);
+            {% if article_id %}
+            data.append("aid", {{article_id}});
+            {% endif %}
+            $.ajax('/action', {
+                type: 'POST',
+                data: data,
+                async: true,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (msg) {
+                    if(!msg.success){
+                        alert("发表失败："+msg.alert);
+                    }
+                    else{
+                        alert("发表成功.");
+                        window.location.href=msg.url;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
