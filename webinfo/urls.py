@@ -21,6 +21,7 @@ urlpatterns = [
     path('post-article', articleViews.showWriteArticlePage),
     path('edit-article', articleViews.showEditArticlePage),
     path('action', articleViews.createArticle),
+    path('delete-article', articleViews.deleteArticle),
     path('list-article', articleViews.showArticleList),
     path('uploadimg', articleViews.uploadImg),
     

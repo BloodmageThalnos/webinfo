@@ -418,7 +418,7 @@
                             <rect x="30.414" y="27.548" fill="#1D1D1B" width="2.676" height="27.441"/>
                             <rect x="40.723" y="27.548" fill="#1D1D1B" width="2.675" height="27.441"/>
                         </svg>
-                        <span>删除</span>
+                        <span style="cursor: pointer" onclick="confirm('您确定要删除此文章吗？该操作可能难以恢复。') && confirm('删除此文章后，该文章的评论区、封面图片等数据可能会一并丢失，是否确定？') && (window.location.href='/delete-article?aid={{a_id}}');">删除</span>
                         {% endif %}
                         <br/>
                         {% if has_fujian %}

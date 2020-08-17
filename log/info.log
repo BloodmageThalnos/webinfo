@@ -1711,3 +1711,40 @@ ValueError: invalid literal for int() with base 10: ''
 [INFO][2020-08-17 19:56:13,321][views.py:96]Accessed /list-article?fid=3 with showArticlePage
 [INFO][2020-08-17 19:56:30,338][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
 [INFO][2020-08-17 19:56:30,807][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 19:56:31,272][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 19:57:16,615][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 19:57:17,924][views.py:72]Accessed /edit-article?fid=3&aid=7 with showEditArticlePage
+[INFO][2020-08-17 19:57:22,566][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 19:57:24,299][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 19:58:09,330][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 19:58:42,288][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 19:58:57,459][views.py:96]Accessed /list-article?fid=4 with showArticlePage
+[INFO][2020-08-17 19:58:58,242][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 19:59:00,144][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 20:14:05,726][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:14:07,679][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 20:14:56,443][autoreload.py:222]D:\Project\webinfo\webinfo\urls.py changed, reloading.
+[INFO][2020-08-17 20:14:56,893][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:16:46,602][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
+[INFO][2020-08-17 20:16:47,071][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:16:50,507][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
+[INFO][2020-08-17 20:16:50,949][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:47:20,809][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
+[INFO][2020-08-17 20:47:21,291][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:47:35,683][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
+[INFO][2020-08-17 20:47:36,181][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:47:51,693][autoreload.py:222]D:\Project\webinfo\article\views.py changed, reloading.
+[INFO][2020-08-17 20:47:52,182][autoreload.py:598]Watching for file changes with StatReloader
+[INFO][2020-08-17 20:47:53,658][views.py:11]Accessed /article-7/ with showArticlePage
+[INFO][2020-08-17 20:47:56,678][views.py:214]Accessed /delete-article?aid=7 with showEditArticlePage
+[INFO][2020-08-17 20:47:56,691][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 20:47:59,962][views.py:11]Accessed /article-6/ with showArticlePage
+[INFO][2020-08-17 20:48:02,122][views.py:214]Accessed /delete-article?aid=6 with showEditArticlePage
+[INFO][2020-08-17 20:48:02,133][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 20:49:16,104][views.py:58]Accessed /post-article?fid=3 with showWriteArticlePage
+[INFO][2020-08-17 20:49:21,729][views.py:11]Accessed /article-8/ with showArticlePage
+[INFO][2020-08-17 20:49:57,377][views.py:11]Accessed /article-8/ with showArticlePage
+[INFO][2020-08-17 20:50:00,602][views.py:214]Accessed /delete-article?aid=8 with showEditArticlePage
+[INFO][2020-08-17 20:50:00,753][views.py:96]Accessed /list-article?fid=3 with showArticlePage
+[INFO][2020-08-17 20:56:53,655][autoreload.py:222]D:\Project\webinfo\webinfo\settings.py changed, reloading.
+[INFO][2020-08-17 20:56:54,130][autoreload.py:598]Watching for file changes with StatReloader

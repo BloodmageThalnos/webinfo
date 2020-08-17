@@ -1,7 +1,7 @@
 import logging
 import json
 from django.shortcuts import render
-from django.http import HttpResponse, Http404, JsonResponse
+from django.http import HttpResponse, Http404, JsonResponse, HttpResponseRedirect
 from django.template import loader
 
 from main.models import ArticleModel, Category
@@ -209,6 +209,18 @@ def createArticle(request):
         resp["url"]="/article-"+str(article.id)
 
     return JsonResponse(resp)
+
+def deleteArticle(request):
+    logger.info(f'Accessed {request.get_full_path()} with showEditArticlePage')
+
+    user_id = request.user.id
+    article_id = int(request.GET.get('aid'))
+    article = ArticleModel.objects.get(id=article_id)
+    forum_id = article.category.id
+
+    if canEditArticle(article.author, request.user):
+        article.delete()
+        return HttpResponseRedirect('/list-article?fid='+str(forum_id))
 
 def uploadImg(request):
     import time
