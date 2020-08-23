@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.TextField()
     desc = models.TextField(default="", blank=True)
-    extra = models.TextField(default="", blank=True)
+    coverimg = models.TextField(default="banner-1.png")
+    title_white = models.IntegerField(default=0)
+    extra = models.TextField(default="", blank=True)   # 第一位1表示显示用户检索；第二位1表示非会员可访问。
 
     def __str__(self):
         return self.name
@@ -32,6 +34,10 @@ class ArticleModel(models.Model):
 
     def __str__(self):
         return '【' + (self.title if len(self.title)<=20 else (self.title[:21]+'...')) + '】 ' + self.content[:min(len(self.content),30)]
+
+class ArticleVisitModel(models.Model):
+    article_id = models.IntegerField()
+    visit_count = models.IntegerField()
 
 class SettingsModel(models.Model):
     key = models.TextField()

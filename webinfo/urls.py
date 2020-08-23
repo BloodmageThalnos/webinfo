@@ -4,12 +4,15 @@ from main import views as mainViews
 from article import views as articleViews
 
 urlpatterns = [
+    path('', mainViews.showMain),
+
     path('django$$admin/', admin.site.urls),
     path('static/<path:path>', mainViews.showBin),
     path('s/<path:path>', mainViews.showImages),
-    path('', mainViews.showHome),
+    path('home', mainViews.showHome),
     path('info', mainViews.showInfo),
     path('login_', mainViews.showLogin),
+    path('logout_', mainViews.doLogout),
     path('dologin', mainViews.doLogin),
     path('login_admin', mainViews.showLoginAdmin),
     path('dologin_admin', mainViews.doLoginAdmin),

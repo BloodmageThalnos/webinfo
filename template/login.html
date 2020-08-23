@@ -125,7 +125,7 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:100%;"/>
+                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
                     <div class="header-icon"><a style="color:rgb(66, 116, 255);" href="/login_">登录</a></div>
@@ -133,7 +133,7 @@
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
                 </div>
             </div>
         </div>
@@ -150,6 +150,16 @@
                     <input class="login-input" type="submit" id="submit" value="登 录" style="width:15%;border-radius: 16px;border:0;background-color: rgb(88, 188, 247);color: whitesmoke;" onclick="window.location.href='/dologin?hashcode={{hashcode}}&username='+encodeURI($('#username').val())+'&password='+encodeURI($('#pwd').val());">
                 </p>
             </div>
+        </div>
+        <style>
+            .footer{
+                text-align: center;
+                font-size: 12px;
+                padding: 20px;
+            }
+        </style>
+        <div class="footer">
+            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>

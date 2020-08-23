@@ -1,1538 +1,280 @@
-[2020-08-10 18:53:58,056][Thread-1:16100][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js]
+[2020-08-18 07:36:47,590][uWSGIWorker1Core0:140159770849152][task_id:main.views][views.py:239][ERROR][Exception at doAdminAction: name 'acitonid' is not defined]
+[2020-08-18 07:36:47,630][uWSGIWorker1Core0:140159770849152][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 30, in showBin
-    html = f.read()
-UnicodeDecodeError: 'gbk' codec can't decode byte 0xa2 in position 2242: illegal multibyte sequence
-[2020-08-10 18:54:42,025][Thread-1:15588][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:24:43,426][Thread-6:12712][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:25:14,535][Thread-6:12712][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:26:56,310][Thread-6:12712][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:31:24,785][Thread-6:12712][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:40:41,433][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:41:32,067][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:42:03,476][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:42:55,485][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:43:05,429][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:43:13,379][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:43:46,811][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:45:03,495][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 10:45:26,310][Thread-9:288][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:08:28,150][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:08:57,428][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:10:12,198][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:10:56,819][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:11:17,042][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:11:40,841][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:12:57,782][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:13:50,576][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:14:04,677][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:14:32,231][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:14:48,038][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:15:01,514][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:15:05,833][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:15:09,293][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:15:26,383][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:15:37,180][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:16:33,362][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:17:22,324][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:17:32,490][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:19:50,908][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:20:04,467][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:20:16,927][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:20:41,793][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:21:21,922][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:21:59,226][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:25:10,892][Thread-14:16956][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 11:25:20,806][Thread-15:8184][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:03:00,682][Thread-16:18500][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:04:03,102][Thread-16:18500][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:05:34,191][Thread-17:10156][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:05:45,867][Thread-2:8236][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:08:17,831][Thread-1:15504][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:08:24,820][Thread-2:9332][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:08:59,128][Thread-1:8652][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:10:17,163][Thread-1:8652][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 12:11:18,156][Thread-2:9332][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 15:23:10,534][Thread-3:13044][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 15:24:52,056][Thread-4:14996][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-11 15:25:19,899][Thread-4:14996][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-12 23:00:30,226][Thread-5:24152][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-12 23:02:08,044][Thread-6:23456][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-12 23:02:31,970][Thread-5:24152][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:55:22,974][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:56:50,174][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:57:08,923][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:58:03,246][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:58:11,329][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:58:24,830][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:59:10,871][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:59:18,293][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 16:59:52,886][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:00:01,764][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:00:08,104][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:01:43,545][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:01:44,772][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:01:52,757][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:02:23,934][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:02:47,153][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:02:54,061][Thread-2:8644][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:03:07,286][Thread-1:10804][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:43:07,113][Thread-4:15200][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:45:06,794][Thread-3:8432][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:45:36,289][Thread-2:15532][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:46:19,849][Thread-2:15532][task_id:django.request][log.py:222][ERROR][Internal Server Error: /action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 97, in createArticle
-    return JsonResponse(json.dumps(resp))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\http\response.py", line 554, in __init__
-    raise TypeError(
-TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
-[2020-08-13 17:47:07,619][Thread-1:9252][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:47:24,928][Thread-1:9252][task_id:django.request][log.py:222][ERROR][Internal Server Error: /action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 97, in createArticle
-    return JsonResponse(json.dumps(resp))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\http\response.py", line 554, in __init__
-    raise TypeError(
-TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
-[2020-08-13 17:52:15,165][Thread-2:5964][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 17:53:58,844][Thread-2:5964][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 18:40:12,446][Thread-1:11120][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 52, in showArticleList
-    logger.info('Accessed /article-%s with showArticlePage'%(id_))
-NameError: name 'id_' is not defined
-[2020-08-13 20:28:54,400][Thread-3:5968][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 20:28:55,172][Thread-3:5968][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 20:29:18,614][Thread-3:5968][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-13 20:29:18,939][Thread-3:5968][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 10:20:11,964][Thread-1:14820][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 10:22:06,234][Thread-1:15828][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 10:22:41,453][Thread-1:15828][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 10:23:36,605][Thread-2:5848][task_id:main.views][views.py:35][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 10:24:08,130][Thread-2:5848][task_id:django.request][log.py:222][ERROR][Internal Server Error: /action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 88, in createArticle
-    if not author.is_authenticated() or not canWriteArticle(author.id, category_id):
-TypeError: 'bool' object is not callable
-[2020-08-14 12:58:34,044][Thread-1:15400][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 70, in showArticleList
-    'date_day': article.edit_date.day(),
-TypeError: 'int' object is not callable
-[2020-08-14 12:58:40,607][Thread-1:15400][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 70, in showArticleList
-    'date_day': article.edit_date.day(),
-TypeError: 'int' object is not callable
-[2020-08-14 13:01:37,999][Thread-1:16104][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 92, in showArticleList
-    return HttpResponse(template.render(context, request))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 171, in render
-    return self._render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 163, in _render
-    return self.nodelist.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 936, in render
-    bit = node.render_annotated(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 903, in render_annotated
-    return self.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\defaulttags.py", line 165, in render
-    values = list(values)
-TypeError: 'ArticleModel' object is not iterable
-[2020-08-14 13:01:38,724][Thread-1:16104][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 92, in showArticleList
-    return HttpResponse(template.render(context, request))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 171, in render
-    return self._render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 163, in _render
-    return self.nodelist.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 936, in render
-    bit = node.render_annotated(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 903, in render_annotated
-    return self.render(context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\defaulttags.py", line 165, in render
-    values = list(values)
-TypeError: 'ArticleModel' object is not iterable
-[2020-08-14 14:26:17,824][Thread-1:11300][task_id:django.request][log.py:222][ERROR][Internal Server Error: /post-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 55, in showWriteArticlePage
-    'cats': cats,
-NameError: name 'cats' is not defined
-[2020-08-14 14:27:24,327][Thread-2:11160][task_id:main.views][views.py:45][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 14:28:30,103][Thread-2:11160][task_id:main.views][views.py:45][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 14:28:46,909][Thread-1:16640][task_id:main.views][views.py:45][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 14:48:47,137][Thread-1:10832][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 82, in showArticleList
-    'url': '/article-'+article.id,
-TypeError: can only concatenate str (not "int") to str
-[2020-08-14 14:48:59,440][Thread-1:17112][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 82, in showArticleList
-    'url': '/article-'+int(article.id),
-TypeError: can only concatenate str (not "int") to str
-[2020-08-14 14:49:05,450][Thread-1:8344][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 82, in showArticleList
-    'url': '/article-'+int(article.id),
-TypeError: can only concatenate str (not "int") to str
-[2020-08-14 14:49:14,229][Thread-1:15264][task_id:django.request][log.py:222][ERROR][Internal Server Error: /list-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 97, in showArticleList
-    template = loader.get_template('listArticle.html')
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 156, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
-    return parser.parse()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 477, in parse
-    raise self.error(token, e)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 475, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 448, in parse
-    raise self.error(token, e)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 446, in parse
-    filter_expression = self.compile_filter(token.contents)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 562, in compile_filter
-    return FilterExpression(token, self)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 661, in __init__
-    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '-url' from 'article-url'
-[2020-08-14 20:21:48,949][Thread-8:10128][task_id:main.views][views.py:63][ERROR][Accessed /static/wangEditor.min.js.map with showBin matched nothing.]
-[2020-08-14 21:43:32,838][Thread-1:17868][task_id:django.request][log.py:222][ERROR][Internal Server Error: /dologin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 74, in doLogin
-    user = authenticate(request, username=username, password=password)
-NameError: name 'authenticate' is not defined
-[2020-08-15 11:00:27,714][Thread-3:18372][task_id:django.request][log.py:222][ERROR][Internal Server Error: /article-3/]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 11, in showArticlePage
-    logger.info(f'Accessed {request.get_full_path()} with showArticlePage'%(id_))
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:00:49,660][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:01:44,295][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:03:56,567][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:11:00,915][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:12:38,170][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:13:10,686][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:14:28,857][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:14:33,613][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:14:54,941][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:15:05,908][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:15:27,193][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:15:42,442][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:16:00,651][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:16:21,596][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:18:51,072][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:18:58,886][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:19:22,749][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:26:29,162][Thread-5:7388][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:26:49,499][Thread-6:17732][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:26:51,315][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:26:59,469][Thread-7:11052][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:27:36,451][Thread-6:17732][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:04,059][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:04,822][Thread-8:17780][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:24,781][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:35,050][Thread-6:17732][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:46,707][Thread-5:7388][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:28:53,008][Thread-5:7388][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:13,707][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:14,461][Thread-7:11052][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:23,069][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:24,459][Thread-5:7388][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:30,740][Thread-8:17780][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:29:54,424][Thread-3:9428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:30:11,792][Thread-4:6396][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:30:15,708][Thread-8:17780][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:34:50,919][Thread-8:17780][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 11:35:18,366][Thread-7:11052][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 12:24:03,661][Thread-1:14172][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 17:32:24,585][Thread-10:17204][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:06:24,700][Thread-16:2744][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:06:26,633][Thread-15:15092][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:06:36,373][Thread-13:7652][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:07:41,318][Thread-18:4552][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:07:49,565][Thread-15:15092][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 18:08:03,431][Thread-13:7652][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:32:45,543][Thread-22:15048][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:33:29,529][Thread-19:15032][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:34:08,142][Thread-24:10256][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:36:05,065][Thread-23:6840][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:36:36,404][Thread-19:15032][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:37:11,316][Thread-20:15908][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 20:37:30,574][Thread-22:15048][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:02:51,208][Thread-27:13148][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:35:16,465][Thread-31:18508][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:35:30,605][Thread-33:1448][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:52:41,451][Thread-4:1152][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:53:20,513][Thread-2:14500][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-15 21:54:42,816][Thread-2:14500][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:17:50,167][Thread-13:9624][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:20:05,205][Thread-6:4488][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:21:23,227][Thread-5:4224][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:25:04,982][Thread-3:5304][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:26:52,707][Thread-6:15512][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:27:19,502][Thread-1:10408][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:30:37,331][Thread-1:17332][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 11:30:43,208][Thread-1:17332][task_id:django.request][log.py:222][ERROR][Internal Server Error: /uploadimg]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
-ValueError: The view article.views.uploadImg didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 11:32:32,964][Thread-5:16120][task_id:django.request][log.py:222][ERROR][Internal Server Error: /uploadimg]
+ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
+[2020-08-18 07:36:50,439][uWSGIWorker1Core0:140159770849152][task_id:main.views][views.py:239][ERROR][Exception at doAdminAction: name 'acitonid' is not defined]
+[2020-08-18 07:36:50,460][uWSGIWorker1Core0:140159770849152][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
-ValueError: The view article.views.uploadImg didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 11:34:36,977][Thread-3:17752][task_id:django.request][log.py:222][ERROR][Internal Server Error: /uploadimg]
+ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
+[2020-08-18 07:37:22,376][uWSGIWorker1Core0:140159770849152][task_id:main.views][views.py:239][ERROR][Exception at doAdminAction: name 'acitonid' is not defined]
+[2020-08-18 07:37:22,398][uWSGIWorker1Core0:140159770849152][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
-ValueError: The view article.views.uploadImg didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 11:40:03,721][Thread-7:8028][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
+ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
+[2020-08-18 08:08:30,141][uWSGIWorker1Core0:140489500442496][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 18:42:09,705][Thread-8:18392][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 20:09:40,592][Thread-17:10432][task_id:django.request][log.py:222][ERROR][Internal Server Error: /uploadimg]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view article.views.uploadImg didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 20:11:17,097][Thread-3:11480][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 20:12:51,347][Thread-1:7024][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 20:14:15,147][Thread-4:15884][task_id:django.request][log.py:222][ERROR][Internal Server Error: /static/wangEditor.min.js.map]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 108, in showBin
-    logger.error(f'Accessed {request.get_full_path()} with showBin matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-16 20:21:33,519][Thread-1:18664][task_id:django.request][log.py:222][ERROR][Internal Server Error: /login_admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 74, in showLoginAdmin
-    if request.session["admin"]:
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\sessions\backends\base.py", line 64, in __getitem__
-    return self._session[key]
-KeyError: 'admin'
-[2020-08-16 20:34:21,765][Thread-1:8364][task_id:django.request][log.py:222][ERROR][Internal Server Error: /django$$admin/main/settingsmodel/]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
-    return Database.Cursor.execute(self, query, params)
-sqlite3.OperationalError: no such table: main_settingsmodel
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\options.py", line 607, in wrapper
-    return self.admin_site.admin_view(view)(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
-    response = view_func(request, *args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
-    response = view_func(request, *args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\sites.py", line 231, in inner
-    return view(request, *args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
-    return bound_method(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
-    response = view_func(request, *args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\options.py", line 1678, in changelist_view
-    cl = self.get_changelist_instance(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\options.py", line 728, in get_changelist_instance
-    return ChangeList(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\views\main.py", line 98, in __init__
-    self.get_results(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\admin\views\main.py", line 226, in get_results
-    result_count = paginator.count
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\utils\functional.py", line 48, in __get__
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/deprecation.py", line 113, in __call__
+    response = self.process_request(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 53, in process_request
+    if self.should_redirect_with_slash(request):
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 71, in should_redirect_with_slash
+    not is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 154, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 25, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
     res = instance.__dict__[self.name] = self.func(instance)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\paginator.py", line 91, in count
-    return c()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 397, in count
-    return self.query.get_count(using=self.db)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\query.py", line 518, in get_count
-    number = obj.get_aggregation(using, ['__count'])['__count']
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\query.py", line 503, in get_aggregation
-    result = compiler.execute_sql(SINGLE)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1151, in execute_sql
-    cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 100, in execute
-    return super().execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 68, in execute
-    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\utils.py", line 90, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
-    return Database.Cursor.execute(self, query, params)
-django.db.utils.OperationalError: no such table: main_settingsmodel
-[2020-08-16 20:36:22,026][Thread-1:1716][task_id:django.request][log.py:222][ERROR][Internal Server Error: /dologin_admin]
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib64/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./webinfo/urls.py", line 3, in <module>
+    from main import views as mainViews
+  File "./main/views.py", line 250
+    elif actionid='cha_ban':
+                 ^
+SyntaxError: invalid syntax
+[2020-08-18 08:09:05,399][uWSGIWorker1Core0:139933645799296][task_id:main.views][views.py:261][ERROR][Exception at doAdminAction: 'str' object does not support item assignment]
+[2020-08-18 08:09:05,425][uWSGIWorker1Core0:139933645799296][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 103, in doLoginAdmin
-    if password and SettingsModel.objects.get('adminpassword').sValue==password:
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 404, in get
-    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 904, in filter
-    return self._filter_or_exclude(False, *args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 923, in _filter_or_exclude
-    clone.query.add_q(Q(*args, **kwargs))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\query.py", line 1351, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\query.py", line 1378, in _add_q
-    child_clause, needed_inner = self.build_filter(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\query.py", line 1248, in build_filter
-    arg, value = filter_expr
-ValueError: too many values to unpack (expected 2)
-[2020-08-16 20:51:16,979][Thread-2:18020][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view main.views.showAdmin didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 20:51:20,330][Thread-1:7656][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view main.views.showAdmin didn't return an HttpResponse object. It returned None instead.
-[2020-08-16 20:51:38,777][Thread-1:7916][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 115, in showAdmin
-    'alert': alert,
-NameError: name 'alert' is not defined
-[2020-08-17 12:34:27,802][Thread-1:16428][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 113, in showAdmin
-    template = loader.get_template('admin.html')
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 156, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
-    return parser.parse()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 477, in parse
-    raise self.error(token, e)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 475, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 482, in parse
-    self.unclosed_block_tag(parse_until)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 543, in unclosed_block_tag
-    raise self.error(token, msg)
-django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 169: 'for'. Looking for one of: empty, endfor.
-[2020-08-17 15:04:59,291][Thread-1:2420][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 15:06:43,789][Thread-3:13076][task_id:main.views][views.py:154][ERROR][Exception at doAdminAction: name 'time' is not defined]
-[2020-08-17 15:06:43,809][Thread-3:13076][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-18 08:10:39,536][uWSGIWorker1Core0:140317526704000][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 15:07:32,238][Thread-1:9080][task_id:main.views][views.py:156][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
-[2020-08-17 15:07:32,260][Thread-1:9080][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/deprecation.py", line 113, in __call__
+    response = self.process_request(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 53, in process_request
+    if self.should_redirect_with_slash(request):
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 71, in should_redirect_with_slash
+    not is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 154, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 25, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib64/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./webinfo/urls.py", line 3, in <module>
+    from main import views as mainViews
+  File "./main/views.py", line 256
+    c.extra = c.extra[:ind] + val + (c.extra[ind+1:] if ind<len(c.extra)-1)
+                                                                          ^
+SyntaxError: invalid syntax
+[2020-08-18 08:15:02,192][uWSGIWorker1Core0:140489194164096][task_id:django.request][log.py:224][ERROR][Internal Server Error: /article-10/]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 15:08:12,245][Thread-1:9080][task_id:main.views][views.py:156][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
-[2020-08-17 15:08:12,262][Thread-1:9080][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
-    raise ValueError(
-ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 15:09:04,259][Thread-4:1436][task_id:django.request][log.py:222][ERROR][Internal Server Error: /s/filename]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 211, in showImages
-    logger.error(f'Accessed {request.get_full_path()} with showImages matched nothing.' % path)
-TypeError: not all arguments converted during string formatting
-[2020-08-17 15:22:10,912][Thread-1:15216][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
+  File "./article/views.py", line 51, in showArticlePage
+    showuser = (category.extra[0]=='1')
+NameError: name 'category' is not defined
+[2020-08-18 08:16:02,174][uWSGIWorker1Core0:139747837464448][task_id:django.request][log.py:224][ERROR][Internal Server Error: /article-10/]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 113, in showAdmin
-    template = loader.get_template('admin.html')
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 156, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
-    return parser.parse()
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 448, in parse
-    raise self.error(token, e)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 446, in parse
-    filter_expression = self.compile_filter(token.contents)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 562, in compile_filter
-    return FilterExpression(token, self)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\template\base.py", line 661, in __init__
-    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '-text' from 'main-text'
-[2020-08-17 15:22:22,793][Thread-1:15216][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
+  File "./article/views.py", line 55, in showArticlePage
+    author_ids = getAuthorList(forum_id)
+NameError: name 'forum_id' is not defined
+[2020-08-18 09:29:03,377][uWSGIWorker1Core0:140315161300864][task_id:article.views][views.py:159][ERROR][hour must be in 0..23]
+[2020-08-18 09:31:53,140][uWSGIWorker1Core0:140689333493632][task_id:django.request][log.py:224][ERROR][Internal Server Error: /list-article]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 123, in showAdmin
-    main_text = SettingsModel.objects.filter(key='main-text').sValue
-AttributeError: 'QuerySet' object has no attribute 'sValue'
-[2020-08-17 15:23:17,441][Thread-3:15996][task_id:main.views][views.py:164][ERROR][Exception at doAdminAction: name 'SettingModel' is not defined]
-[2020-08-17 15:23:17,460][Thread-3:15996][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+  File "./article/views.py", line 185, in showArticleList
+    if article.create_date < month_start or article.create_date > month_end:
+TypeError: can't compare offset-naive and offset-aware datetimes
+[2020-08-18 09:37:46,281][uWSGIWorker1Core0:139931209932672][task_id:django.request][log.py:224][ERROR][Internal Server Error: /list-article]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/deprecation.py", line 113, in __call__
+    response = self.process_request(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 53, in process_request
+    if self.should_redirect_with_slash(request):
+  File "/usr/local/lib64/python3.8/site-packages/django/middleware/common.py", line 71, in should_redirect_with_slash
+    not is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 154, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/base.py", line 25, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib64/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib64/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib64/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./webinfo/urls.py", line 4, in <module>
+    from article import views as articleViews
+  File "./article/views.py", line 155
+    else:
+    ^
+SyntaxError: invalid syntax
+[2020-08-21 09:58:26,120][uWSGIWorker1Core0:140327154495360][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./main/views.py", line 158, in showAdmin
+    'cover_img': '/s/'+coverimg,
+NameError: name 'coverimg' is not defined
+[2020-08-21 09:58:43,717][uWSGIWorker1Core0:140327154495360][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./main/views.py", line 158, in showAdmin
+    'cover_img': '/s/'+_.coverimg,
+NameError: name 'coverimg' is not defined
+[2020-08-21 14:44:01,824][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:44:01,853][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:22:18,545][Thread-3:4512][task_id:main.views][views.py:178][ERROR][Exception at doAdminAction: string indices must be integers]
-[2020-08-17 16:22:18,563][Thread-3:4512][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-21 14:51:29,085][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:51:29,109][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:26:04,434][Thread-1:16156][task_id:main.views][views.py:178][ERROR][Exception at doAdminAction: <traceback object at 0x000001A3A4215F80>]
-[2020-08-17 16:26:04,454][Thread-1:16156][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-21 14:53:16,495][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:53:16,521][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:26:32,680][Thread-1:11120][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-21 14:53:24,490][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:53:24,514][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
-    return Database.Cursor.execute(self, query, params)
-sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Project\webinfo\main\views.py", line 173, in doAdminAction
-    User.objects.create_user(username=username, password=password)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\auth\models.py", line 147, in create_user
-    return self._create_user(username, email, password, **extra_fields)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\auth\models.py", line 141, in _create_user
-    user.save(using=self._db)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\contrib\auth\base_user.py", line 66, in save
-    super().save(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\base.py", line 745, in save
-    self.save_base(using=using, force_insert=force_insert,
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\base.py", line 782, in save_base
-    updated = self._save_table(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\base.py", line 887, in _save_table
-    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\base.py", line 924, in _do_insert
-    return manager._insert(
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 1204, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1391, in execute_sql
-    cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 100, in execute
-    return super().execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 68, in execute
-    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\utils.py", line 90, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
-    return Database.Cursor.execute(self, query, params)
-django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 178, in doAdminAction
-    logger.error('Exception at doAdminAction: '+str(e.__traceback__()))
-TypeError: 'traceback' object is not callable
-[2020-08-17 16:27:44,686][Thread-1:7056][task_id:main.views][views.py:178][ERROR][Exception at doAdminAction: <traceback object at 0x000002450149D2C0>]
-[2020-08-17 16:27:44,706][Thread-1:7056][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:28:50,636][Thread-1:15220][task_id:main.views][views.py:178][ERROR][Exception at doAdminAction: UNIQUE constraint failed: auth_user.username]
-[2020-08-17 16:28:50,656][Thread-1:15220][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-21 14:53:57,541][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:53:57,564][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:29:45,207][Thread-1:15220][task_id:main.views][views.py:178][ERROR][Exception at doAdminAction: string indices must be integers]
-[2020-08-17 16:29:45,223][Thread-1:15220][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin_action]
+[2020-08-21 14:54:51,012][uWSGIWorker1Core0:140000393539456][task_id:main.views][views.py:275][ERROR][Exception at doAdminAction: 'NoneType' object has no attribute 'name']
+[2020-08-21 14:54:51,035][uWSGIWorker1Core0:140000393539456][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin_action]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
     raise ValueError(
 ValueError: The view main.views.doAdminAction didn't return an HttpResponse object. It returned None instead.
-[2020-08-17 16:41:28,536][Thread-2:18148][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
+[2020-08-21 14:55:43,159][uWSGIWorker1Core0:139970374541184][task_id:main.views][views.py:272][ERROR][on]
+[2020-08-21 14:57:13,539][uWSGIWorker1Core0:139970374541184][task_id:main.views][views.py:272][ERROR][on]
+[2020-08-21 14:57:30,643][uWSGIWorker1Core0:140115547975552][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 132, in showAdmin
-    'last_login_date': (User.objects.get(username=_.username)).last_login.strftime("%x"),
-AttributeError: 'NoneType' object has no attribute 'strftime'
-[2020-08-17 16:42:09,994][Thread-2:18148][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
+  File "./main/views.py", line 159, in showAdmin
+    'name_white': _.name_white,
+AttributeError: 'Category' object has no attribute 'name_white'
+[2020-08-21 14:58:09,937][uWSGIWorker1Core0:140115547975552][task_id:django.request][log.py:224][ERROR][Internal Server Error: /admin]
 Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 132, in showAdmin
-    'last_login_date': (User.objects.get(username=_.username)).last_login.strftime("%x"),
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\db\models\query.py", line 415, in get
-    raise self.model.DoesNotExist(
-django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
-[2020-08-17 16:44:29,330][Thread-1:18856][task_id:django.request][log.py:222][ERROR][Internal Server Error: /admin]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\main\views.py", line 132, in showAdmin
-    'last_login_date': (User.objects.get(username=_.username)).last_login.strftime("%x"),
-AttributeError: 'NoneType' object has no attribute 'strftime'
-[2020-08-17 19:50:44,310][Thread-3:11120][task_id:django.request][log.py:222][ERROR][Internal Server Error: /edit-article]
-Traceback (most recent call last):
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
-    response = get_response(request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "C:\Program Files (x86)\Python\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Project\webinfo\article\views.py", line 71, in showEditArticlePage
-    article_id = int(request.GET.get('aid'))
-ValueError: invalid literal for int() with base 10: ''
+  File "./main/views.py", line 159, in showAdmin
+    'name_white': _.title_white,
+AttributeError: 'Category' object has no attribute 'name_white'

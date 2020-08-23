@@ -10,6 +10,9 @@ from main.models import ArticleModel, Category, SettingsModel, UsersModel
 
 logger = logging.getLogger(__name__)
 
+def showMain(request):
+    return HttpResponse('<h1>抱歉，页面正在维护中，请稍后再试。</h1>')
+
 def showHome(request):
     logger.info(f'Accessed {request.get_full_path()} with showHome')
 
@@ -52,7 +55,7 @@ def showLogin(request, alert=""):
     logger.info(f'Accessed {request.get_full_path()} with showLogin')
 
     if request.user.is_authenticated:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/home')
 
     categories = Category.objects.all()
     cats = []
@@ -94,9 +97,16 @@ def doLogin(request):
     if user:
         login(request, user)
 
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/home')
     else:
         return showLogin(request, "用户名或密码错误，请重试。")
+
+def doLogout(request):
+    logger.info(f'Accessed {request.get_full_path()} with doLogout')
+
+    logout(request)
+
+    return HttpResponseRedirect('/home')
         
 def doLoginAdmin(request):
     password = request.GET.get('password')
@@ -134,11 +144,29 @@ def showAdmin(request):
             'password': _.password,
             'last_login_date': login_date_str,
         })
+    
+    categories = Category.objects.all()
+    category_list = []
+    for _ in categories:
+        if not _.extra:
+            _.extra='10'
+            _.save()
+        showuser = (_.extra[0]=='1')
+        canread = (_.extra[1]=='1')
+        category_list.append({
+            'id': _.id,
+            'name': _.name,
+            'show_user': showuser,
+            'can_read_anonymous': canread,
+            'coverimg': '/s/'+_.coverimg,
+            'name_white': _.title_white,
+        })
 
     context = {
         'main_bg_list': main_bg_list,
         'main_text': main_text,
         'user_list': user_list,
+        'category_list': category_list,
 
     }
     return HttpResponse(template.render(context, request))
@@ -198,12 +226,58 @@ def doAdminAction(request):
             newp = request.GET.get("newp")
             s = SettingsModel.objects.get(key='adminpassword')
             if oldp == s.sValue:
-                s.sValue = newp
-                s.save()
+                if newp and len(newp)>=10:
+                    s.sValue = newp
+                    s.save()
             else:
                 del request.session["admin"]
                 return showLoginAdmin(request, "管理员口令错误，请重试。")
-        
+        elif actionid=='del_ban':
+            pid = int(request.GET.get('pid'))
+            category = Category.objects.get(id=pid)
+            category.delete()
+        elif actionid=='rename_ban':
+            pid = int(request.GET.get('pid'))
+            txt = request.GET.get('txt')
+            category = Category.objects.get(id=pid)
+            if txt and 1<=len(txt)<=10:
+                category.name = txt
+                category.save()
+        elif actionid=='add_ban':
+            name = request.GET.get('name')
+            canread = request.GET.get('canread')
+            showuser = request.GET.get('showuser')
+            if not canread in '01' or not showuser in '01':
+                return None
+            extra = (showuser) + (canread)
+            category = Category(name=name, desc='', extra=extra)
+            category.save()
+        elif actionid=='cha_ban':
+            pid = int(request.GET.get('pid'))
+            ind = int(request.GET.get('ind'))
+            val = request.GET.get('val')
+            if len(val)==1:
+                c = Category.objects.get(id=pid)
+                c.extra = c.extra[:ind] + val + (c.extra[ind+1:] if ind<len(c.extra)-1 else "")
+                c.save()
+        elif actionid=='rep_cat':
+            cid = int(request.GET.get('cid'))
+            category = Category.objects.get(id=cid)
+            import time
+            import os
+            pic = request.FILES.get("pic")
+            name_white = request.POST.get("name_white")
+            if pic:
+                filename = 'cbg-' + str(time.time()%100007) + os.path.splitext(pic.name)[1]
+                with open('./images/' + filename, "wb") as fPic:
+                    for chunk in pic.chunks():
+                        fPic.write(chunk)
+                category.coverimg = filename
+            if name_white=="on":
+                category.title_white = 1
+            category.save()
+            
+
         return HttpResponseRedirect('/admin')
     except Exception as e:
         logger.error('Exception at doAdminAction: '+str(e))

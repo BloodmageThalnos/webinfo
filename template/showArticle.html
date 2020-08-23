@@ -1,7 +1,15 @@
+{% if no_access %}
+<script>
+    alert("请登录后再访问该页面！");
+</script>
+<meta http-equiv="refresh" content="2;url=/login_">
+请登录后再访问该页面。<br/>
+若页面未自动跳转，请点击<a href="/login_">这里</a>跳转到登录。
+{% else %}
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>Home</title>
+        <title>{{title}} | {{category}}</title>
         <style>
             body{
                 margin: 0;
@@ -46,10 +54,11 @@
                 position: absolute;
                 top: 36%;
                 left: 50%;
-                min-width: calc(25px + 5%);
+                min-width: calc(25px + 8%);
                 margin-top: -12px;
                 font-size: 30px;
                 text-align: justify;
+                word-break: break-all;
                 float: left;
                 display: hidden;
                 color: #2c3e50;
@@ -102,7 +111,7 @@
             }
             .main-content{
                 position: relative;
-                width: 100%;
+                width: 88%;
                 max-width: 1400px;
                 margin: 20px auto;
                 display: flex;
@@ -115,7 +124,7 @@
                 position: relative;
                 margin: 120px 20px 20px 20px;
                 padding-bottom: 100px;
-                background-color: #fafbfd;
+                background-color: #fafbfc;
             }
             .article-coverimg-w{
                 width: 100%;
@@ -143,8 +152,9 @@
                 padding-left: 60px;
                 padding-right: 55px;
                 font-size: 18px;
-                line-height: 33px;
+                line-height: 31px;
                 text-indent:2em;
+                font-family: "Microsoft Yahei";
             }
             #article-content p{
                 display: block;
@@ -237,7 +247,7 @@
                 height: 60px;
                 line-height: 60px;
                 margin: 10px 10px 10px 10px;
-                background-color: #fafbfd;
+                background-color: #fafbfc;
                 font-size: 23.5px;
                 display: block;
                 text-align: center;
@@ -248,7 +258,7 @@
                 width: calc(100% - 20px);
                 margin: 22px 10px 10px 10px;
                 border-radius: 10px;
-                background-color: #fafbfd;
+                background-color: #fafbfc;
                 min-height: 1000px;
             }
             #nav-search-w{
@@ -324,11 +334,18 @@
             }
             #nav-newestbar{
                 flex: 1;
-                background-color:rgb(129, 129, 189);
             }
             #nav-hotestbar{
                 flex: 1;
+            }
+            #nav-hotest-bar .on{
+                background-color:rgb(129, 129, 189);
+            }
+            #nav-hotest-bar .off{
                 background-color:rgb(205, 205, 255);
+            }
+            #nav-newest-news{
+                margin: 25px 5px 0 5px;
             }
             #nav-hotest-news{
                 margin: 25px 5px 0 5px;
@@ -341,8 +358,6 @@
                 font-size: 17px;
                 -webkit-line-clamp:1;
                 line-height: 32px;
-                font-family: 宋体;
-                font-weight: bolder;
             }
             #nav-hotest-news > hr{
                 width: 96%;
@@ -360,11 +375,11 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:100%;"/>
+                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
                     {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;">欢迎您，{{username}}。</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
                     {% else %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
                     {% endif %}
@@ -372,21 +387,21 @@
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a {%else%} rgb(66, 116, 255) {%endif%};" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
                 </div>
             </div>
         </div>
         <div id="banner">
-            <img id="banner-img" src="/s/banner-3.png" />
+            <img id="banner-img" src="{{cat_img}}" />
             <div id="banner-title-w">
-                <div id="banner-title">交易日记</div>
+                <div id="banner-title" {%if cat_name_white %}style="color: whitesmoke;"{%endif%}>{{category}}</div>
             </div>
         </div>
         <div class="main-content">
             <div class="main-leftpart">
                 <div class="article-wrapper">
                     <div class="article-coverimg-w">
-                        <img id="article-coverimg" src="/s/coverimg-1.png" />
+                        <img id="article-coverimg" src="{{cover_img}}" onerror="this.src='/s/coverimg-1.png';"/>
                     </div>
                     <div id="article-info">
                         Category · {{category}} · {{author}} · {{date}} · 评论
@@ -499,56 +514,66 @@
                             </svg>
                         </div>
                     </div>
+                    {% if show_user %}
                     <div id="nav-author-w">
                         <p class="nav-title">作者</p>
-                        <a>Valak</a>
-                        <a>熊鹏</a>
-                        <a>谢广坤</a>
-                        <a>熊二</a>
-                        <a>Valak</a>
-                        <a>熊鹏</a>
-                        <a>谢广坤</a>
-                        <a>熊二</a>
-                        <a>Valak</a>
-                        <a>熊鹏</a>
-                        <a>谢广坤</a>
-                        <a>熊二</a>
+                        {% for i in author_list %}
+                        <a href="{{i.url}}">{{i.name}}</a>
+                        {% endfor %}
                     </div>
+                    {% endif %}
                     <div id="nav-hotest">
                         <div id="nav-hotest-title">
-                            <a>最新</a>
-                            <a>最热</a>
+                            <a id="newest-button">最新</a>
+                            <a id="hotest-button">最热</a>
                         </div>
                         <div id="nav-hotest-bar">
-                            <div id="nav-newestbar"></div>
-                            <div id="nav-hotestbar"></div>
+                            <div id="nav-newestbar" class="on"></div>
+                            <div id="nav-hotestbar" class="off"></div>
                         </div>
-                        <div id="nav-hotest-news">
-                            <div class="nav-hotest-new">这种解读的角度</div>
+                        <div id="nav-newest-news">
+                            {% for i in newest_articles %}
+                            <div class="nav-hotest-new"><a href="{{i.url}}">{{i.title}}</a></div>
                             <hr/>
-                            <div class="nav-hotest-new">谁是最好的报告解读员</div>
+                            {% endfor %}
+                        </div>
+                        <div id="nav-hotest-news" style="display: none;">
+                            {% for i in hotest_articles%}
+                            <div class="nav-hotest-new"><a href="{{i.url}}">{{i.title}}</a></div>
                             <hr/>
-                            <div class="nav-hotest-new">对多控杠杆的思考</div>
-                            <hr/>
-                            <div class="nav-hotest-new">金融供给侧改革，会不会重蹈钢铁行业故事？</div>
-                            <hr/>
-                            <div class="nav-hotest-new">谁是最好的报告解读员，金融供给侧改革，会不会重蹈钢铁行业故事？</div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div id="nav-perday-w">
                         <p class="nav-title">
                             按日检索
                         </p>
-                        <input type="date" />
+                        <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
+                            <input type="date" name="day" style="font-size: 18px;"/>
+                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                        </form>
                     </div>
                     <div id="nav-perday-w">
                         <p class="nav-title">
                             按月检索
                         </p>
-                        <input type="month" />
+                        <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
+                            <input type="month" name="month" style="font-size: 18px;"/>
+                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                    </form>
                     </div>
                 </div>
             </div>
+        </div>
+        <style>
+            .footer{
+                text-align: center;
+                font-size: 12px;
+                padding: 20px;
+            }
+        </style>
+        <div class="footer">
+            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>
@@ -558,7 +583,6 @@
             banner_title.show();
 
             let search_div = $('#nav-search');
-            console.log(search_div);
             search_div.focus((event)=>{
                 if(search_div.text().trim()=="输入关键词搜索文章..."){
                     search_div.text("");
@@ -575,6 +599,33 @@
             $('#nav-postarticle').click((event)=>{
                 window.location.href = '/post-article?fid={{cat_id}}';
             })
+            
+            sidebar_focus = 'newest';
+            let newest_button = $('#newest-button');
+            let hotest_button = $('#hotest-button');
+            let newest_div = $('#nav-newest-news');
+            let hotest_div = $('#nav-hotest-news');
+            let newest_bar = $('#nav-newestbar');
+            let hotest_bar = $('#nav-hotestbar');
+            newest_button.click((e)=>{
+                if(sidebar_focus==='hotest'){
+                    sidebar_focus = 'newest';
+                    newest_div.show();
+                    hotest_div.hide();
+                    newest_bar.prop('class', 'on');
+                    hotest_bar.prop('class', 'off');
+                }
+            });
+            hotest_button.click((e)=>{
+                if(sidebar_focus==='newest'){
+                    sidebar_focus = 'hotest';
+                    hotest_div.show();
+                    newest_div.hide();
+                    hotest_bar.prop('class', 'on');
+                    newest_bar.prop('class', 'off');
+                }
+            });
         </script>
     </body>
 </html>
+{% endif %} <!--if no_access-->

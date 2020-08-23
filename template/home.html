@@ -133,11 +133,11 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo-2.jpg" style="height:100%;"/>
+                    <img src="/s/logo-2.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
                     {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;">欢迎您，{{username}}。</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
                     {% else %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
                     {% endif %}
@@ -166,6 +166,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <style>
+            .footer{
+                text-align: center;
+                font-size: 10px;
+                padding: 20px;
+                position: fixed;
+                bottom: 20px;
+                left: calc(50% - 100px);
+            }
+        </style>
+        <div class="footer">
+            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
         </div>
         <script>
             let randint = (a,b)=>(a+Math.floor(Math.random()*(b-a)));
@@ -210,7 +223,7 @@
                             if(column_i==column_cnt){
                                 console.log("OK.");
                                 $('#bg-pic').attr('src', img_src);
-                                //theCanvas.width = 0;
+                                theCanvas.width = 0;
                                 clearInterval(handle);
                                 return;
                             }

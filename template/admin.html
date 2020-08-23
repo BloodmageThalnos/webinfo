@@ -121,7 +121,7 @@
             .admin-line .right{
                 flex: 7;
             }
-            .admin-line input,b{
+            .admin-line input,b,select,td{
                 font-size: 19px;
             }
             .description{
@@ -158,10 +158,10 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:100%;"/>
+                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
                 </div>
             </div>
         </div>
@@ -265,7 +265,91 @@
                         新口令　　：<input type="password" style="width: 12em;" value="{{main_text}}" id="aha2"><br/>
                         重复新口令：<input type="password" style="width: 12em;" value="{{main_text}}" id="aha3">
                         <input type="submit" value="修改" onclick="$('#aha2').val()==$('#aha3').val()?go('/admin_action?aid=7&old='+encodeURI($('#aha1').val())+'&new='+encodeURI($('#aha2').val())):alert('两次输入的新密码不同。');"><br/>
-                        <p class="description">为了保障安全，管理员口令的长度应当不低于10位，且尽量避免纯数字/字母的组合。</p>
+                        <p class="description">为了保障安全，管理员口令的长度必须大于10位。应尽量避免纯数字/字母的组合。</p>
+                    </div>
+                </div>
+
+                <div class="admin-title pad-30">
+                    板块设置
+                </div>
+                <div class="admin-line">
+                    <span class="left pad-10">板块管理：</span>
+                    <div class="right">
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>板块名称</b>
+                                </td>
+                                <td>
+                                    <b>按用户检索</b>
+                                </td>
+                                <td>
+                                    <b>非会员访问</b>
+                                </td>
+                                <td>
+                                    <b>操作</b>
+                                </td>
+                            </tr>
+                            {% for i in category_list %}
+                            <tr>
+                                <td>
+                                    {{i.name}}
+                                </td>
+                                <td>
+                                    <select onchange="go('/admin_action?aid=cha_ban&pid={{i.id}}&ind=0&val='+$(this).val());">
+                                        <option value="1"{% if i.show_user %} selected {%endif%}>是</option>
+                                        <option value="0"{% if not i.show_user %} selected {%endif%}>否</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    <select onchange="go('/admin_action?aid=cha_ban&pid={{i.id}}&ind=1&val='+$(this).val());">
+                                        <option value="1"{% if i.can_read_anonymous %} selected {%endif%}>是</option>
+                                        <option value="0"{% if not i.can_read_anonymous %} selected {%endif%}>否</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    <input type="button" onclick="confirm('删除板块会导致其中的文章、评论和用户记录被连带删除。是否确认？')&&confirm('该操作可能难以恢复，是否确定要删除板块？')&&go('/admin_action?aid=del_ban&pid={{i.id}}');" value="删除板块">
+                                    <input type="button" onclick="go('/admin_action?aid=rename_ban&pid={{i.id}}&txt='+encodeURI(prompt('请输入板块名称（为了更好的展示效果，建议在5个字以内）')));" value="重命名">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>
+                                    <input type="text" id="ban_name" style="width: 7em;">
+                                </td>
+                                <td>
+                                    <select id="ban_showuser">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    <select id="ban_canread">
+                                        <option value="1">是</option>
+                                        <option value="0" selected>否</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    <input type="button" onclick="go('/admin_action?aid=add_ban&name='+encodeURI($('#ban_name').val())+'&showuser='+$('#ban_showuser').val()+'&canread='+$('#ban_canread').val());" value="添加板块">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="admin-line pad-20">
+                    <span class="left">板块封面：</span>
+                    <div class="right">
+                        {% for i in category_list %}
+                        <div style="margin-bottom: 30px;line-height: 36px;">
+                            <span>{{i.name}}：</span><br/>
+                            <img style="width: 80%;margin-bottom: 3px;" src="{{i.coverimg}}"><br/>
+                            <form method="POST" enctype="multipart/form-data" action="/admin_action?aid=rep_cat&cid={{i.id}}">
+                                <input type="file" name="pic">
+                                <input type="submit" value="修改"><br/>
+                                <input type="checkbox" name="name_white" {%if i.name_white%}checked{%endif%}> 文字反色
+                            </form><br/>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
