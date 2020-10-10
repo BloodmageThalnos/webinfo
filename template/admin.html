@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>Home</title>
+        <title>Admin</title>
         <style>
             body{
                 margin: 0;
@@ -70,7 +70,9 @@
                 flex-grow: 1;
             }
             .header-icon{
-                font-size: 20px;
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
                 position: relative;
                 float: right;
                 margin-right: 42px;
@@ -154,7 +156,7 @@
         </style>
         <script type="text/javascript" src="/static/jquery.js"></script>
     </head>
-    <body>
+    <body onscroll="KeepScrollBar();">
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
@@ -203,8 +205,15 @@
                 <div class="admin-line pad-10">
                     <span class="left">首页文字：</span>
                     <div class="right">
-                        <input id="main-text" style="width: 30em;" value="{{main_text}}">
-                        <input type="submit" value="修改" onclick="go('/admin_action?aid=3&txt='+encodeURI($('#main-text').val()));">
+                        {%for main_text in main_text_list%}
+                        <form action="/admin_action?tid={{main_text.tid}}&aid=3" method="POST">
+                            主字幕：<input name="title" style="width: 27em;" value="{{main_text.title}}"><br/>
+                            副字幕：<input name="subtitle" style="width: 27em;" value="{{main_text.subtitle}}"><br/>
+                            链接文字：<input name="link_text" style="width: 12em;" value="{{main_text.link_text}}"><br/>
+                            链接地址：<input name="link_src" style="width: 21em;" value="{{main_text.link_src}}"><br/>
+                            <input type="submit" value="修改"><br/>
+                        </form>
+                        {%endfor%}
                     </div>
                 </div>
 
@@ -220,10 +229,16 @@
                                     <b>用户名</b>
                                 </td>
                                 <td>
-                                    <b>密码</b>
+                                    <b>邮箱</b>
                                 </td>
                                 <td>
                                     <b>最近登录时间</b>
+                                </td>
+                                <td>
+                                    <b>会员状态</b>
+                                </td>
+                                <td>
+                                    <b>截止试用时间</b>
                                 </td>
                                 <td>
                                     <b>操作</b>
@@ -235,14 +250,23 @@
                                     {{i.username}}
                                 </td>
                                 <td>
-                                    {{i.password}}
+                                    {{i.email}}
                                 </td>
                                 <td>
                                     {{i.last_login_date}}
                                 </td>
                                 <td>
+                                    {{i.vip_status}}
+                                </td>
+                                <td>
+                                    {{i.vip_timestr}}
+                                </td>
+                                <td>
                                     <input type="button" onclick="confirm('确定要删除该用户吗？该操作可能难以恢复。')&&confirm('删除用户后，该用户发表的文章、评论等信息也将被删除，是否确定？')&&go('/admin_action?aid=4&pid={{i.id}}');" value="移除账户">
-                                    <input type="button" onclick="confirm('{{i.username}}的密码将被随机重置，是否确定？')&&go('/admin_action?aid=5&pid={{i.id}}');" value="修改密码">
+                                    <input type="button" onclick="confirm('{{i.username}}的密码将被重置为：123456。\n如需正常使用账户，请登录后立即修改密码，是否确定？')&&go('/admin_action?aid=5&pid={{i.id}}');" value="重置密码">
+                                    <input type="button" onclick="go('/admin_action?aid=5.1&uid={{i.id}}');" value="设为会员">
+                                    <input type="button" onclick="go('/admin_action?aid=5.7&uid={{i.id}}');" value="试用7天">
+                                    <input type="button" onclick="go('/admin_action?aid=5.30&uid={{i.id}}');" value="试用30天">
                                 </td>
                             </tr>
                             {% endfor %}
@@ -281,10 +305,16 @@
                                     <b>板块名称</b>
                                 </td>
                                 <td>
+                                    <b>板块英文名称</b>
+                                </td>
+                                <td>
                                     <b>按用户检索</b>
                                 </td>
                                 <td>
                                     <b>非会员访问</b>
+                                </td>
+                                <td>
+                                    <b>开启评论区</b>
                                 </td>
                                 <td>
                                     <b>操作</b>
@@ -294,6 +324,9 @@
                             <tr>
                                 <td>
                                     {{i.name}}
+                                </td>
+                                <td>
+                                    {{i.name_en}}
                                 </td>
                                 <td>
                                     <select onchange="go('/admin_action?aid=cha_ban&pid={{i.id}}&ind=0&val='+$(this).val());">
@@ -308,14 +341,28 @@
                                       </select>
                                 </td>
                                 <td>
+                                    <select onchange="go('/admin_action?aid=cha_ban&pid={{i.id}}&ind=2&val='+$(this).val());">
+                                        <option value="1"{% if i.can_comment %} selected {%endif%}>是</option>
+                                        <option value="0"{% if not i.can_comment %} selected {%endif%}>否</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    {% if i.name != "俱乐部" %}
+                                    {% if i.id < 6 or i.id > 8 %}
                                     <input type="button" onclick="confirm('删除板块会导致其中的文章、评论和用户记录被连带删除。是否确认？')&&confirm('该操作可能难以恢复，是否确定要删除板块？')&&go('/admin_action?aid=del_ban&pid={{i.id}}');" value="删除板块">
-                                    <input type="button" onclick="go('/admin_action?aid=rename_ban&pid={{i.id}}&txt='+encodeURI(prompt('请输入板块名称（为了更好的展示效果，建议在5个字以内）')));" value="重命名">
+                                    {% endif %}
+                                    <input type="button" onclick="(name=prompt('请输入板块名称（为了更好的展示效果，建议在5个字以内）', '{{i.name}}'))&&go('/admin_action?aid=rename_ban&pid={{i.id}}&txt='+encodeURI(name));" value="重命名">
+                                    <input type="button" onclick="(name=prompt('请输入板块英文名称。\nInput the category name in English.', '{{i.name_en}}'))&&go('/admin_action?aid=rename_en_ban&pid={{i.id}}&txt='+encodeURI(name));" value="修改英文名称">
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
                             <tr>
                                 <td>
                                     <input type="text" id="ban_name" style="width: 7em;">
+                                </td>
+                                <td>
+                                    <input type="text" id="ban_name_en" style="width: 7em;">
                                 </td>
                                 <td>
                                     <select id="ban_showuser">
@@ -330,7 +377,7 @@
                                       </select>
                                 </td>
                                 <td>
-                                    <input type="button" onclick="go('/admin_action?aid=add_ban&name='+encodeURI($('#ban_name').val())+'&showuser='+$('#ban_showuser').val()+'&canread='+$('#ban_canread').val());" value="添加板块">
+                                    <input type="button" onclick="go('/admin_action?aid=add_ban&name='+encodeURI($('#ban_name').val())+'&showuser='+$('#ban_showuser').val()+'&canread='+$('#ban_canread').val()+'&name_en='+encodeURI($('#ban_name_en').val()));" value="添加板块">
                                 </td>
                             </tr>
                         </table>
@@ -346,8 +393,40 @@
                             <form method="POST" enctype="multipart/form-data" action="/admin_action?aid=rep_cat&cid={{i.id}}">
                                 <input type="file" name="pic">
                                 <input type="submit" value="修改"><br/>
-                                <input type="checkbox" name="name_white" {%if i.name_white%}checked{%endif%}> 文字反色
+                                {% if 0 %}<input type="checkbox" name="name_white" {%if i.name_white%}checked{%endif%}> 文字反色 {% endif %}
                             </form><br/>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="admin-title pad-30">
+                    PA40 留言
+                </div>
+                <div class="admin-line pad-10">
+                    <span class="left">首页展示：</span>
+                    <div class="right">
+                        {% for i in pa40_comments %}
+                        <div style="margin-bottom: 30px;line-height: 36px;font-size: 20px;">
+                            <form method="POST" action="/admin_action?aid=pa40c&cid={{i.id}}">
+                                作者：<input name="title" value="{{i.title}}" style="width: 10em;"><br/>
+                                内容：<textarea name="content" style="height: 140px; width: 22em;">{{i.content}}</textarea><br/>
+                                　　　<input type="submit" value="修改">
+                            </form>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="admin-line pad-20">
+                    <span class="left">会员留言：</span>
+                    <div class="right">
+                        {% for i in pa40_commentall %}
+                        <div style="margin-bottom: 30px;line-height: 36px;font-size: 20px;">
+                            <form method="POST" action="/admin_action?aid=pa40d&cid={{i.id}}">
+                                作者：{{i.username}}<br/>
+                                内容：{{i.content}}<br/>
+                                <input type="submit" value="删除这条留言" onclick="return confirm('确定要删除这条留言吗？');">
+                            </form>
                         </div>
                         {% endfor %}
                     </div>
@@ -357,6 +436,22 @@
         <script>
             function go(url){
                 window.location.href=url;
+            }
+            function KeepScrollBar() {
+                var scrollPos;
+                if (typeof window.pageYOffset != 'undefined') {
+                    scrollPos = window.pageYOffset;
+                }
+                else if (typeof document.body != 'undefined') {
+                scrollPos = document.getElementById('divContent').scrollTop;
+                }
+                document.cookie = "scrollTop=" + scrollPos;
+            }
+            window.onload = function () {
+                if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+                    var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/);
+                    document.body.scrollTop = parseInt(arr[1]);
+                }
             }
         </script>
     </body>

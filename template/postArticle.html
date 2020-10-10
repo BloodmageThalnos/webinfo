@@ -9,11 +9,14 @@
         }
         .return-r{
             font-size: 20.5px;
-            width: 1300px;
+            max-width: 1300px;
             margin: 0 auto;
             padding-top: 12px;
             padding-bottom: 12px;
             color: #556576;
+        }
+        .return-r-inner{
+            margin: 0 20px 0 20px;
         }
         .main-content{
             position: relative;
@@ -113,13 +116,15 @@
 </head>
 <body>
     <div class="return-r">
-        <svg fill="currentColor" viewBox="0 0 64 64" width="16" height="16">
-            <path d="M45.539,63.41c0.394,0.394,0.908,0.59,1.424,0.59s1.031-0.197,1.424-0.59c0.787-0.787,0.787-2.061,0-2.848   L20.059,32.233L48.407,3.886c0.786-0.787,0.786-2.062,0-2.848c-0.787-0.787-2.062-0.787-2.849,0L15.822,30.773   c-0.205,0.206-0.384,0.506-0.484,0.778c-0.273,0.738-0.092,1.567,0.465,2.124L45.539,63.41z"/>
-        </svg>
-        <span id="returnSpan" style="cursor: pointer;" onclick="window.location.href='/list-article?fid={{cat_id}}'">返回 | 文章列表</span>
-        <div style="display:inline-block;float: right;margin-right: 20px;margin-top: -8px;">
-            <div id="submit" style="width: 80px; height: 40px; border: 1.5px solid #0084ff; color: #0074e0;border-radius: 10px;line-height:40px;text-align: center;cursor:pointer;">
-                发布
+        <div class="return-r-inner">
+            <svg fill="currentColor" viewBox="0 0 64 64" width="16" height="16">
+                <path d="M45.539,63.41c0.394,0.394,0.908,0.59,1.424,0.59s1.031-0.197,1.424-0.59c0.787-0.787,0.787-2.061,0-2.848   L20.059,32.233L48.407,3.886c0.786-0.787,0.786-2.062,0-2.848c-0.787-0.787-2.062-0.787-2.849,0L15.822,30.773   c-0.205,0.206-0.384,0.506-0.484,0.778c-0.273,0.738-0.092,1.567,0.465,2.124L45.539,63.41z"/>
+            </svg>
+            <span id="returnSpan" style="cursor: pointer;" onclick="window.location.href='/list-article?fid={{cat_id}}'">返回 | 文章列表</span>
+            <div style="display:inline-block;float: right;margin-right: 20px;margin-top: -8px;">
+                <div id="submit" style="width: 80px; height: 40px; border: 1.5px solid #0084ff; color: #0074e0;border-radius: 10px;line-height:40px;text-align: center;cursor:pointer;">
+                    发布
+                </div>
             </div>
         </div>
     </div>
@@ -187,6 +192,11 @@
                 {% else %}
                 <p>在这里输入正文</p>
                 {% endif %}
+            </div>
+            <br/>
+            <a style="color: gray;" href='#' onclick="$('#div3').slideDown();">高级选项</a>
+            <div id="div3" style="display: none;">
+                上传附件：<input type="file" id="file">
             </div>
         </div>
     </div>
@@ -298,6 +308,10 @@
             data.append("t", $('#title').val().trim());
             data.append("con", editor1.$textElem.html());
             data.append("cimg", cimg);
+            let file = $('#file')[0].files && $('#file')[0].files[0];
+            if(file){
+                data.append("file", file);
+            }
             {% if article_id %}
             data.append("aid", {{article_id}});
             {% endif %}

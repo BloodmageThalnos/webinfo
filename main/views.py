@@ -1,12 +1,16 @@
 #! encoding: utf-8
 import logging
 from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.contrib.auth import *
 from django.contrib.auth.models import User
 
-from main.models import ArticleModel, Category, SettingsModel, UsersModel
+from main.models import ArticleModel, Category, SettingsModel, UsersModel, PA40CommentModel
+
+import datetime
+import pytz
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -19,16 +23,43 @@ def showHome(request):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        cats.append({
-            'id': category.id,
-            'name': category.name
-        })
+        if category.name != '俱乐部' and '小组' not in category.name:
+            cats.append({
+                'id': category.id,
+                'name': category.name,
+                'name_en': category.name_en,
+            })
     cats = cats[::-1]
+
+    try:
+        import random
+        main_text = random.choice(SettingsModel.objects.filter(key="main-text")).sValue
+        title, subtitle, link_text, link_src = main_text.split('嗄')
+
+        bg_pics = []
+        for i in SettingsModel.objects.filter(key="main-bg"):
+            bg_pics.append(i.sValue)
+        bg_pics = str(bg_pics)[1:-1]
+    except Exception as e:
+        logger.error(e)
+        main_text = "提供全球经济与政治洞见"
+        bg_pics = '"1-1920.png", "2-1920.png", "3-1920.png", "4-1920.png"'
+    
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
     
     template = loader.get_template('home.html')
     context = {
         'cats': cats,
         'username': request.user.username,
+        'title': title,
+        'subtitle': subtitle,
+        'link_text': link_text,
+        'link_src': link_src,
+        'bgpics': bg_pics,
+        'language_en': lang=='en',
     }
     return HttpResponse(template.render(context, request))
 
@@ -38,16 +69,24 @@ def showInfo(request):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        cats.append({
-            'id': category.id,
-            'name': category.name
-        })
+        if category.name != '俱乐部' and '小组' not in category.name:
+            cats.append({
+                'id': category.id,
+                'name': category.name,
+                'name_en': category.name_en,
+            })
     cats = cats[::-1]
+    
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
     
     template = loader.get_template('info.html')
     context = {
         'cats': cats,
         'username': request.user.username,
+        'language_en': lang=='en',
     }
     return HttpResponse(template.render(context, request))
     
@@ -60,17 +99,25 @@ def showLogin(request, alert=""):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        cats.append({
-            'id': category.id,
-            'name': category.name
-        })
+        if category.name != '俱乐部' and '小组' not in category.name:
+            cats.append({
+                'id': category.id,
+                'name': category.name,
+                'name_en': category.name_en,
+            })
     cats = cats[::-1]
+
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
     
     template = loader.get_template('login.html')
     context = {
         'hashcode': "5328f58ffb2425b2749701f281cbf21f9b776417f06cc35ba4511861a1cc0670",
         'cats': cats,
         'alert': alert,
+        'language_en': lang=='en',
     }
     return HttpResponse(template.render(context, request))
 
@@ -84,13 +131,22 @@ def showLoginAdmin(request, alert=""):
     }
     return HttpResponse(template.render(context, request))
 
+def changeLanga(request):
+    lang = request.GET.get('to')
+    if lang!='ch' and lang!='en':return None
+    request.session['language']=lang
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
 def doLogin(request):
     logger.info(f'Accessed {request.get_full_path()} with doLogin')
 
     username = request.GET.get('username')
     password = request.GET.get('password')
     hashcode = request.GET.get('hashcode')
-    if not username or not password or hashcode!="5328f58ffb2425b2749701f281cbf21f9b776417f06cc35ba4511861a1cc0670":
+    if hashcode!="5328f58ffb2425b2749701f281cbf21f9b776417f06cc35ba4511861a1cc0670":
+        sendAlertToWechat('出现异常登录请求。')
+
+    if not username or not password:
         return None
     
     user = authenticate(request, username=username, password=password)
@@ -100,6 +156,61 @@ def doLogin(request):
         return HttpResponseRedirect('/home')
     else:
         return showLogin(request, "用户名或密码错误，请重试。")
+
+def doRegister(request, action):
+    if action=='0':
+        template = loader.get_template('register.html')
+
+        categories = Category.objects.all()
+        cats = []
+        for category in categories:
+            if category.name != '俱乐部' and '小组' not in category.name:
+                cats.append({
+                    'id': category.id,
+                    'name': category.name,
+                    'name_en': category.name_en,
+                })
+        cats = cats[::-1]
+        
+        lang = request.session.get('language', '')
+        if not lang:
+            request.session['language'] = 'ch'
+            lang = 'ch'
+
+        context = {
+            'cats': cats,
+            'language_en': lang=='en',
+        }
+        return HttpResponse(template.render(context, request))
+    
+    if action=='1':
+        email = request.GET.get('e')
+        if email:
+            import random
+            captcha = request.session['captcha'] = random.choice(['8888', '8688', '8868', '1234', '2345', '3456', '4567', '5678', '6789', '7890'])
+            sendEmailCaptcha(captcha, email, request.session['language'])
+            return HttpResponse('{"success": true}')
+    
+    if action=='2':
+        email = request.GET.get('e')
+        username = request.GET.get('u')
+        password = request.GET.get('p')
+        captcha = request.GET.get('c')
+
+        if not captcha or captcha != request.session['captcha']:
+            return JsonResponse({'success': False, 'msg': '验证码错误！'})
+        
+        try:
+            UsersModel.objects.get(username=username)
+            return JsonResponse({'success': False, 'msg': '用户名已被占用！'})
+        except: pass
+    
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        UsersModel.objects.create(username=username, password=password)
+        return JsonResponse({'success': True})
+
+    return HttpResponse('')
 
 def doLogout(request):
     logger.info(f'Accessed {request.get_full_path()} with doLogout')
@@ -117,6 +228,23 @@ def doLoginAdmin(request):
     else:
         return showLoginAdmin(request, "用户名或密码错误，请重试。")
 
+def sendEmailCaptcha(captcha, to_email, language='ch'):
+    from django.core.mail import send_mail
+    try:
+        succ = send_mail(
+            subject = '【光华茂源】会员注册验证码' if language=='ch' else '[GMA]Verification code for registration',
+            message = ('您的注册验证码是：' if language=='ch' else 'Your verification code is ') + captcha,
+            from_email = 'GMA Admin <gma@gm-associates.cn>',
+            recipient_list = [to_email],
+            auth_user = 'gma@gm-associates.cn',
+            auth_password = 'Huyin603',
+            fail_silently = False)
+        if succ<1: raise 'send_mail返回值小于预期发送邮件数量。'
+        logger.info('Successfully sent %d mail to %s: %s'%(succ, to_email, captcha))
+    except Exception as e:
+        sendAlertToWechat('发送验证邮件失败：'+str(e))
+        logger.error('sendEmailCaptcha error: \n'+str(e))
+
 def showAdmin(request):
     if not request.session.get("admin", ""):
         return HttpResponseRedirect('/login_admin')
@@ -131,43 +259,91 @@ def showAdmin(request):
             'id': _.id,
         })
     
-    main_text = SettingsModel.objects.filter(key='main-text')[0].sValue
+    main_text = SettingsModel.objects.filter(key='main-text')
+    main_text_list = []
+    for _ in main_text:
+        title, subtitle, link_text, link_src = _.sValue.split('嗄')
+        main_text_list.append({
+            'tid': _.id,
+            'title': title,
+            'subtitle': subtitle,
+            'link_text': link_text,
+            'link_src': link_src,
+        })
 
     users = UsersModel.objects.all()
     user_list = []
     for _ in users:
-        login_date = (User.objects.get(username=_.username)).last_login
+        user = User.objects.get(username=_.username)
+        login_date = user.last_login
         login_date_str = "最近未登录" if not login_date else login_date.strftime("%Y/%m/%d")
+        vip_time = '-'
+        if _.vip:
+            vip_status = '会员'
+            vip_time = '永久'
+        elif _.trial_date and datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC')) < _.trial_date:
+            vip_status = '试用中'
+            vip_time = _.trial_date.strftime("%Y-%m-%d")
+        else:
+            vip_status = '非会员'
+            
         user_list.append({
             'id': _.id,
             'username': _.username,
-            'password': _.password,
+            'email': user.email,
             'last_login_date': login_date_str,
+            'vip_status': vip_status,
+            'vip_timestr': vip_time,
+        })
+    
+    pa40_records = SettingsModel.objects.filter(key='pa40_comment')
+    pa40_comments = []
+    for i in pa40_records:
+        pa40_comments.append({
+            'id': i.id,
+            'title': i.sValue,
+            'content': i.sValue2
+        })
+    
+    pa40_all_r = PA40CommentModel.objects.all()
+    pa40_commentall = []
+    for i in pa40_all_r:
+        pa40_commentall.append({
+            'id': i.id,
+            'username': i.username,
+            'content': i.content
         })
     
     categories = Category.objects.all()
     category_list = []
     for _ in categories:
         if not _.extra:
-            _.extra='10'
+            _.extra='100'
+            _.save()
+        if len(_.extra)==2:
+            _.extra+='0'
             _.save()
         showuser = (_.extra[0]=='1')
         canread = (_.extra[1]=='1')
+        cancomment = (_.extra[2]=='1')
         category_list.append({
             'id': _.id,
             'name': _.name,
+            'name_en': _.name_en,
             'show_user': showuser,
             'can_read_anonymous': canread,
+            'can_comment': cancomment,
             'coverimg': '/s/'+_.coverimg,
             'name_white': _.title_white,
         })
 
     context = {
         'main_bg_list': main_bg_list,
-        'main_text': main_text,
+        'main_text_list': main_text_list,
         'user_list': user_list,
         'category_list': category_list,
-
+        'pa40_comments': pa40_comments,
+        'pa40_commentall': pa40_commentall,
     }
     return HttpResponse(template.render(context, request))
 
@@ -193,9 +369,9 @@ def doAdminAction(request):
                     fPic.write(chunk)
             key = SettingsModel(key='main-bg', sValue=filename)
             key.save()
-        elif actionid=='3':
-            key = SettingsModel.objects.get(key="main-text")
-            key.sValue = request.GET.get("txt", "")
+        elif actionid=='3': # 首页标题
+            key = SettingsModel.objects.get(id=int(request.GET.get('tid')))
+            key.sValue = request.POST.get("title", "") + "嗄" + request.POST.get("subtitle", "") + "嗄" +request.POST.get("link_text", "") + "嗄" + request.POST.get("link_src", "")
             key.save()
         elif actionid=='4':
             id = request.GET.get('pid')
@@ -203,13 +379,28 @@ def doAdminAction(request):
             UsersModel.objects.get(id=int(id)).delete()
         elif actionid=='5':
             id = request.GET.get('pid')
-            password = str(random.randint(10000000, 99999999))
+            password = "123456"
             um = UsersModel.objects.get(id=int(id))
             um.password = password
             um.save()
             u = User.objects.get(username = um.username)
             u.set_password(password)
             u.save()
+        elif actionid=='5.1':
+            id = int(request.GET.get('uid'))
+            um = UsersModel.objects.get(id=id)
+            um.vip = 1
+            um.save()
+        elif actionid=='5.7':
+            id = int(request.GET.get('uid'))
+            um = UsersModel.objects.get(id=id)
+            um.trial_date = datetime.datetime.now() + datetime.timedelta(days=7)
+            um.save()
+        elif actionid=='5.30':
+            id = int(request.GET.get('uid'))
+            um = UsersModel.objects.get(id=id)
+            um.trial_date = datetime.datetime.now() + datetime.timedelta(days=30)
+            um.save()
         elif actionid=='6':
             usernames = request.GET.get("txt")
             for username in usernames.split('\n'):
@@ -243,14 +434,22 @@ def doAdminAction(request):
             if txt and 1<=len(txt)<=10:
                 category.name = txt
                 category.save()
+        elif actionid=='rename_en_ban':
+            pid = int(request.GET.get('pid'))
+            txt = request.GET.get('txt')
+            category = Category.objects.get(id=pid)
+            if txt and 1<=len(txt)<=18:
+                category.name_en = txt
+                category.save()
         elif actionid=='add_ban':
             name = request.GET.get('name')
+            name_en = request.GET.get('name_en')
             canread = request.GET.get('canread')
             showuser = request.GET.get('showuser')
             if not canread in '01' or not showuser in '01':
                 return None
             extra = (showuser) + (canread)
-            category = Category(name=name, desc='', extra=extra)
+            category = Category(name=name, desc='', extra=extra, name_en=name_en)
             category.save()
         elif actionid=='cha_ban':
             pid = int(request.GET.get('pid'))
@@ -276,13 +475,27 @@ def doAdminAction(request):
             if name_white=="on":
                 category.title_white = 1
             category.save()
+        elif actionid=='pa40c':
+            cid = int(request.GET.get('cid'))
+            comment_record = SettingsModel.objects.get(id=cid)
+            if comment_record.iValue != -1:
+                raise 'PA40 Comment record error, possibly attack.'
+            title = request.POST.get('title')
+            content = request.POST.get('content')
+            if not title or not content:
+                raise 'Comment value should not be null.'
+            comment_record.sValue = title
+            comment_record.sValue2 = content
+            comment_record.save()
+        elif actionid=='pa40d':
+            cid = int(request.GET.get('cid'))
+            comment_record = PA40CommentModel.objects.get(id=cid)
+            comment_record.delete()
             
 
         return HttpResponseRedirect('/admin')
     except Exception as e:
         logger.error('Exception at doAdminAction: '+str(e))
-
-
 
 def showBin(request, path):
     try:
@@ -337,3 +550,28 @@ def showImages(request, path):
 
     logger.error(f'Accessed {request.get_full_path()} with showImages matched nothing.' % path)
     return HttpResponse(None)
+
+def showIcon(request):
+    with open('./images/favicon.ico', mode="rb") as f:
+        icon = f.read()
+    return HttpResponse(icon, content_type='image/x-icon')
+
+def showQRCode(request):
+    url = request.GET.get('url')
+    try:
+        resp = requests.get('https://api.pwmqr.com/qrcode/create/?url='+url, timeout=3)
+        if resp.status_code != 200 or len(resp.content)<32:
+            raise Exception('返回值%d, 返回长度%d.'%(resp.status_code, len(resp.content)))
+    except Exception as e:
+        sendAlertToWechat('QRCode 接口异常'+str(e))
+        return None
+    return HttpResponse(resp.content, content_type='image/png')
+
+def sendAlertToWechat(msg):
+    from django.core.cache import cache
+    from .wechat import send_to_wechat
+    if cache.get('wechat_alert'):
+        logger.info('Tried to send wechat but too busy:\n'+msg)
+        return
+    cache.set('wechat_alert', True, 120) # 每120秒最多一条报警
+    send_to_wechat('[WEBINFO] '+msg)

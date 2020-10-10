@@ -107,10 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -120,13 +116,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = '/static2/'
 STATIC_URL = '/static2/'
-
 
 BASE_LOG_DIR = os.path.join(BASE_DIR, "log")
 LOGGING = {
@@ -208,3 +199,11 @@ LOGGING = {
         }
     },
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+  
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.mxhichina.com' # aliyun企业邮箱的smtp服务器
+EMAIL_PORT = 465
+

@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>Home</title>
+        <title>{%if language_en%}About | GM Associates{%else%}关于我们 | 光华茂源{%endif%}</title>
         <style>
             body{
                 margin: 0;
@@ -48,7 +48,7 @@
                 z-index: 998;
                 background-color: rgba(255, 255, 255, 1);
                 height: 88px;
-                box-shadow: 0 -5px 30px 0px rgb(1, 0, 39);
+                box-shadow: 0 -5px 10px 0px rgb(12, 11, 54);
             }
             #header-logo{
                 font-size: 32px;
@@ -71,7 +71,9 @@
                 flex-grow: 1;
             }
             .header-icon{
-                font-size: 20px;
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
                 position: relative;
                 float: right;
                 margin-right: 42px;
@@ -92,18 +94,25 @@
             }
             .main-content{
                 position: relative;
-                width: 100%;
-                max-width: 1400px;
-                margin: 20px auto;
-                margin-bottom: 100px;
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                margin-bottom: 50px;
                 color: #333;
             }
+            .main-content-inner {
+                width: calc(100% - 100px);
+                margin: 0 auto;
+            }
             .part-title{
-                font-size: 46px;
+                font-size: 24px;
                 text-align: center;
                 margin-bottom: 10px;
-                margin-top: 33px;;
-                font-family: Bower,Georgia,Times New Roman,serif;
+                line-height: 32px;
+                vertical-align:middle;
+                margin-top: 33px;
+                color: #333;
+                font-family:Georgia, 'Times New Roman', Times, serif;
             }
             .part-text{
                 font-size: 21px;
@@ -115,54 +124,81 @@
         </style>
     </head>
     <body>
+        {% if username %}
+        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+            {% if language_en %}
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            {% else %}
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            {% endif %}
+        </div>
+        {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
                     <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
-                    {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
+                    {% if language_en %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=ch">CHINESE</a></div>
                     {% else %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=en">ENGLISH</a></div>
                     {% endif %}
-                    <div class="header-icon"><a style="color:rgb(66, 116, 255);" href="/info">公司介绍</a></div>
+                    {% if not username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
                     {% for cat in cats %}
-                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a {%else%} rgb(66, 116, 255) {%endif%};" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">{%if language_en%}Home{%else%}首页{%endif%}</a></div>
                 </div>
             </div>
         </div>
-        <div id="banner">
-            <img id="banner-img" src="/s/info-2.jpg" />
-        </div>
         <div class="main-content">
-            <div class="part-title">
-                GM & Associates
-            </div>
-            <div class="part-text">
-            <p>
-                GM &amp; Associates (hereafter GMA) is a public policy and government affairs advisory firm with a global perspective and local experience established in Beijing, China in 2005.
-            </p>
-            <p>
-                With combined experience in the public and private sectors, our approach and advice are based on first-hand knowledge and deep insight into both the highly complex policy making environment and the competitive business world.
-            </p>
-            <p>
-                Over the past 15 years, we have counselled a wide range of international clients on their business-critical public policy and public affairs needs in China, providing recommendations rooted in direct dialogue with key stakeholders and a multi-dimensional understanding of the subject matter.
-            </p>
-            <p>
-                Our client industries include healthcare, medical devices, agriculture, biotech, forestry, industrial equipment, telecommunications, electronics, e-commerce and finance. 
-            </p>
-            </div>
-            <div class="part-title">
-                Contact
-            </div>
-            <div class="part-text">
-                <p>E-mail：gma@gm-associates.cn
-                </p><p>Tell: +86-10-6715 5881
-                </p><p>Address: Room 812, Tower D, Focus Square, No.6 Futong East Avenue, Chaoyang District, 100102
-            </p>
+            <div class="main-content-inner">
+                <div id="banner">
+                    <img id="banner-img" src="/s/infoBanner.jpg" />
+                </div>
+                <p class="part-title">
+                    <img src="/s/infoTitleLeft.jpg" style="height: 30px; position: relative; top: 6px;padding-right: 10px;">
+                    GM & Associates
+                    <img src="/s/infoTitleRight.jpg" style="height: 30px;position: relative; top: 6px;padding-left: 10px;">
+                </p>
+                <div style="position: relative; width: 100%;">
+                    <div style="position: absolute; left: 20px; top: 50%; transform: translate(0,-110px); height: 220px;">
+                        <img style="height: 100%;" src="/s/infoImg.jpg">
+                    </div>
+                    <div style="margin-left: 300px; background-color:#F4F4F4; height: 400px;">
+                        
+                    </div>
+                </div>
+                <div class="part-text">
+                <p>
+                    GM &amp; Associates (hereafter GMA) is a public policy and government affairs advisory firm with a global perspective and local experience established in Beijing, China in 2005.
+                </p>
+                <p>
+                    With combined experience in the public and private sectors, our approach and advice are based on first-hand knowledge and deep insight into both the highly complex policy making environment and the competitive business world.
+                </p>
+                <p>
+                    Over the past 15 years, we have counselled a wide range of international clients on their business-critical public policy and public affairs needs in China, providing recommendations rooted in direct dialogue with key stakeholders and a multi-dimensional understanding of the subject matter.
+                </p>
+                <p>
+                    Our client industries include healthcare, medical devices, agriculture, biotech, forestry, industrial equipment, telecommunications, electronics, e-commerce and finance. 
+                </p>
+                </div>
+                <div class="part-title">
+                    <img src="/s/infoTitleLeft.jpg" style="height: 30px; position: relative; top: 6px;padding-right: 10px;">
+                    Contact
+                    <img src="/s/infoTitleRight.jpg" style="height: 30px;position: relative; top: 6px;padding-left: 10px;">
+                </div>
+                <div class="part-text">
+                    <p>E-mail：gma@gm-associates.cn
+                    </p><p>Tell: +86-10-6715 5881
+                    </p><p>Address: Room 812, Tower D, Focus Square, No.6 Futong East Avenue, Chaoyang District, 100102
+                </p>
+                </div>
             </div>
         </div>
         <style>

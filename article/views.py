@@ -7,8 +7,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, JsonResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.models import User
+from django.core.cache import cache
 
-from main.models import ArticleModel, Category, ArticleVisitModel
+from main.models import ArticleModel, Category, ArticleVisitModel, ArticleCommentModel, UsersModel, SettingsModel, PA40CommentModel
+from main.views import sendAlertToWechat
 
 logger = logging.getLogger(__name__)
 def showArticlePage(request, id_):
@@ -41,24 +43,40 @@ def showArticlePage(request, id_):
     categories = Category.objects.all()
     cats = []
     for _ in categories:
-        cats.append({
-            'id': _.id,
-            'name': _.name
-        })
+        if _.name != '俱乐部' and '小组' not in _.name:
+            cats.append({
+                'id': _.id,
+                'name': _.name,
+                'name_en': _.name_en,
+            })
     cats = cats[::-1]
 
     date_str = article.edit_date.strftime("%Y-%b-%d")
 
-    has_comment = article.comment_type==0
+    has_comment = True
+    comments = []
+    comment_len = 0
     if has_comment:
-        pass
+        article_comment = article.comment_article_set.all()
+        for i in article_comment:
+            comments.append({
+                'author': i.author.username,
+                'content': i.content,
+            })
+        comment_len = len(comments)
 
     hotest_articles = getHotestArticles()
     newest_articles = getNewestArticles()
 
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
+
     category = article.category
     showuser = (category.extra[0]=='1')
     canread = (category.extra[1]=='1')
+    can_comment = (category.extra[2]=='1')
     if showuser:
         forum_id = category.id
         author_ids = getAuthorList(forum_id)
@@ -72,11 +90,16 @@ def showArticlePage(request, id_):
     else:
         author_list = None
 
-    can_edit = canEditArticle(article.author, request.user)
-    has_fujian = False
+    can_edit = canEditArticle(request.user, article)
+    filename = article.file
+    if filename:
+        has_fujian = True
+    else:
+        has_fujian = False
 
     template = loader.get_template('showArticle.html')
     context = {
+        'aid': article.id,
         'author': article.author.username,
         'title': article.title,
         'excerpt': article.excerpt,
@@ -92,11 +115,16 @@ def showArticlePage(request, id_):
         'username': request.user.username,
         'can_edit': can_edit,
         'has_fujian': has_fujian,
+        'filename': filename,
         'has_comment': has_comment,
+        'can_comment': can_comment,
+        'comments': comments,
+        'comment_len': comment_len,
         'hotest_articles': hotest_articles,
         'newest_articles': newest_articles,
         'show_user': showuser,
         'author_list': author_list,
+        'language_en': lang=='en',
     }
     return HttpResponse(template.render(context, request))
 
@@ -124,7 +152,7 @@ def showEditArticlePage(request):
         raise Http404('你没有权限在该板块发表文章。')
     
     article = ArticleModel.objects.get(id=article_id)
-    if not canEditArticle(article.author, request.user):
+    if not canEditArticle(request.user, article):
         raise Http404('你没有权限编辑该文章。')
     
     template = loader.get_template('postArticle.html')
@@ -207,6 +235,10 @@ def showArticleList(request):
     # print(articles)
     # date_str = article.edit_date.strftime("%Y-%b-%d")
 
+    NUM_PER_PAGE = 2
+    page_start = page_no
+    
+
     hotest_articles = getHotestArticles()
     newest_articles = getNewestArticles()
 
@@ -227,17 +259,26 @@ def showArticleList(request):
     categories = Category.objects.all()
     cats = []
     for _ in categories:
-        cats.append({
-            'id': _.id,
-            'name': _.name
-        })
+        if _.name != '俱乐部' and '小组' not in _.name:
+            cats.append({
+                'id': _.id,
+                'name': _.name,
+                'name_en': _.name_en,
+            })
     cats = cats[::-1]
+    
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
+    
 
     template = loader.get_template('listArticle.html')
     context = {
         'cats': cats,
         'cat_id': forum_id,
         'cat_name': category.name,
+        'cat_name_en': category.name_en,
         'cat_img': '/s/'+category.coverimg,
         'cat_name_white': bool(category.title_white),
         'cat_desc': category.desc.replace('\n', '<br/>'),
@@ -250,19 +291,28 @@ def showArticleList(request):
         'show_user': showuser,
         'author_list': author_list,
         'time_str': time_str,
+        'language_en': lang=='en',
     }
     return HttpResponse(template.render(context, request))
 
 def canReadArticle(user, article):
-    if not user.is_authenticated:
-        return False
-    return True
+    if user.is_authenticated:
+        if user.username == 'root':return True # spj for root
+        try:
+            userm = UsersModel.objects.get(username=user.username)
+        except:
+            sendAlertToWechat('发现UsersModel与Users数据库不匹配：id=%d, username=%s'%(user.id, user.username))
+            return True
+        return userm.vip==1 or userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC'))
+    
+    canread = article.category.extra[1]=='1'
+    return canread
 
 def canWriteArticle(user_id, forum_id):
     return True
 
-def canEditArticle(author, user):
-    return author.id==user.id or user.is_authenticated
+def canEditArticle(user, article):
+    return article.author.id==user.id or user.username=='root'
 
 def createArticle(request):
     resp = {'success': 0}
@@ -292,6 +342,14 @@ def createArticle(request):
         if not cover_img:
             resp["alert"]="请选择封面图片。"
             break
+        file = request.FILES.get('file')
+        if file:
+            filename = str(int(time.time()*1000)%900+100) + file.name
+            with open('./uploads/' + filename, "wb") as fPic:
+                for chunk in file.chunks():
+                    fPic.write(chunk)
+        else:
+            filename = ""
         type = 1
         comment_type = 1
         article_id = request.POST.get("aid")
@@ -301,6 +359,8 @@ def createArticle(request):
             article.title = title
             article.content = content
             article.cover_img = cover_img
+            if filename:
+                article.file = filename
             article.save()
         else:
             article = ArticleModel(
@@ -311,6 +371,7 @@ def createArticle(request):
                 type=type,
                 comment_type=comment_type,
                 category=category,
+                file=filename,
                 extra="")
             article.save()
         resp["success"]=1
@@ -326,7 +387,7 @@ def deleteArticle(request):
     article = ArticleModel.objects.get(id=article_id)
     forum_id = article.category.id
 
-    if canEditArticle(article.author, request.user):
+    if canEditArticle(request.user, article):
         article.delete()
         return HttpResponseRedirect('/list-article?fid='+str(forum_id))
 
@@ -343,31 +404,45 @@ def uploadImg(request):
     except Exception as e:
         return JsonResponse({'success':'0', 'msg':str(e)})
     return JsonResponse({'success':'1', 'cimg':cimg})
+
+def postComment(request):
+    user = request.user
+    if not user.is_authenticated:
+        return HttpResponseRedirect('/login')
+    content = request.POST.get('content')
+    article_id = request.POST.get('aid')
+    try:
+        article_id = int(article_id)
+        article = ArticleModel.objects.get(id=article_id)
+    except Exception as e:
+        return JsonResponse({'success':'0', 'msg':str(e)})
+    if len(content)<2 and content != '6':
+        return HttpResponseRedirect('/article-'+str(article_id))
     
-hotest_articles = []
-last_update = -1
+    comment = ArticleCommentModel(
+        author = user,
+        article = article,
+        content = content,
+    )
+    comment.save()
+    return HttpResponseRedirect('/article-'+str(article_id))
+    
 def getHotestArticles():
-    global last_update
-    global hotest_articles
-
-    import time
-    if time.time() - last_update < 60: # 每分钟计算一次，避免重复访问数据库
-        return hotest_articles
-
-    last_update = time.time()
-    
-    hot_visits = ArticleVisitModel.objects.order_by('-visit_count')[:5]
-    hotest_articles = []
-    for i in hot_visits:
-        try:
-            article = ArticleModel.objects.get(id=i.article_id)
-        except:
-            i.delete()
-            continue
-        hotest_articles.append({
-            'title': article.title,
-            'url': '/article-'+str(article.id),
-        })
+    hotest_articles = cache.get('hotest-articles')
+    if not hotest_articles:
+        hot_visits = ArticleVisitModel.objects.order_by('-visit_count')[:5]
+        hotest_articles = []
+        for i in hot_visits:
+            try:
+                article = ArticleModel.objects.get(id=i.article_id)
+            except:
+                i.delete()
+                continue
+            hotest_articles.append({
+                'title': article.title,
+                'url': '/article-'+str(article.id),
+            })
+        cache.set('hotest-articles', hotest_articles, 60)
     return hotest_articles
 
 def getNewestArticles():
@@ -380,14 +455,9 @@ def getNewestArticles():
         })
     return newest_articles
 
-article_author_data = {}
-# 1: ([作者id], 时间戳)
 def getAuthorList(forum_id):
-    global article_author_data
-    import time
-
-    data = article_author_data.get(forum_id, {})
-    if not data or time.time() - data[1] > 60: # 每60秒更新一次
+    data = cache.get('article_author_'+str(forum_id), {})
+    if not data:
         s = {}
         articles = ArticleModel.objects.all()
         for article in articles:
@@ -399,7 +469,99 @@ def getAuthorList(forum_id):
                     s[aid] = 1
         l = [(s[x], x) for x in s.keys()]
         l.sort()
-        data = ([x[1] for x in l], time.time())
+        data = [x[1] for x in l]
 
-        article_author_data[forum_id] = data
-    return data[0]
+        cache.set('article_author_'+str(forum_id), data, 60)
+    return data
+
+def pa40Page(request):
+    content = request.POST.get('content', '')
+    if content:
+        pa40commentModel = PA40CommentModel(username=request.user.username or '游客', content=content)
+        pa40commentModel.save()
+
+    pa40cat = Category.objects.get(name="俱乐部")
+    cat_img = pa40cat.coverimg
+
+    categories = Category.objects.all()
+    cats = []
+    for _ in categories:
+        if _.name != '俱乐部' and '小组' not in _.name:
+            cats.append({
+                'id': _.id,
+                'name': _.name,
+                'name_en': _.name_en,
+            })
+    cats = cats[::-1]
+    
+    import re
+    pattern = re.compile(r'<.*?>')
+
+    main_article_models = ArticleModel.objects.filter(category=5)
+    main_articles = []
+    for article in main_article_models[::-1]:
+        main_articles.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles = main_articles[:3]
+
+    main_article_models2 = ArticleModel.objects.filter(category=6)
+    main_articles2 = []
+    for article in main_article_models2[::-1]:
+        main_articles2.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles2 = main_articles2[:2]
+
+    main_article_models3 = ArticleModel.objects.filter(category=7)
+    main_articles3 = []
+    for article in main_article_models3[::-1]:
+        main_articles3.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles3 = main_articles3[:2]
+    
+    main_article_models4 = ArticleModel.objects.filter(category=8)
+    main_articles4 = []
+    for article in main_article_models4[::-1]:
+        main_articles4.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles4 = main_articles4[:2]
+
+    
+    pa40_records = SettingsModel.objects.filter(key='pa40_comment')
+    pa40_comments = []
+    for i in pa40_records:
+        pa40_comments.append({
+            'id': i.id,
+            'title': i.sValue,
+            'content': i.sValue2
+        })
+    
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
+
+    template = loader.get_template('pa40.html')
+    context = {
+        'cats': cats,
+        'cat_img': '/s/'+cat_img,
+        'language_en': lang=='en',
+        'username': request.user.username,
+        'main_articles': main_articles,
+        'main_articles2': main_articles2,
+        'main_articles3': main_articles3,
+        'main_articles4': main_articles4,
+        'pa40_comments': pa40_comments,
+    }
+    return HttpResponse(template.render(context, request))

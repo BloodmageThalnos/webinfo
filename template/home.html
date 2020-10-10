@@ -1,7 +1,8 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-        <title>Home</title>
+        <title>{%if language_en%}Home | GM Associates{%else%}跨国企业政府事务-中国{%endif%}</title>
+        <link rel="shortcut icon" href="/favicon.ico"/>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <style>
             body{
@@ -50,8 +51,9 @@
             }
             #main-text-w{
                 position:fixed;
-                top:42%;
-                width:100%;
+                top:44.8%;
+                width: 70%;
+                margin-left: 15%;
                 user-select: none;
                 -moz-user-select: none;
                 -webkit-user-select: none;
@@ -61,28 +63,37 @@
                 color:seashell;
                 font-size:33px;
                 padding: 0 2px 0 2px;
-                font-family: sans-serif;
+                font-family: Bower, Georgia, 'Times New Roman', 'Microsoft YaHei', serif;
                 letter-spacing:2.5px;
+            }
+            #main-text-sub{
+                text-align: center;
+                color:seashell;
+                font-size:21px;
+                padding: 8px 2px 0 2px;
+                font-family: sans-serif;
+                letter-spacing:2px;
             }
             #main-text-button-w{
                 padding-top: 30px;
             }
             #main-text-button{
                 margin:auto;
-                height: 41px;
-                width: 150px;
+                min-height: 41px;
+                width: 260px;
                 border-radius: 3px;
                 box-shadow: none;
                 outline: none;
-                background-color:rgb(59, 212, 192);
+                background-color:rgb(59, 140, 237);
                 display:flex;
                 align-items: center;
             }
             #main-text-button-text{
                 color:white;
                 text-align: center;
-                font-size: 18px;
-                width:100%;
+                font-size: 17px;
+                font-weight: 500;
+                width: 100%;
                 cursor: pointer;
             }
             #bg-animation{
@@ -118,7 +129,9 @@
                 flex-grow: 1;
             }
             .header-icon{
-                font-size: 20px;
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
                 position: relative;
                 float: right;
                 margin-right: 42px;
@@ -136,16 +149,20 @@
                     <img src="/s/logo-2.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
-                    {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
+                    {% if language_en %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=ch">CHINESE</a></div>
                     {% else %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=en">ENGLISH</a></div>
                     {% endif %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">公司介绍</a></div>
+                    {% if not username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
                     {% for cat in cats %}
-                    <div class="header-icon"><a style="color: #2a2a3a;" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    <div class="header-icon"><a style="color: #2a2a3a;" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:rgb(66, 116, 255);">首页</a></div>
+                    <div class="header-icon"><a style="color: #2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;">{%if language_en%}Home{%else%}首页{%endif%}</a></div>
                 </div>
             </div>
         </div>
@@ -157,12 +174,15 @@
         </div>
         <div id="main-text-w">
             <div id="main-text">
-                提供全球经济和政治洞见
+                {{title}}
+            </div>
+            <div id="main-text-sub">
+                {{subtitle}}
             </div>
             <div id="main-text-button-w">
                 <div id="main-text-button">
-                    <div id="main-text-button-text" onclick="window.location.href='/info';">
-                        公司介绍>
+                    <div id="main-text-button-text" onclick="window.location.href='{{link_src | safe}}';">
+                        {{link_text}}
                     </div>
                 </div>
             </div>
@@ -183,11 +203,14 @@
         <script>
             let randint = (a,b)=>(a+Math.floor(Math.random()*(b-a)));
             let setbg = (id)=>{
-                let img_src = '/s/'+id+'-'+($(window).width()<900?800:$(window).width()<1400?1360:1920)+'.png';
+                //let img_src = '/s/'+id+'-'+($(window).width()<900?800:$(window).width()<1400?1360:1920)+'.png';
+                let img_src = '/s/'+id;
 
                 let img = new Image();
                 img.src = img_src;
                 img.onload = function(){
+                    $('#bg-pic').attr('src', img_src);
+                    /*
                     let wi = img.naturalWidth;
                     let hi = img.naturalHeight;
                     let theCanvas = document.getElementById('bg-animation');
@@ -240,15 +263,18 @@
                         );
                         hc_i -= hc_per_update;
                         hi_i -= hi_per_update;
-                    } ,update_time);
+                    } ,update_time);*/
                 }
             }
-            let pic_i = randint(1, 4);
-            setbg(pic_i);
-            setInterval(function(){
-                pic_i = pic_i % 4 + 1;
-                setbg(pic_i);
-            }, 15000);
+            let pic_list = [
+                {{bgpics | safe}}
+            ];
+            pic_i = randint(0, pic_list.length);
+            setbg(pic_list[pic_i]);
+            /*setInterval(function(){
+                pic_i = (pic_i + 1)%pic_list.length;
+                setbg(pic_list[pic_i]);
+            }, 15000);*/
         </script>
     </body>
 </html>

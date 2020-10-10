@@ -1,7 +1,8 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>{{category}}</title>
+        <title>{%if language_en%}{{cat_name_en}} | GM Associates{%else%}{{cat_name}} | 光华茂源{%endif%}</title>
+        <link rel="shortcut icon" href="/favicon.ico"/>
         <style>
             body{
                 margin: 0;
@@ -69,7 +70,8 @@
                 z-index: 998;
                 background-color: rgba(255, 255, 255, 1);
                 height: 88px;
-                box-shadow: 0 -5px 30px 0px rgb(1, 0, 39);
+                overflow: hidden;
+                box-shadow: 0 -5px 10px 0px rgb(12, 11, 54);
             }
             #header-logo{
                 font-size: 32px;
@@ -92,7 +94,9 @@
                 flex-grow: 1;
             }
             .header-icon{
-                font-size: 20px;
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
                 position: relative;
                 float: right;
                 margin-right: 42px;
@@ -103,14 +107,18 @@
             }
             .main-content{
                 position: relative;
-                width: 88%;
-                max-width: 1400px;
+                width: 1300px;
+                max-width: 100%;
                 margin: 20px auto;
-                display: flex;
                 margin-bottom: 50px;
             }
+            .main-content-inner{
+                width: calc(100% - 100px);
+                margin: 0 auto;
+                display: flex;
+            }
             .main-leftpart{
-                flex: 16;
+                flex: 20;
             }
             .list-wrapper{
                 margin: 5px 5px 5px 5px;
@@ -139,14 +147,14 @@
             }
             .article-date-inner{
                 border: 2px solid #2c3e50;
-                margin: 10px auto;
+                margin: 6px auto;
                 padding-top: 8px;
                 width: 66px;
                 height: 66px;
                 text-align: center;
             }
             .article-date-day{
-                font-size: 24px;
+                font-size: 20px;
             }
             .article-date-month{
                 font-size: 14px;
@@ -155,14 +163,15 @@
             .article-title{
                 color: #2c3e50;
                 margin-left: 5px;
-                font-size: 20px;
-                display: inline-block;
+                font-weight: bold;
+                font-size: 23px;
+                display: inline;
                 line-height: 32px;;
             }
             .article-author{
                 font-size: 13px;
                 margin-left: 10px;
-                display: inline-block;
+                display: inline;
                 color: #3d4769;
             }
             .article-excerpt{
@@ -173,7 +182,7 @@
                 color: #3d4769;
             }
             .main-rightpart{
-                flex: 9;
+                flex: 8;
             }
             #nav-postarticle{
                 width: calc(100% - 20px);
@@ -181,7 +190,7 @@
                 line-height: 60px;
                 margin: 10px 10px 10px 10px;
                 background-color: #f7f9fc;
-                font-size: 23.5px;
+                font-size: 20px;
                 display: block;
                 text-align: center;
                 border-radius: 10px;
@@ -224,7 +233,8 @@
                 line-height: 30px;
             }
             .nav-title{
-                font-size: 24px;
+                font-size: 17px;
+                font-weight: bold;
                 line-height: 50px;
                 cursor: default;
             }
@@ -250,7 +260,9 @@
                 margin-right: 25px;
             }
             #nav-hotest-title{
-                font-size: 24px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #666666;
                 text-align: center;
             }
             #nav-hotest-title > a{
@@ -301,57 +313,115 @@
                 margin-left: 25px;
                 margin-right: 45px;
             }
+            #head-bar{
+                width: 100%;
+                height: 44px;
+                background-color: #f6f6f6;
+                border-top: 1px solid #d2d3d4;
+                border-bottom: 1px solid #d2d3d4;
+            }
+            #head-bar-inner{
+                width: 1300px;
+                padding: 0 50px 0 50px;
+                justify-content: space-between;
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                margin: 0 auto;
+            }
+            #head-bar-inner h1{
+                font: normal bold 18px / 28px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+                color: #333333;
+                text-transform: uppercase;
+            }
+            #head-bar-inner a,
+            #head-bar-inner span{
+                color: #b4b5bb;
+                font: normal 13px / 23px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+            }
         </style>
     </head>
     <body>
+        {% if username %}
+        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+            {% if language_en %}
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            {% else %}
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            {% endif %}
+        </div>
+        {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
                     <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
-                    {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
+                    {% if language_en %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=ch">CHINESE</a></div>
                     {% else %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=en">ENGLISH</a></div>
                     {% endif %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">公司介绍</a></div>
+                    {% if not username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
                     {% for cat in cats %}
-                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a {%else%} rgb(66, 116, 255) {%endif%};" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">{%if language_en%}Home{%else%}首页{%endif%}</a></div>
                 </div>
             </div>
         </div>
-        <div id="banner">
+        <div id="head-bar">
+            <div id="head-bar-inner">
+                <h1>{{cat_name}}</h1>
+                <span>
+                    <a href="/home">首页</a>
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{cat_name}}
+                    {%if keyword %}
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">搜索结果</a>
+                    {%endif%}
+                    {%if author_name %}
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{author_name}}</a>
+                    {%endif%}
+                    {%if time_str %}
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{time_str}}</a>
+                    {%endif%}
+                    </a></span>
+            </div>
+        </div>
+        <!--div id="banner">
             <img id="banner-img" src="{{cat_img}}" />
             <div id="banner-title-w">
                 <div id="banner-title" {%if cat_name_white %}style="color: whitesmoke;"{%endif%}>{{cat_name}}</div>
-            </div>
-        </div>
-        {% if cat_desc %}
-        <style>
-            #banner-desc{
-                width: calc(14% + 750px);
-                margin: auto;
-                padding-top: 50px;
-                padding-bottom: 50px;
-                font-size: 20px;
-                color:rgb(59, 59, 92);
-                text-align: center;
-            }
-        </style>
-        <div id="banner-desc">
-            <span>{{cat_desc | safe}}</span>
-        </div>
-        {% endif %}
-        <div class="main-content">
-            <div class="main-leftpart">
-                <div style="margin-left: 20px;">
-                    当前位置： <a href="/home">首页</a> &gt; <a href="/list-article?fid={{cat_id}}">{{cat_name}}</a> {%if keyword%}&gt; 搜索结果{%endif%} {%if author_name%}&gt; {{author_name}}{%endif%}
-                    {%if time_str%}&gt; {{time_str}}{%endif%}
                 </div>
+            </div>
+            {% if cat_desc %}
+            <style>
+                #banner-desc{
+                    width: calc(14% + 750px);
+                    margin: auto;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                    font-size: 20px;
+                    color:rgb(59, 59, 92);
+                    text-align: center;
+                }
+            </style>
+            <div id="banner-desc">
+                <span>{{cat_desc | safe}}</span>
+            </div>
+            {% endif %}
+        -->
+        <div class="main-content">
+            <div class="main-content-inner">
+            <div class="main-leftpart">
                 <div class="list-wrapper">
+                    <div class="article-wrapper" style="height: 200px;">
+                        <img src="{{cat_img}}" style="width:100%; height: 100%;">
+                    </div>
                 {% for article in articles%}
                     <div class="article-wrapper" onclick="window.location.href='{{article.url}}'">
                         <div class="article-date">
@@ -373,6 +443,30 @@
                         </div>
                     </div>
                 {% endfor %}
+                    <style>
+                        .change-page{
+                            text-align: center;
+                        }
+                        .change-page-dot{
+                            display: inline-block;
+                        }
+                        .change-page-dot-inner{
+                            width: 40px;
+                            height: 40px;
+                            background-color: #5d6e80;
+                            color: white;
+                            border-radius: 3px;
+                            font-size: 20px;
+                            line-height: 40px;
+                        }
+                    </style>
+                    <div class="change-page">
+                        <div class="change-page-dot">
+                            <div class="change-page-dot-inner">
+                                1
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="main-rightpart">
@@ -458,6 +552,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <style>
             .footer{

@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>{{title}} | {{category}}</title>
+        <title>{{title}} | {{category}} | {%if language_en%}GM Associates{%else%}光华茂源{%endif%}</title>
+        <link rel="shortcut icon" href="/favicon.ico"/>
         <style>
             body{
                 margin: 0;
@@ -100,7 +101,9 @@
                 flex-grow: 1;
             }
             .header-icon{
-                font-size: 20px;
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
                 position: relative;
                 float: right;
                 margin-right: 42px;
@@ -111,20 +114,24 @@
             }
             .main-content{
                 position: relative;
-                width: 88%;
-                max-width: 1400px;
+                width: 1300px;
+                max-width: 100%;
                 margin: 20px auto;
-                display: flex;
                 margin-bottom: 50px;
             }
+            .main-content-inner{
+                width: calc(100% - 100px);
+                margin: 0 auto;
+                display: flex;
+            }
             .main-leftpart{
-                flex: 16;
+                flex: 20;
             }
             .article-wrapper{
                 position: relative;
-                margin: 120px 20px 20px 20px;
+                margin: 20px 20px 20px 20px;
                 padding-bottom: 100px;
-                background-color: #fafbfc;
+                /*background-color: #fafbfc;*/
             }
             .article-coverimg-w{
                 width: 100%;
@@ -137,7 +144,7 @@
                 box-shadow: 0 0 20px -5px black;
             }
             #article-info{
-                font-size: 17px;
+                font-size: 16px;
                 color: grey;
                 padding-left: 60px;
             }
@@ -145,14 +152,14 @@
                 padding-left: 60px;
                 padding-top: 30px;
                 padding-bottom: 10px;
-                font-size: 26px;
+                font-size: 23px;
                 font-weight: 600;
             }
             #article-content{
                 padding-left: 60px;
                 padding-right: 55px;
-                font-size: 18px;
-                line-height: 31px;
+                font-size: 16.5px;
+                line-height: 27px;
                 text-indent:2em;
                 font-family: "Microsoft Yahei";
             }
@@ -208,6 +215,7 @@
             }
             #article-operations{
                 padding-left: 60px;
+                padding-right: 60px;
                 line-height: 40px;
                 margin-bottom: 5px;
             }
@@ -240,7 +248,7 @@
                 margin-right: 60px;
             }
             .main-rightpart{
-                flex: 9;
+                flex: 8;
             }
             #nav-postarticle{
                 width: calc(100% - 20px);
@@ -248,7 +256,7 @@
                 line-height: 60px;
                 margin: 10px 10px 10px 10px;
                 background-color: #fafbfc;
-                font-size: 23.5px;
+                font-size: 20px;
                 display: block;
                 text-align: center;
                 border-radius: 10px;
@@ -291,8 +299,9 @@
                 cursor: pointer;
             }
             .nav-title{
-                font-size: 24px;
+                font-size: 17px;
                 line-height: 50px;
+                font-weight: bold;
                 cursor: default;
             }
             #nav-author-w > a{
@@ -317,7 +326,7 @@
                 margin-right: 25px;
             }
             #nav-hotest-title{
-                font-size: 24px;
+                font-size: 20px;
                 text-align: center;
             }
             #nav-hotest-title > a{
@@ -367,42 +376,91 @@
                 width: calc(100% - 70px);
                 margin-left: 25px;
                 margin-right: 45px;
-
+            }
+            #head-bar{
+                width: 100%;
+                height: 44px;
+                background-color: #f6f6f6;
+                border-top: 1px solid #d2d3d4;
+                border-bottom: 1px solid #d2d3d4;
+            }
+            #head-bar-inner{
+                width: 1300px;
+                padding: 0 50px 0 50px;
+                justify-content: space-between;
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                margin: 0 auto;
+            }
+            #head-bar-inner h1{
+                font: normal bold 18px / 28px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+                color: #333333;
+                text-transform: uppercase;
+            }
+            #head-bar-inner a,
+            #head-bar-inner span{
+                color: #b4b5bb;
+                font: normal 13px / 23px "Roboto", Helvetica, Arial, Verdana, sans-serif;
             }
         </style>
     </head>
     <body>
+        {% if username %}
+        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+            {% if language_en %}
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            {% else %}
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            {% endif %}
+        </div>
+        {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
                     <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
                 </div>
                 <div id="header-icons">
-                    {% if username %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/logout_" onclick="return confirm('是否要退出登录？');">欢迎您，{{username}}。</a></div>
+                    {% if language_en %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=ch">CHINESE</a></div>
                     {% else %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">登录</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=en">ENGLISH</a></div>
                     {% endif %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">公司介绍</a></div>
+                    {% if not username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
                     {% for cat in cats %}
-                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a {%else%} rgb(66, 116, 255) {%endif%};" href="/list-article?fid={{cat.id}}">{{cat.name}}</a></div>
+                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">{%if language_en%}Home{%else%}首页{%endif%}</a></div>
                 </div>
             </div>
         </div>
-        <div id="banner">
+        <div id="head-bar">
+            <div id="head-bar-inner">
+                <h1>{{category}}</h1>
+                <span>
+                    <a href="/home">首页</a>
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/list-article?fid={{cat_id}}">{{category}}
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{title}}</a>
+                    </a></span>
+            </div>
+        </div>
+        <!--div id="banner">
             <img id="banner-img" src="{{cat_img}}" />
             <div id="banner-title-w">
                 <div id="banner-title" {%if cat_name_white %}style="color: whitesmoke;"{%endif%}>{{category}}</div>
             </div>
-        </div>
+        </div-->
         <div class="main-content">
+            <div class="main-content-inner">
             <div class="main-leftpart">
                 <div class="article-wrapper">
-                    <div class="article-coverimg-w">
+                    <!--div class="article-coverimg-w">
                         <img id="article-coverimg" src="{{cover_img}}" onerror="this.src='/s/coverimg-1.png';"/>
-                    </div>
+                    </div-->
                     <div id="article-info">
                         Category · {{category}} · {{author}} · {{date}} · 评论
                     </div>
@@ -434,8 +492,8 @@
                             <rect x="40.723" y="27.548" fill="#1D1D1B" width="2.675" height="27.441"/>
                         </svg>
                         <span style="cursor: pointer" onclick="confirm('您确定要删除此文章吗？该操作可能难以恢复。') && confirm('删除此文章后，该文章的评论区、封面图片等数据可能会一并丢失，是否确定？') && (window.location.href='/delete-article?aid={{a_id}}');">删除</span>
-                        {% endif %}
                         <br/>
+                        {% endif %}
                         {% if has_fujian %}
                         <svg x="0px" y="0px" width="18px" height="18px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                             <path fill="#1D1D1B" d="M64,41.733c0-1.345-1.089-2.435-2.435-2.435c-1.347,0-2.436,1.09-2.436,2.435v14.115H4.946V41.733
@@ -447,7 +505,18 @@
                                 c0.951-0.951,0.951-2.493,0-3.444c-0.952-0.951-2.493-0.951-3.443,0L34.625,40.979V5.403C34.625,4.058,33.536,2.967,32.19,2.967z"/>
                         </svg>
                         <span>附件：</span>
+                        <a href="/uploads/{{filename}}" download="{{filename}}">{{filename}}</a>
                         {% endif %}
+                        <div style="text-align: right;">
+                            <svg class="Zi Zi--Comments" fill="currentColor" viewBox="0 0 24 24" width="16" height="16" style="position:relative; top:4px;"><path d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z" fill-rule="evenodd"></path></svg>
+                            <span style="cursor: pointer;" id="shareWechatTxt">分享到微信</span>
+                            <div style="position: absolute; right: 100px; display:none; width: 180px; background-color: white; text-align: center; " id="shareWechatDiv">
+                                <img src="/qr-code?url=http:%2F%2Fgm-associates.cn%2Farticle-{{aid}}%2F" style="width: 170px; height: 170px;">
+                                <div style="font-size: 16px; line-height: 20px;">微信扫描二维码，然后点击右上角“...”并选择转发到微信</div>
+                            </div>
+                            <svg class="Zi Zi--Share Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em" style="position:relative; top:4px;"><path d="M2.931 7.89c-1.067.24-1.275 1.669-.318 2.207l5.277 2.908 8.168-4.776c.25-.127.477.198.273.39L9.05 14.66l.927 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.242c.584-.892-.212-2.029-1.234-1.796L2.93 7.89z" fill-rule="evenodd"></path></svg>
+                            <a href="mailto:请输入收件人@example.com?subject={{title}}&body=文章地址：http:%2F%2Fgm-associates.cn%2Farticle-{{aid}}%2F">分享到邮箱</a>
+                        </div>
                     </div>
                     <hr style="width: 90%;">
                     <div class="article-subtitle">
@@ -456,16 +525,18 @@
                     <hr style="width: 90%;">
                     <div class="article-comment">
                         {% if has_comment %}
+                        {% for comment in comments %}
                         <div class="comment-wrapper">
                             <div class="comment-username">
-                                John Doe
+                                {{comment.author}}
                             </div>
                             <div class="comment-content">
-                                本文令我印象深刻，请求网页端分享到微信。
+                                {{comment.content}}
                             </div>
-                            <div class="comment-pager">
-                                <span>共1条评论，当前第1/1页。</span>
-                            </div>
+                        </div>
+                        {%endfor%}
+                        <div class="comment-pager">
+                            <span>共{{comment_len}}条评论，当前第1/1页。</span>
                         </div>
                         {% else %}
                         <div class="comment-wrapper">
@@ -476,19 +547,24 @@
                         {% endif %}
                     </div>
                     <hr style="width: 90%;">
+                    {% if has_comment and can_comment %}
                     <div class="article-subtitle">
                         发表评论
                     </div>
                     <hr style="width: 90%;">
-                    <textarea id="my-comment" style="margin: 10px 60px 10px 90px;width: calc(100% - 150px);min-height: 150px; font-size: 17px;"></textarea>
-                    <div style="display: block;width:100%;">
-                        <button id="submit-comment" style="display: block;margin: 0 auto;font-size: 16px;">发表</button>
-                    </div>
+                    <form action="/postcomment" method="POST" >
+                        <input type="hidden" name="aid" value="{{aid}}">
+                        <textarea name="content" id="my-comment" style="margin: 10px 60px 10px 90px;width: calc(100% - 150px);min-height: 150px; font-size: 17px;"></textarea>
+                        <div style="display: block;width:100%;">
+                            <button id="submit-comment" style="display: block;margin: 0 auto;font-size: 16px;">发表</button>
+                        </div>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
             <div class="main-rightpart">
                 <div id="nav-postarticle">
-                    <svg style="margin-bottom: -4px;" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                    <svg style="margin-bottom: -4px;" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                         <path xmlns="http://www.w3.org/2000/svg" fill="#1D1D1B" d="M62.463,1.543C61.446,0.526,60.06,0.001,58.633,0c-1.43,0.021-2.778,0.591-3.801,1.609l-2.446,2.443    c-0.01,0.012-0.015,0.025-0.024,0.035L20.453,35.906c-0.104,0.104-0.158,0.233-0.234,0.353c-0.131,0.152-0.245,0.317-0.327,0.505    l-3.254,7.5c-0.324,0.75-0.169,1.62,0.397,2.211c0.392,0.41,0.927,0.631,1.476,0.631c0.241,0,0.486-0.043,0.719-0.131l7.824-2.943    c0.217-0.081,0.406-0.209,0.579-0.352c0.126-0.08,0.262-0.14,0.367-0.245L60.035,11.49c0.006-0.006,0.008-0.014,0.015-0.02    l2.341-2.33C64.509,7.029,64.541,3.62,62.463,1.543z M26.558,39.119l-1.777-1.773L53.932,8.277l1.776,1.773L26.558,39.119z     M59.508,6.262l-0.916,0.912l-1.784-1.779l0.911-0.91c0.265-0.264,0.609-0.411,0.972-0.416c0.344-0.008,0.653,0.119,0.883,0.348    C60.065,4.907,60.033,5.736,59.508,6.262z"/>
                         <path fill="#1D1D1B" d="M58.454,22.253c-1.128,0-2.04,0.911-2.04,2.034v33.611c0,1.121-0.915,2.033-2.04,2.033H6.12
                         c-1.126,0-2.04-0.912-2.04-2.033V9.787c0-1.121,0.914-2.034,2.04-2.034h33.403c1.127,0,2.04-0.911,2.04-2.034
@@ -503,7 +579,7 @@
                             输入关键词搜索文章...
                         </div>
                         <div id="nav-search-button">
-                            <svg x="0px" y="0px" width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <svg x="0px" y="0px" width="21px" height="21px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                             <g id="1itt1edva">
                                 <path fill="#333" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
                                     c0.513,0,1.025-0.196,1.418-0.587c0.392-0.393,0.588-0.904,0.588-1.418s-0.196-1.027-0.588-1.419L45.459,43.172
@@ -565,6 +641,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <style>
             .footer{
                 text-align: center;
@@ -589,13 +666,31 @@
                     search_div.css("color", "black");
                 }
             });
+            search_div.blur((event)=>{
+                if(search_div.text().trim()==""){
+                    search_div.text("输入关键词搜索文章...");
+                    search_div.css("color", "grey");    
+                }
+            });
+            function do_search(str){
+                window.location.href="/list-article?fid={{cat_id}}&keyword="+encodeURI(str);
+            }
             search_div.keypress((event)=>{
                 var keyCode=(event.keyCode ? event.keyCode : event.which);
                 if(keyCode==13 || keyCode==108){
+                    do_search(search_div.text().trim());
                     return false;
                 }
                 return true;
             });
+            $('#nav-search-button').click((e)=>{
+                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                    search_div.focus();
+                    return;
+                }
+                do_search(search_div.text().trim());
+                return false;
+            })
             $('#nav-postarticle').click((event)=>{
                 window.location.href = '/post-article?fid={{cat_id}}';
             })
@@ -623,6 +718,26 @@
                     newest_div.hide();
                     hotest_bar.prop('class', 'on');
                     newest_bar.prop('class', 'off');
+                }
+            });
+
+            let shareWechatTxt = $('#shareWechatTxt');
+            let shareWechatDiv = $('#shareWechatDiv');
+            shareWechatTxt.hover((e)=>{
+                shareWechatDiv.show();
+            }, (e)=>{
+                if(clickCount%2==1){
+                    shareWechatDiv.show();
+                }
+                else{
+                    shareWechatDiv.hide();
+                }
+            });
+            let clickCount = 0;
+            shareWechatTxt.click((e)=>{
+                clickCount+=1;
+                if(clickCount%2==1){
+                    shareWechatDiv.show();
                 }
             });
         </script>
