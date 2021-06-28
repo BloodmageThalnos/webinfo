@@ -1,17 +1,13 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-        <title>{%if language_en%}Home | GM Associates{%else%}跨国企业政府事务-中国{%endif%}</title>
+        <title>{%if language_en%}Home | GM Associates{%else%}北京光华茂源管理咨询中心{%endif%}</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <style>
             body{
                 margin: 0;
-                overflow: hidden;
-            }
-            a {
-                color: black;
-                text-decoration: none;
+                overflow-x: hidden;
             }
             a:link {
                 color: black;
@@ -50,7 +46,7 @@
                 z-index: -997;
             }
             #main-text-w{
-                position:fixed;
+                position: absolute;
                 top:44.8%;
                 width: 70%;
                 margin-left: 15%;
@@ -80,7 +76,7 @@
             #main-text-button{
                 margin:auto;
                 min-height: 41px;
-                width: 260px;
+                width: 244px;
                 border-radius: 3px;
                 box-shadow: none;
                 outline: none;
@@ -93,6 +89,8 @@
                 text-align: center;
                 font-size: 17px;
                 font-weight: 500;
+                padding-left: 8px;
+                padding-right: 8px;
                 width: 100%;
                 cursor: pointer;
             }
@@ -103,7 +101,6 @@
                 position: absolute;
                 width: 100%;
                 left: 0;
-                top: 0;
                 z-index: 998;
                 background-color: rgba(255, 255, 255, 0.8);
                 height: 88px;
@@ -143,10 +140,19 @@
         </style>
     </head>
     <body>
-        <div class="header">
+        {% if username %}
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
+            {% if language_en %}
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
+            {% else %}
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="header" {% if username %}style="top: 32px;"{% endif %}>
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo-2.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -158,7 +164,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color: #2a2a3a;" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -187,18 +193,33 @@
                 </div>
             </div>
         </div>
+        <div id="float-switchbtn" style="color: white; position: absolute; right:10px;bottom: 10px; font-weight: bold; cursor: pointer;" onclick="window.location.reload();">
+            ＜&nbsp;&nbsp;＞
+        </div>
         <style>
             .footer{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                background: #1a1c20 none repeat center top;
+                color: #85868c;
+            }
+            .footer-inner{
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 5px 50px 0 50px;
                 text-align: center;
-                font-size: 10px;
-                padding: 20px;
-                position: fixed;
-                bottom: 20px;
-                left: calc(50% - 100px);
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+            <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script>
             let randint = (a,b)=>(a+Math.floor(Math.random()*(b-a)));
@@ -208,9 +229,11 @@
 
                 let img = new Image();
                 img.src = img_src;
+                $('#main-text').hide();
+                $('#main-text-sub').hide();
+                $('#main-text-button-w').hide();
                 img.onload = function(){
-                    $('#bg-pic').attr('src', img_src);
-                    /*
+                    /*$('#bg-pic').attr('src', img_src);*/
                     let wi = img.naturalWidth;
                     let hi = img.naturalHeight;
                     let theCanvas = document.getElementById('bg-animation');
@@ -248,6 +271,15 @@
                                 $('#bg-pic').attr('src', img_src);
                                 theCanvas.width = 0;
                                 clearInterval(handle);
+                                setTimeout(()=>{
+                                    $('#main-text').slideDown();
+                                }, 0);
+                                setTimeout(()=>{
+                                    $('#main-text-sub').slideDown();
+                                }, 200);
+                                setTimeout(()=>{
+                                    $('#main-text-button-w').slideDown();
+                                }, 600);
                                 return;
                             }
                         }
@@ -263,7 +295,7 @@
                         );
                         hc_i -= hc_per_update;
                         hi_i -= hi_per_update;
-                    } ,update_time);*/
+                    } ,update_time);
                 }
             }
             let pic_list = [
@@ -271,10 +303,13 @@
             ];
             pic_i = randint(0, pic_list.length);
             setbg(pic_list[pic_i]);
-            /*setInterval(function(){
+            setInterval(function(){
                 pic_i = (pic_i + 1)%pic_list.length;
                 setbg(pic_list[pic_i]);
-            }, 15000);*/
+            }, 15000);
+            for(i=0; i<pic_list.length; i++)if(i!=pic_i){
+
+            }
         </script>
     </body>
 </html>

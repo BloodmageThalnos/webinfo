@@ -104,7 +104,6 @@
             .login-w{
                 position: fixed;
                 left: calc(42% - 200px);
-                margin-top: 10%;
                 width: calc(16% + 400px);
                 background-color: white;
                 border-radius: 30px;
@@ -126,7 +125,7 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -138,7 +137,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -151,18 +150,18 @@
         </div>
         <div class="main-content">
             <div class="login-w">
-                <p style="font-size: 28px; line-height: 88px;">欢迎登录！</h1>
+                <p style="font-size: 24px; line-height: 88px;">{%if language_en%}Welcome to login{%else%}欢迎登录！{%endif%}</h1>
                 <p>
-                    <input class="login-input" type="text" id="username" placeholder="请输入用户名">
+                    <input class="login-input" type="text" id="username" placeholder="{%if language_en%}Username{%else%}请输入用户名{%endif%}">
                 </p>
                 <p>
-                    <input class="login-input" type="password" id="pwd" placeholder="请输入密码">
+                    <input class="login-input" type="password" id="pwd" placeholder="{%if language_en%}Password{%else%}请输入密码{%endif%}">
                 </p>
                 <p>
-                    <input class="login-input" type="submit" id="submit" value="登 录" style="width:15%;border-radius: 16px;border:0;background-color: rgb(88, 188, 247);color: whitesmoke;" onclick="window.location.href='/dologin?hashcode={{hashcode}}&username='+encodeURI($('#username').val())+'&password='+encodeURI($('#pwd').val());">
+                    <input class="login-input" type="submit" id="submit" value="{%if language_en%}Login{%else%}登 录{%endif%}" style="width:15%;border-radius: 16px;border:0;background-color: rgb(88, 188, 247);color: whitesmoke;" onclick="window.location.href='/dologin?hashcode={{hashcode}}&username='+encodeURI($('#username').val())+'&password='+encodeURI($('#pwd').val());">
                 </p>
                 <p>
-                    <a href="/doreg0" style="color:rgb(18, 86, 175);">没有账号？注册...</a>
+                    <a href="/doreg0" style="color:rgb(18, 86, 175);">{%if language_en%}Click to register{%else%}没有账号？点此注册{%endif%}</a>
                 </p>
             </div>
         </div>
@@ -174,10 +173,14 @@
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+            <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>
+            $('.login-w').css('margin-top', ((window.innerHeight-500)*0.4)+'px');
+
             {%if alert%}
             alert("{{alert}}");
             {%endif%}

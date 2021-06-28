@@ -7,10 +7,6 @@
             body{
                 margin: 0;
             }
-            a {
-                color: black;
-                text-decoration: none;
-            }
             a:link {
                 color: black;
                 text-decoration: none;
@@ -126,12 +122,16 @@
                 width: calc(100% - 30px);
             }
             .article-wrapper{
-                margin: 30px 0 48px 0;
+                margin: 10px 0 28px 0;
                 min-height: 100px;
                 width: 100%;
                 font-size:0px;
                 text-indent: 0;
                 cursor: pointer;
+            }
+            .article-wrapper-inner{
+                padding: 20px 20px 20px 10px;
+                background-color: #f7f7f7;
             }
             .article-date{
                 width: 100px;
@@ -190,7 +190,7 @@
                 line-height: 60px;
                 margin: 10px 10px 10px 10px;
                 background-color: #f7f9fc;
-                font-size: 20px;
+                font-size: 18px;
                 display: block;
                 text-align: center;
                 border-radius: 10px;
@@ -209,20 +209,20 @@
                 padding-top: 22px;
             }
             #nav-search{
-                border: 1.5px solid rgb(1, 0, 48);
+                border: 1.5px solid rgb(197, 195, 221);
                 border-radius: 7px;
                 height: 40px;
                 width: 80%;
                 margin: 0 auto;
                 line-height: 40px;
-                font-size: 17px;
+                font-size: 14px;
                 padding-left: 15px;
-                color: grey;
+                color: rgb(167, 167, 167);
             }
             #nav-search-button{
                 position: absolute;
                 right: calc(10% + 5px);
-                top: 30px;
+                top: 36px;
                 cursor: pointer;
             }
             #nav-author-w{
@@ -233,13 +233,13 @@
                 line-height: 30px;
             }
             .nav-title{
-                font-size: 17px;
+                font-size: 14px;
                 font-weight: bold;
                 line-height: 50px;
                 cursor: default;
             }
             #nav-author-w > a{
-                font-size: 17px;
+                font-size: 14px;
                 display: inline-block;
                 min-width: 40px;
                 text-align: justify;
@@ -300,9 +300,9 @@
                 overflow: hidden;
                 text-overflow:ellipsis;
                 color: #364856;
-                font-size: 17px;
+                font-size: 14px;
                 -webkit-line-clamp:1;
-                line-height: 32px;
+                line-height: 25px;
             }
             #nav-hotest-news > hr{
                 width: 96%;
@@ -330,9 +330,10 @@
                 margin: 0 auto;
             }
             #head-bar-inner h1{
-                font: normal bold 18px / 28px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+                font: normal bold 18px / 48px "Roboto", Helvetica, Arial, Verdana, sans-serif;
                 color: #333333;
                 text-transform: uppercase;
+                margin: 0;
             }
             #head-bar-inner a,
             #head-bar-inner span{
@@ -343,18 +344,18 @@
     </head>
     <body>
         {% if username %}
-        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
             {% if language_en %}
-            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
             {% else %}
-            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
             {% endif %}
         </div>
         {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -366,7 +367,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -376,12 +377,12 @@
         </div>
         <div id="head-bar">
             <div id="head-bar-inner">
-                <h1>{{cat_name}}</h1>
+                <h1>{%if language_en%}{{cat_name_en}}{%else%}{{cat_name}}{%endif%}</h1>
                 <span>
-                    <a href="/home">首页</a>
-                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{cat_name}}
+                    <a href="/home">{%if language_en%}Home{%else%}首页{%endif%}</a>
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{%if language_en%}{{cat_name_en}}{%else%}{{cat_name}}{%endif%}
                     {%if keyword %}
-                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">搜索结果</a>
+                    &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{%if language_en%}Search result{%else%}搜索结果{%endif%}</a>
                     {%endif%}
                     {%if author_name %}
                     &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{author_name}}</a>
@@ -419,26 +420,28 @@
             <div class="main-content-inner">
             <div class="main-leftpart">
                 <div class="list-wrapper">
-                    <div class="article-wrapper" style="height: 200px;">
+                    <div class="article-wrapper" style="height: 200px; cursor: default;">
                         <img src="{{cat_img}}" style="width:100%; height: 100%;">
                     </div>
                 {% for article in articles%}
                     <div class="article-wrapper" onclick="window.location.href='{{article.url}}'">
-                        <div class="article-date">
-                            <div class="article-date-inner">
-                                <div class="article-date-day">{{article.date_day}}</div>
-                                <div class="article-date-month">{{article.date_month}}</div>
+                        <div class="article-wrapper-inner">
+                            <div class="article-date">
+                                <div class="article-date-inner">
+                                    <div class="article-date-day">{{article.date_day}}</div>
+                                    <div class="article-date-month">{{article.date_month}}</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="article-text">
-                            <div class="article-title">
-                                {{article.title}}
-                            </div>
-                            <div class="article-author">
-                                | {{article.author}} · 评论
-                            </div>
-                            <div class="article-excerpt">
-                                {{article.excerpt}}
+                            <div class="article-text">
+                                <div class="article-title">
+                                    {{article.title}}
+                                </div>
+                                <div class="article-author">
+                                    | {{article.author}} · {%if language_en%}Comment{%else%}评论{%endif%}
+                                </div>
+                                <div class="article-excerpt">
+                                    {{article.excerpt}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -478,7 +481,7 @@
                         s-0.913-2.034-2.04-2.034H6.12C2.745,3.685,0,6.422,0,9.787v48.111C0,61.263,2.745,64,6.12,64h48.254
                         c3.374,0,6.12-2.737,6.12-6.102V24.287C60.494,23.164,59.581,22.253,58.454,22.253z"/>
                     </svg>
-                    <span>写文章</span>
+                    <span>{%if language_en%}New article{%else%}发表{%endif%}</span>
                 </div>
                 <div id="nav-wrapper">
                     <div id="nav-search-w">
@@ -486,13 +489,13 @@
                             {%if keyword%}
                             {{keyword}}
                             {%else%}
-                            输入关键词搜索文章...
+                            {%if language_en%}Search...{%else%}输入关键词搜索...{%endif%}
                             {%endif%}
                         </div>
                         <div id="nav-search-button">
-                            <svg x="0px" y="0px" width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                            <g id="1itt1edva">
-                                <path fill="#333" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
+                            <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                            <g>
+                                <path fill="#888" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
                                     c0.513,0,1.025-0.196,1.418-0.587c0.392-0.393,0.588-0.904,0.588-1.418s-0.196-1.027-0.588-1.419L45.459,43.172
                                     c3.853-4.5,6.197-10.331,6.197-16.707c0-14.194-11.549-25.741-25.741-25.741c-14.194,0-25.742,11.547-25.742,25.741
                                     C0.173,40.658,11.721,52.205,25.915,52.205z M25.915,4.735c11.98,0,21.729,9.747,21.729,21.729c0,11.98-9.749,21.729-21.729,21.729
@@ -504,7 +507,7 @@
                     
                     {% if show_user %}
                     <div id="nav-author-w">
-                        <p class="nav-title">作者</p>
+                        <p class="nav-title">{%if language_en%}Author{%else%}作者{%endif%}</p>
                         {% for i in author_list %}
                         <a href="{{i.url}}">{{i.name}}</a>
                         {% endfor %}
@@ -512,8 +515,8 @@
                     {% endif %}
                     <div id="nav-hotest">
                         <div id="nav-hotest-title">
-                            <a id="newest-button">最新</a>
-                            <a id="hotest-button">最热</a>
+                            <a id="newest-button">{%if language_en%}Newest{%else%}最新{%endif%}</a>
+                            <a id="hotest-button">{%if language_en%}Hotest{%else%}最热{%endif%}</a>
                         </div>
                         <div id="nav-hotest-bar">
                             <div id="nav-newestbar" class="on"></div>
@@ -534,20 +537,20 @@
                     </div>
                     <div id="nav-perday-w">
                         <p class="nav-title">
-                            按日检索
+                            {%if language_en%}Search by day{%else%}按日检索{%endif%}
                         </p>
                         <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
-                            <input type="date" name="day" style="font-size: 18px;"/>
-                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                            <input type="date" name="day" style="font-size: 15px;"/>
+                            <input type="submit" value="{%if language_en%}Search{%else%}检索{%endif%}" style="font-size: 15px;"/>
                         </form>
                     </div>
                     <div id="nav-perday-w">
                         <p class="nav-title">
-                            按月检索
+                            {%if language_en%}Search by month{%else%}按月检索{%endif%}
                         </p>
                         <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
-                            <input type="month" name="month" style="font-size: 18px;"/>
-                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                            <input type="month" name="month" style="font-size: 15px;"/>
+                            <input type="submit" value="{%if language_en%}Search{%else%}检索{%endif%}" style="font-size: 15px;"/>
                     </form>
                     </div>
                 </div>
@@ -556,13 +559,26 @@
         </div>
         <style>
             .footer{
+                position: relative;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                background: #1a1c20 none repeat center top;
+                color: #85868c;
+            }
+            .footer-inner{
+                width: 1300px;
+                margin: 0 auto;
+                max-width: 100%;
+                padding: 5px 50px 0 50px;
                 text-align: center;
-                font-size: 12px;
-                padding: 20px;
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+                <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>
@@ -573,14 +589,14 @@
 
             let search_div = $('#nav-search');
             search_div.focus((event)=>{
-                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                if(search_div.text().trim()=="输入关键词搜索..."){
                     search_div.text("");
                     search_div.css("color", "black");
                 }
             });
             search_div.blur((event)=>{
                 if(search_div.text().trim()==""){
-                    search_div.text("输入关键词搜索文章...");
+                    search_div.text("输入关键词搜索...");
                     search_div.css("color", "grey");    
                 }
             });
@@ -596,7 +612,7 @@
                 return true;
             });
             $('#nav-search-button').click((e)=>{
-                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                if(search_div.text().trim()=="输入关键词搜索..."){
                     search_div.focus();
                     return;
                 }

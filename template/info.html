@@ -6,10 +6,6 @@
             body{
                 margin: 0;
             }
-            a {
-                color: black;
-                text-decoration: none;
-            }
             a:link {
                 color: black;
                 text-decoration: none;
@@ -90,7 +86,6 @@
                 top: 50%;
                 left: 50%;
                 margin-left: -297px;
-                font-family: Bower,Georgia,Times New Roman,serif;
             }
             .main-content{
                 position: relative;
@@ -107,36 +102,57 @@
             .part-title{
                 font-size: 24px;
                 text-align: center;
-                margin-bottom: 10px;
                 line-height: 32px;
                 vertical-align:middle;
-                margin-top: 33px;
-                color: #333;
-                font-family:Georgia, 'Times New Roman', Times, serif;
+                margin-top: 32px;
+                margin-bottom: 16px;
+                color: #444;
             }
             .part-text{
                 font-size: 21px;
                 margin: 0 15% 0 15%;
                 line-height: 1.4;
-                font-family: Helvetica Neue,Helvetica,Arial,Utkal,sans-serif;
                 text-align: center;
+            }
+            .info-text{
+                width: 100%;
+                max-width: 800px;
+                margin: auto;
+                font-size: 17px;
+                line-height: 35px;
+            }
+            .info-text-left{
+                font-weight: bold;
+            }
+            .dot{
+                display: inline-block;
+                vertical-align: middle;
+                width: 8px;
+                height: 8px;
+                margin-right: 10px;
+                border-radius: 50%;
+                background-color: rgb(93, 141, 230);
+            }
+            .info-text-right{
+                display: inline-block;
+                flex: 20;
             }
         </style>
     </head>
     <body>
         {% if username %}
-        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
             {% if language_en %}
-            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
             {% else %}
-            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
             {% endif %}
         </div>
         {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -148,7 +164,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -163,53 +179,195 @@
                 </div>
                 <p class="part-title">
                     <img src="/s/infoTitleLeft.jpg" style="height: 30px; position: relative; top: 6px;padding-right: 10px;">
-                    GM & Associates
+                    {%if language_en%}GM & Associates{%else%}关于我们{%endif%}
                     <img src="/s/infoTitleRight.jpg" style="height: 30px;position: relative; top: 6px;padding-left: 10px;">
                 </p>
                 <div style="position: relative; width: 100%;">
                     <div style="position: absolute; left: 20px; top: 50%; transform: translate(0,-110px); height: 220px;">
                         <img style="height: 100%;" src="/s/infoImg.jpg">
                     </div>
-                    <div style="margin-left: 300px; background-color:#F4F4F4; height: 400px;">
-                        
+                    <div style="margin-left: 260px; background-color:#F4F4F4; ">
+                        <div style="padding: 16px 26px 16px 126px; font-size: 17px; line-height: 27px; ">
+                            {%if language_en%}
+                            <p>GM & Associates (GMA) is a public affairs and government relations advisory firm established in 2005. We are a team of experienced consultants.</p>
+                            <p>For years GMA was hired to conduct policy research and government affairs services for leading international clients in sectors such as agriculture, electronics, e-commerce, food, finance, healthcare, metal, paper, trade, etc.</p>
+                            <p>Our core service includes policy research – to monitor, analyze and alert on policy updates; issues audit - to determine drivers behind the scenes; market entry - to research into policies restricting your business and identify solutions; issues & strategies - make strategies and action plans on critical policy issues; senior executive China visit support, etc.</p>
+                            <p>If you need further information, please feel free to contact gma@gm-associates.cn.</p>
+                            {%else%}
+                            <p>北京光华茂源管理咨询中心（光华茂源）成立于2005年，是一家专注于为客户提供公共事务咨询服务的公司。我们的团队富有经验。</p>
+
+                            <p>多年来在农业、电子、电子商务、食品、金融、医疗保健、金属、造纸、贸易等领域，为大型跨国企业和国际机构提供了诸多公共事务服务。</p>
+                            
+                            <p>核心业务：政策法规研究；议题及影响调研；市场准入政策障碍及解决方案；重点议题研究及策略；高管访华的协助，等等。</p>
+                            
+                            <p>如需获取更多信息，请联系gma@gm-associates.cn。</p>
+                            
+                            {%endif%}
+                        </div>
                     </div>
                 </div>
-                <div class="part-text">
-                <p>
-                    GM &amp; Associates (hereafter GMA) is a public policy and government affairs advisory firm with a global perspective and local experience established in Beijing, China in 2005.
-                </p>
-                <p>
-                    With combined experience in the public and private sectors, our approach and advice are based on first-hand knowledge and deep insight into both the highly complex policy making environment and the competitive business world.
-                </p>
-                <p>
-                    Over the past 15 years, we have counselled a wide range of international clients on their business-critical public policy and public affairs needs in China, providing recommendations rooted in direct dialogue with key stakeholders and a multi-dimensional understanding of the subject matter.
-                </p>
-                <p>
-                    Our client industries include healthcare, medical devices, agriculture, biotech, forestry, industrial equipment, telecommunications, electronics, e-commerce and finance. 
-                </p>
+                <!--div class="part-title">
+                    <img src="/s/infoTitleLeft.jpg" style="height: 30px; position: relative; top: 6px;padding-right: 10px;">
+                    {%if language_en%}Our Core Service{%else%}核心业务{%endif%}
+                    <img src="/s/infoTitleRight.jpg" style="height: 30px;position: relative; top: 6px;padding-left: 10px;">
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	Stakeholder engagement
+                            {%else%}
+                            <div class="dot"></div>	与相关部门的沟通：
+                            {%endif%}
+                        </span>{%if language_en%}
+                            identify key stakeholders and build relationships
+                            {%else%}
+                            识别相关部门并建立沟通
+                            {%endif%}
+                    </div>
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	Issues audit
+                            {%else%}
+                            <div class="dot"></div>	议题调研：
+                            {%endif%}
+                        </span>
+                            {%if language_en%}
+                            determine drivers behind key stakeholders and their opinions about your industry or company
+                            {%else%}
+                            调研相关部门的有关重点工作议程以及对相关行业或企业的看法
+                            {%endif%}
+                    </div>
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	 Policy research
+                            {%else%}
+                            <div class="dot"></div>	政策研究：
+                            {%endif%}
+                        </span>
+                            {%if language_en%}
+                            monitor and analyze policies, regulations, receive early warning alerts about policy development and their impact
+                            {%else%}
+                            政策法规的研究与分析，有关政策发展及其影响的早期预警
+                            {%endif%}
+                    </div>
+                </div>
+                <div class="info-text">
+                    <span class="info-text-left">
+                        {%if language_en%}
+                        <div class="dot"></div>	Market entry & project approval
+                        {%else%}
+                        <div class="dot"></div>	市场准入和项目审批：
+                        {%endif%}
+                    </span>
+                    {%if language_en%}
+                    research into policies restricting your business and identify solutions
+                    {%else%}
+                    研究有关业务领域的政策障碍及解决方案
+                    {%endif%}
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	Issues & strategies
+                            {%else%}
+                            <div class="dot"></div>	议题和战略：
+                            {%endif%}
+                        </span>
+                        {%if language_en%}
+                        help clients monitor on issues of critical importance to their business and industry, make strategies and action plans to align core business objectives with those of the government on these issues
+                        {%else%}
+                        帮助客户对影响业务和行业的重点问题进行研究和跟踪，制定策略和行动计划，使核心业务目标与政府方向保持一致
+                        {%endif%}
+                    </div>
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	Policy recommendation / advocacy
+                            {%else%}
+                            <div class="dot"></div>	政策建议/倡导：
+                            {%endif%}
+                        </span>
+                            {%if language_en%}
+                            help clients to promote better business operation environment by making policy recommendations and deliver key messages to key policy stakeholders
+                            {%else%}
+                            通过政策建议，以及向决策部门传递重点信息，提升营商环境
+                            {%endif%}
+                    </div>
+                </div>
+                <div class="info-text">
+                    <div>
+                        <span class="info-text-left">
+                            {%if language_en%}
+                            <div class="dot"></div>	Senior executive China visit support
+                            {%else%}
+                            <div class="dot"></div>	高管访华支持：
+                            {%endif%}
+                        </span>
+                            {%if language_en%}
+                            senior-level government meetings, briefing support, roundtables, speaking opportunities
+                            {%else%}
+                            我们提供官员拜会、高管汇报、圆桌会议、演讲机会等方面的协助和支持
+                            {%endif%}
+                    </div>
                 </div>
                 <div class="part-title">
                     <img src="/s/infoTitleLeft.jpg" style="height: 30px; position: relative; top: 6px;padding-right: 10px;">
-                    Contact
+                    {%if language_en%}Contact{%else%}联系方式{%endif%}
                     <img src="/s/infoTitleRight.jpg" style="height: 30px;position: relative; top: 6px;padding-left: 10px;">
                 </div>
-                <div class="part-text">
-                    <p>E-mail：gma@gm-associates.cn
-                    </p><p>Tell: +86-10-6715 5881
-                    </p><p>Address: Room 812, Tower D, Focus Square, No.6 Futong East Avenue, Chaoyang District, 100102
-                </p>
-                </div>
+                <div style="display: flex;margin-top: 50px;">
+                    <div style="flex:1;">
+                        <div style="margin: 0 auto; text-align: center;">
+                            <img src="/s/infoContact1.jpg" style="width: 56px;">
+                            <p>{%if language_en%}Email:{%else%}邮箱：{%endif%}gma@gm-associates.com</p>
+                        </div>
+                    </div>
+                    <div style="flex:1;">
+                        <div style="margin: 0 auto;text-align: center;">
+                            <img src="/s/infoContact2.jpg" style="width: 56px;">
+                            <p>电话：xxxxx</p>
+                        </div>
+                    </div>
+                    <div style="flex:1;">
+                        <div style="margin: 0 auto;text-align: center;">
+                            <img src="/s/infoContact3.jpg" style="width: 56px;">
+                            <p>地址：xxxxxx</p>
+                        </div>
+                    </div>
+                </div-->
             </div>
         </div>
         <style>
             .footer{
+                position: relative;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                color: #65666b;
+            }
+            .footer-inner{
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 5px 50px 0 50px;
                 text-align: center;
-                font-size: 12px;
-                padding: 20px;
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+                <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>

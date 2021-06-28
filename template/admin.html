@@ -160,7 +160,7 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/home">首页</a></div>
@@ -229,9 +229,6 @@
                                     <b>用户名</b>
                                 </td>
                                 <td>
-                                    <b>邮箱</b>
-                                </td>
-                                <td>
                                     <b>最近登录时间</b>
                                 </td>
                                 <td>
@@ -248,9 +245,6 @@
                             <tr>
                                 <td>
                                     {{i.username}}
-                                </td>
-                                <td>
-                                    {{i.email}}
                                 </td>
                                 <td>
                                     {{i.last_login_date}}
@@ -308,7 +302,7 @@
                                     <b>板块英文名称</b>
                                 </td>
                                 <td>
-                                    <b>按用户检索</b>
+                                    <b>显示“作者”栏</b>
                                 </td>
                                 <td>
                                     <b>非会员访问</b>
@@ -347,13 +341,11 @@
                                       </select>
                                 </td>
                                 <td>
-                                    {% if i.name != "俱乐部" %}
-                                    {% if i.id < 6 or i.id > 8 %}
+                                    {% if i.id < 5 or i.id > 13 %}
                                     <input type="button" onclick="confirm('删除板块会导致其中的文章、评论和用户记录被连带删除。是否确认？')&&confirm('该操作可能难以恢复，是否确定要删除板块？')&&go('/admin_action?aid=del_ban&pid={{i.id}}');" value="删除板块">
                                     {% endif %}
                                     <input type="button" onclick="(name=prompt('请输入板块名称（为了更好的展示效果，建议在5个字以内）', '{{i.name}}'))&&go('/admin_action?aid=rename_ban&pid={{i.id}}&txt='+encodeURI(name));" value="重命名">
                                     <input type="button" onclick="(name=prompt('请输入板块英文名称。\nInput the category name in English.', '{{i.name_en}}'))&&go('/admin_action?aid=rename_en_ban&pid={{i.id}}&txt='+encodeURI(name));" value="修改英文名称">
-                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
@@ -404,13 +396,13 @@
                     PA40 留言
                 </div>
                 <div class="admin-line pad-10">
-                    <span class="left">首页展示：</span>
+                    <span class="left">页面展示的留言：</span>
                     <div class="right">
                         {% for i in pa40_comments %}
                         <div style="margin-bottom: 30px;line-height: 36px;font-size: 20px;">
                             <form method="POST" action="/admin_action?aid=pa40c&cid={{i.id}}">
                                 作者：<input name="title" value="{{i.title}}" style="width: 10em;"><br/>
-                                内容：<textarea name="content" style="height: 140px; width: 22em;">{{i.content}}</textarea><br/>
+                                内容：<textarea name="content" style="height: 140px; width: 22em;" placeholder="留空则不显示此条">{{i.content}}</textarea><br/>
                                 　　　<input type="submit" value="修改">
                             </form>
                         </div>
@@ -418,14 +410,14 @@
                     </div>
                 </div>
                 <div class="admin-line pad-20">
-                    <span class="left">会员留言：</span>
+                    <span class="left">全部会员留言：</span>
                     <div class="right">
                         {% for i in pa40_commentall %}
                         <div style="margin-bottom: 30px;line-height: 36px;font-size: 20px;">
                             <form method="POST" action="/admin_action?aid=pa40d&cid={{i.id}}">
                                 作者：{{i.username}}<br/>
                                 内容：{{i.content}}<br/>
-                                <input type="submit" value="删除这条留言" onclick="return confirm('确定要删除这条留言吗？');">
+                                <input type="submit" value="忽略此条" onclick="return confirm('确定要删除这条记录吗？');">
                             </form>
                         </div>
                         {% endfor %}

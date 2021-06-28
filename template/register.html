@@ -1,12 +1,13 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>{%if language_en%}Login | GM Associates{%else%}注册 | 光华茂源{%endif%}</title>
+        <title>{%if language_en%}Register | GM Associates{%else%}注册 | 光华茂源{%endif%}</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <style>
             body{
                 margin: 0;
                 overflow: hidden;
+                font-family: 微软雅黑;
             }
             a {
                 color: black;
@@ -100,26 +101,29 @@
                 margin: 0 auto;
                 margin-bottom: 150px;
                 color: #333;
-                background-color: rgb(190, 199, 226);
+                background-color: rgb(236, 236, 236);
             }
             .login-w{
                 position: fixed;
-                left: 25%;
-                margin-top: 200px;
-                width: 50%;
-                height: 500px;
+                left: calc(42% - 200px);
+                width: calc(16% + 400px);
                 background-color: white;
                 border-radius: 30px;
-                box-shadow: rgb(43, 42, 116) 0 0 30px 0;
+                box-shadow: rgb(121, 121, 121) 0 0 30px 0;
                 text-align: center;
                 line-height: 52px;
             }
+            .login-input-w{
+                width: 70%;
+                max-width: 420px;
+                margin: 0 auto;
+            }
             .login-input{
-                font-size: 20px;
-                width: 50%;
+                font-size: 18px;
                 border: 1px solid rgb(47, 122, 219);
                 border-radius: 8px;
                 padding: 8px;
+                width: 100%;
                 margin-top: 16px;
             }
             .half{
@@ -131,7 +135,7 @@
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -150,28 +154,30 @@
         </div>
         <div class="main-content">
             <div class="login-w">
-                <p style="font-size: 28px;">{%if language_en%}Register membership{%else%}会员注册{%endif%}</h1>
-                <p>
-                    <input class="login-input" type="text" id="email" placeholder="{%if language_en%}Work E-msil{%else%}请输入公司邮箱{%endif%}">
-                    <div id="email_wrong" style="color: red;font-size: 16px;line-height: 16px;display: none;">
-                        {%if language_en%}Invalid email format, or personal email found.
-                        {%else%}邮箱格式不正确或不是企业邮箱
-                        {%endif%}
-                    </div>
-                </p>
-                <p>
-                    <input class="login-input" style="width: 32%;" type="text" id="captcha" placeholder="{%if language_en%}CAPTCHA{%else%}邮箱验证码{%endif%}">
-                    <input class="login-input" style="width: 18%;" type="button" value="{%if language_en%}Send captcha{%else%}发送验证码{%endif%}" id="email_button">
-                </p>
-                <p>
-                    <input class="login-input" type="text" id="username" placeholder="{%if language_en%}Username{%else%}请输入用户名{%endif%}">
-                </p>
-                <p>
-                    <input class="login-input" type="password" id="password" placeholder="{%if language_en%}Password{%else%}请输入密码{%endif%}">
-                </p>
-                <p>
-                    <input class="login-input" type="submit" id="submit" value="{%if language_en%}Register{%else%}注 册{%endif%}" style="width:15%;border-radius: 16px;border:0;background-color: rgb(88, 188, 247);color: whitesmoke;">
-                </p>
+                <div class="login-input-w">
+                    <p style="font-size: 24px; font-weight: bold;">{%if language_en%}Register membership{%else%}会员注册{%endif%}</h1>
+                    <p>
+                        <input class="login-input" type="text" id="email" placeholder="{%if language_en%}Work E-mail{%else%}请输入公司邮箱{%endif%}">
+                        <div id="email_wrong" style="color: red;font-size: 16px;line-height: 16px;display: none;">
+                            {%if language_en%}Invalid email format, or personal email found.
+                            {%else%}邮箱格式不正确或不是企业邮箱
+                            {%endif%}
+                        </div>
+                    </p>
+                    <p>
+                        <input class="login-input" style="width: 60.4%;" type="text" id="captcha" placeholder="{%if language_en%}CAPTCHA{%else%}邮箱验证码{%endif%}">
+                        <input class="login-input" style="width: 38%;" type="button" value="{%if language_en%}Send captcha{%else%}发送验证码{%endif%}" id="email_button">
+                    </p>
+                    <p>
+                        <input class="login-input" type="text" id="username" placeholder="{%if language_en%}Username{%else%}请输入用户名{%endif%}">
+                    </p>
+                    <p>
+                        <input class="login-input" type="password" id="password" placeholder="{%if language_en%}Password{%else%}请输入密码{%endif%}">
+                    </p>
+                    <p>
+                        <input class="login-input" type="submit" id="submit" value="{%if language_en%}Register{%else%}注 册{%endif%}" style="width:30%;border-radius: 15px;border:0;background-color: rgb(73, 82, 214);color: whitesmoke;">
+                    </p>
+                </div>
             </div>
         </div>
         <style>
@@ -182,10 +188,14 @@
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+            <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>
+            $('.login-w').css('margin-top', ((window.innerHeight-500)*0.4)+'px');
+
             $('#email_button').click(function(e){
                 let email = $('#email').val();
                 function test_email(email){

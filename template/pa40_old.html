@@ -1,0 +1,425 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
+        <title>{%if language_en%}{{cat_name_en}} | GM Associates{%else%}{{cat_name}} | 光华茂源{%endif%}</title>
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <style>
+            body{
+                margin: 0;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: black;
+                text-decoration: none;
+            }
+            a:active {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover{
+                color: black;
+                text-decoration:none;
+            }
+            #banner{
+                z-index: -1;
+                position: relative;
+                width: 100%;
+            }
+            #banner-img{
+                width: 100%;
+                max-height: 212px;
+            }
+            #banner-title-w{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+            #banner-title{
+                position: absolute;
+                top: 36%;
+                left: 50%;
+                min-width: calc(25px + 8%);
+                margin-top: -12px;
+                font-size: 30px;
+                text-align: justify;
+                word-break: break-all;
+                float: left;
+                display: hidden;
+                color: #2c3e50;
+            }
+            #banner-title:after{
+                content: '.';
+                width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                height: 0;
+            }
+            .header{
+                width: 100%;
+                left: 0;
+                top: 0;
+                z-index: 998;
+                background-color: rgba(255, 255, 255, 1);
+                height: 88px;
+                overflow: hidden;
+                box-shadow: 0 -5px 10px 0px rgb(12, 11, 54);
+            }
+            #header-logo{
+                font-size: 32px;
+                color:rgb(22,21,88);
+                height: 88px;
+                line-height: 88px;
+                width: 100px;
+                text-align: center;
+                margin-left: 50px;
+                cursor:default;
+            }
+            #header-inner{
+                height: 100%;
+                width: 100%;
+                max-width: 1300px;
+                margin: auto;
+                display: flex;
+            }
+            #header-icons{
+                flex-grow: 1;
+            }
+            .header-icon{
+                font-size: 16px;
+                font-family: 微软雅黑;
+                font-weight: bold;
+                position: relative;
+                float: right;
+                margin-right: 42px;
+                line-height: 88px;
+                text-align: center;
+                color: #2a2a3a;
+                cursor: default;
+            }
+            .main-content{
+                position: relative;
+                width: 1300px;
+                max-width: 100%;
+                margin: 20px auto;
+                margin-bottom: 50px;
+            }
+            .main-content-inner{
+                width: calc(100% - 100px);
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body style="overflow-x: hidden;">
+        {% if username %}
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
+            {% if language_en %}
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
+            {% else %}
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="header">
+            <div id="header-inner">
+                <div id="header-logo">
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
+                </div>
+                <div id="header-icons">
+                    {% if language_en %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=ch">CHINESE</a></div>
+                    {% else %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/changeLang?to=en">ENGLISH</a></div>
+                    {% endif %}
+                    {% if not username %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
+                    {% endif %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    {% for cat in cats %}
+                    <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
+                    {% endfor %}
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/home">{%if language_en%}Home{%else%}首页{%endif%}</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content" style="margin-top: 0;">
+            <div class="main-content-inner">
+                <div class="list-wrapper">
+                    <div style="height: 375px;">
+                        <img src="{{cat_img}}" style="width:100%; height: 100%;">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    right: 100%;
+                                    margin-right: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                        PA40 {%if language_en %}Forum{%else%}俱乐部{%endif%}
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    left: 100%;
+                                    margin-left: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div style="flex: 1; background-color: #fcfefa;">
+                        <div style="text-align: center;
+                        margin: 5px;
+                        font: normal 18px / 30px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                        padding: 10px 30px 10px 30px;">
+PA40 Forum is a platform consisting of 40 globally well-known multinational corporations (MNCs), aimed at improving investment climate in China through both formal and informal communication. The secretariat is operated by GM & Associates (GMA) in Beijing.
+<br/>
+For the past six years, the Forum has organized seminars on governmental policies and regulations, and assisted company members to have in-depth dialogues with key Chinese government agencies at central level. Our policy recommendations have received regular attention and were subsequently used in the formation of government directives from the central government.
+<br/>
+The Beijing-based secretariat GMA was founded in 2005 and serves as a strategic consultancy for enterprises on public policy and governmental affairs. Throughout our years of service to our clients at home and abroad, GMA has accumulated substantial and broad experience from both international and local perspectives. The primary goal of GMA is to promote economic integration between China and the world.
+<br/>
+                        </div>
+                    </div>
+                    <div style="flex: 1; background-color: #f7f7f7; padding: 15px 20px 15px 20px;">
+                        {% for main_article in main_articles %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=5">更多&gt;</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    right: 100%;
+                                    margin-right: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                        {%if language_en %}Groups{%else%}行业小组{%endif%}
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    left: 100%;
+                                    margin-left: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                    </div>
+                </div>
+
+                <div style="display: flex;">
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">医药</div>
+                        
+                        {% for main_article in main_articles2 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=6">更多&gt;</a>
+                        </div>
+                    </div>
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">金融</div>
+                    
+                        {% for main_article in main_articles3 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=7">更多&gt;</a>
+                        </div>
+                    </div>
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">科技</div>
+                    
+                        {% for main_article in main_articles4 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=8">更多&gt;</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    right: 100%;
+                                    margin-right: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                        {%if language_en %}Comments{%else%}组员评语{%endif%}
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    left: 100%;
+                                    margin-left: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    {% for i in pa40_comments %}
+                    <div style="flex: 1; margin: 10px; padding: 15px; background-color: #f7f7f7; border-radius: 15px;">
+                        <div style="font: normal normal normal 20px / 30px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;">{{i.title}}</div>
+                        <div style="font: normal 13px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: normal;
+                                    color: #8d8d8d;">评论 · 2019-01-04 20:55:08</div>
+                        <div style="font-size: 14px;
+                                    line-height: 25px;
+                                    padding-top: 5px;">{{i.content}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    right: 100%;
+                                    margin-right: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                        {%if language_en %}Your comment{%else%}留言{%endif%}
+                        <div style="border-color: rgba(51,51,51,0.12);
+                                    border-top-width: 1px;
+                                    border-top-style: dashed;
+                                    color: #b4b5bb;
+                                    left: 100%;
+                                    margin-left: 1em;
+                                    position: absolute;
+                                    display: block;
+                                    top: 49.99%;
+                                    width: 2000px;
+                                    content: '';"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <form action="/pa40" method="POST">
+                    <textarea name="content" rows="4" style="width: 66%; height: 200px; border: 1px solid #ccc; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);font-size: 20px;"></textarea>
+                    <br/><input type="submit" value="提交" style="font-size: 20px;">
+                </form>
+            </div>
+        </div>
+        <style>
+            .footer{
+                position: relative;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                background: #1a1c20 none repeat center top;
+                color: #85868c;
+            }
+            .footer-inner{
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 5px 50px 0 50px;
+                text-align: center;
+            }
+        </style>
+        <div class="footer">
+            <div class="footer-inner">
+            京ICP备10010489号-1 <br/> Copyright © 2012 GM &amp; Associates
+            </div>
+        </div>
+        <script type="text/javascript" src="/static/jquery.js"></script>
+        <script>
+
+        </script>
+    </body>
+</html>

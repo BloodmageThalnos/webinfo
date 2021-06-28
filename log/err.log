@@ -1,0 +1,619 @@
+[2021-02-09 11:16:19,471][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-02-09 11:21:27,140][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-02-17 19:02:37,857][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-02-19 13:56:39,339][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-02-19 16:28:03,710][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-02-22 01:40:22,903][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-02-22 08:10:12,063][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-02-24 02:54:18,876][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-03 01:31:52,400][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-04 10:07:18,103][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-04 12:18:07,789][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-05 01:38:47,780][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-05 08:45:25,488][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-03-09 00:59:38,189][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-09 23:55:48,160][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-03-09 23:55:48,458][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-03-09 23:56:01,606][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-03-11 04:48:48,580][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-14 14:39:42,362][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-03-19 01:28:33,771][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-19 05:30:24,463][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-24 05:32:45,697][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-03-29 01:49:21,605][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-02 01:19:42,928][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-02 01:19:44,561][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-06 03:16:51,535][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-06 03:16:56,145][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-07 00:29:11,146][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-14 01:45:03,987][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-16 05:11:58,528][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-18 01:52:47,221][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-04-18 01:53:04,174][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-04-18 01:54:49,242][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /list-article]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./article/views.py", line 211, in showArticleList
+    category = Category.objects.get(id=forum_id)
+  File "/usr/local/lib64/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.8/site-packages/django/db/models/query.py", line 429, in get
+    raise self.model.DoesNotExist(
+main.models.Category.DoesNotExist: Category matching query does not exist.
+[2021-04-18 20:01:21,970][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-04-20 03:38:29,248][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-22 06:27:05,866][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-04-30 08:29:53,227][uWSGIWorker1Core0:139687865433984][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-08 06:18:23,412][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /article-16/]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./article/views.py", line 29, in showArticlePage
+    if not canReadArticle(request.user, article):
+  File "./article/views.py", line 313, in canReadArticle
+    return userm.vip==1 or userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC'))
+TypeError: '>' not supported between instances of 'NoneType' and 'datetime.datetime'
+[2021-05-08 06:18:30,229][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /article-17/]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./article/views.py", line 29, in showArticlePage
+    if not canReadArticle(request.user, article):
+  File "./article/views.py", line 313, in canReadArticle
+    return userm.vip==1 or userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC'))
+TypeError: '>' not supported between instances of 'NoneType' and 'datetime.datetime'
+[2021-05-08 06:18:41,753][uWSGIWorker1Core0:139687865433984][task_id:django.request][log.py:224][ERROR][Internal Server Error: /article-17/]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./article/views.py", line 29, in showArticlePage
+    if not canReadArticle(request.user, article):
+  File "./article/views.py", line 313, in canReadArticle
+    return userm.vip==1 or userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC'))
+TypeError: '>' not supported between instances of 'NoneType' and 'datetime.datetime'
+[2021-05-13 03:36:48,130][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 06:33:42,051][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 15:43:23,965][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 15:43:57,085][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 15:44:19,510][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 15:44:22,556][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /changeLang]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.changeLanga didn't return an HttpResponse object. It returned None instead.
+[2021-05-18 16:13:30,409][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-18 16:13:32,760][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-18 16:13:47,315][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-20 01:25:04,008][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-20 02:52:08,889][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-20 02:59:06,481][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-21 00:47:10,772][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-24 01:39:15,101][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-24 01:39:18,312][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-24 12:46:53,158][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-24 12:46:59,522][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-05-25 08:17:33,534][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-26 00:41:04,950][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-26 00:41:08,892][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-26 23:49:35,720][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][User matching query does not exist.]
+[2021-05-28 09:17:53,919][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-05-31 00:56:34,144][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-03 07:47:49,760][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-03 16:02:13,464][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /list-article]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./article/views.py", line 211, in showArticleList
+    category = Category.objects.get(id=forum_id)
+  File "/usr/local/lib64/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.8/site-packages/django/db/models/query.py", line 429, in get
+    raise self.model.DoesNotExist(
+main.models.Category.DoesNotExist: Category matching query does not exist.
+[2021-06-04 08:55:30,503][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-10 11:06:35,864][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-11 01:23:17,142][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-11 04:18:52,626][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-11 07:32:45,038][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-11 07:34:24,868][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-15 05:38:43,888][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-16 02:00:02,020][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-17 03:48:48,789][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-17 06:12:45,696][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-21 01:21:52,899][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-22 03:23:04,354][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-25 07:02:49,053][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-28 08:06:51,221][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-06-28 08:06:51,295][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-06-28 08:06:58,184][uWSGIWorker1Core0:140560788721536][task_id:article.views][views.py:204][ERROR][int() argument must be a string, a bytes-like object or a number, not 'NoneType']
+[2021-06-28 08:07:36,925][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-28 08:07:36,938][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-28 08:07:46,887][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.
+[2021-06-28 08:07:47,480][uWSGIWorker1Core0:140560788721536][task_id:django.request][log.py:224][ERROR][Internal Server Error: /dologin]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/usr/local/lib64/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view main.views.doLogin didn't return an HttpResponse object. It returned None instead.

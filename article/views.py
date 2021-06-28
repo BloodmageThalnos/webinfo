@@ -10,9 +10,11 @@ from django.contrib.auth.models import User
 from django.core.cache import cache
 
 from main.models import ArticleModel, Category, ArticleVisitModel, ArticleCommentModel, UsersModel, SettingsModel, PA40CommentModel
-from main.views import sendAlertToWechat
+from main.views import sendAlertToWechat, getGlobalConfig, is_pa40
 
 logger = logging.getLogger(__name__)
+
+
 def showArticlePage(request, id_):
     logger.info(f'Accessed {request.get_full_path()} with showArticlePage')
 
@@ -43,7 +45,7 @@ def showArticlePage(request, id_):
     categories = Category.objects.all()
     cats = []
     for _ in categories:
-        if _.name != '俱乐部' and '小组' not in _.name:
+        if not is_pa40(_.id):
             cats.append({
                 'id': _.id,
                 'name': _.name,
@@ -94,6 +96,7 @@ def showArticlePage(request, id_):
     filename = article.file
     if filename:
         has_fujian = True
+        filename = filename[3:] # 前三个字符为防止重复用的随机数字，跳过
     else:
         has_fujian = False
 
@@ -103,7 +106,7 @@ def showArticlePage(request, id_):
         'author': article.author.username,
         'title': article.title,
         'excerpt': article.excerpt,
-        'category': article.category.name,
+        'category': article.category.name_en if lang=='en' else article.category.name,
         'cat_img': '/s/'+article.category.coverimg,
         'cat_name_white': bool(article.category.title_white),
         'content': article.content,
@@ -126,6 +129,7 @@ def showArticlePage(request, id_):
         'author_list': author_list,
         'language_en': lang=='en',
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def showWriteArticlePage(request):
@@ -140,6 +144,7 @@ def showWriteArticlePage(request):
     context = {
         'cat_id': forum_id,
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def showEditArticlePage(request):
@@ -163,6 +168,7 @@ def showEditArticlePage(request):
         'title': article.title,
         'cimg': article.cover_img,
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 
@@ -184,7 +190,8 @@ def showArticleList(request):
         else:
             month = request.POST.get('month', '')
             if month:
-                month_start =datetime.datetime.fromisoformat(month+'-01')
+                monthday = (month+'-01') if '-' in month else (month+'01')
+                month_start =datetime.datetime.fromisoformat(monthday)
                 month_end = datetime.datetime(month_start.year + (month_start.month==12), month_start.month%12+1, 1, 0, 0, 0)
                 time_str = str(month_start.year)+'年'+str(month_start.month)+'月'
             else:
@@ -259,7 +266,7 @@ def showArticleList(request):
     categories = Category.objects.all()
     cats = []
     for _ in categories:
-        if _.name != '俱乐部' and '小组' not in _.name:
+        if not is_pa40(_.id):
             cats.append({
                 'id': _.id,
                 'name': _.name,
@@ -293,6 +300,7 @@ def showArticleList(request):
         'time_str': time_str,
         'language_en': lang=='en',
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def canReadArticle(user, article):
@@ -303,7 +311,7 @@ def canReadArticle(user, article):
         except:
             sendAlertToWechat('发现UsersModel与Users数据库不匹配：id=%d, username=%s'%(user.id, user.username))
             return True
-        return userm.vip==1 or userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC'))
+        return userm.vip==1 or (userm.trial_date and userm.trial_date > datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC')))
     
     canread = article.category.extra[1]=='1'
     return canread
@@ -328,7 +336,7 @@ def createArticle(request):
             resp["alert"]="文章所在分类已被删除或id错误: "+str(e)
             break
         if not author.is_authenticated or not canWriteArticle(author.id, category_id):
-            resp["alert"]="用户权限不足。"
+            resp["alert"]="用户权限不足。\n（为防止编辑的文章丢失，请在别的窗口中登录后再试）"
             break
         title = request.POST.get('t')
         if not title:
@@ -461,7 +469,7 @@ def getAuthorList(forum_id):
         s = {}
         articles = ArticleModel.objects.all()
         for article in articles:
-            if article.category.id == forum_id:
+            if article.type == 1 and article.category.id == forum_id:
                 aid = article.author.id
                 if s.get(aid, 0):
                     s[aid] += 1
@@ -480,13 +488,17 @@ def pa40Page(request):
         pa40commentModel = PA40CommentModel(username=request.user.username or '游客', content=content)
         pa40commentModel.save()
 
-    pa40cat = Category.objects.get(name="俱乐部")
+    try:
+        pa40cat = Category.objects.get(id=5)
+    except:
+        pa40cat = Category(id=5,name='PA40俱乐部',name_en='PA40 Forum',coverimg='cbg-73734.34347963333.jpg')
+        pa40cat.save()
     cat_img = pa40cat.coverimg
 
     categories = Category.objects.all()
     cats = []
     for _ in categories:
-        if _.name != '俱乐部' and '小组' not in _.name:
+        if not is_pa40(_.id):
             cats.append({
                 'id': _.id,
                 'name': _.name,
@@ -497,12 +509,14 @@ def pa40Page(request):
     import re
     pattern = re.compile(r'<.*?>')
 
+    show_word_num = 40
+
     main_article_models = ArticleModel.objects.filter(category=5)
     main_articles = []
     for article in main_article_models[::-1]:
         main_articles.append({
             'title': article.title,
-            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
             'url': '/article-'+str(article.id),
         })
     main_articles = main_articles[:3]
@@ -512,35 +526,85 @@ def pa40Page(request):
     for article in main_article_models2[::-1]:
         main_articles2.append({
             'title': article.title,
-            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
             'url': '/article-'+str(article.id),
         })
-    main_articles2 = main_articles2[:2]
+    main_articles2 = main_articles2[:3]
+    title2 = Category.objects.get(id=6).name
+    title2_en = Category.objects.get(id=6).name_en
 
     main_article_models3 = ArticleModel.objects.filter(category=7)
     main_articles3 = []
     for article in main_article_models3[::-1]:
         main_articles3.append({
             'title': article.title,
-            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
             'url': '/article-'+str(article.id),
         })
-    main_articles3 = main_articles3[:2]
+    main_articles3 = main_articles3[:3]
+    title3 = Category.objects.get(id=7).name
+    title3_en = Category.objects.get(id=7).name_en
     
     main_article_models4 = ArticleModel.objects.filter(category=8)
     main_articles4 = []
     for article in main_article_models4[::-1]:
         main_articles4.append({
             'title': article.title,
-            'excerpt': pattern.sub('', article.content)[:70]+"...",
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
             'url': '/article-'+str(article.id),
         })
-    main_articles4 = main_articles4[:2]
+    main_articles4 = main_articles4[:3]
+    title4 = Category.objects.get(id=8).name
+    title4_en = Category.objects.get(id=8).name_en
 
-    
+    # 保持三个小组中内容数量相同，少于3条时取min显示
+    min_main_article_count = min(len(main_articles2), len(main_articles3), len(main_articles4))
+    main_articles2 = main_articles2[:min_main_article_count]
+    main_articles3 = main_articles3[:min_main_article_count]
+    main_articles4 = main_articles4[:min_main_article_count]
+
+    # 扩展的三个小组
+    main_article_models5 = ArticleModel.objects.filter(category=11)
+    main_articles5 = []
+    for article in main_article_models5[::-1]:
+        main_articles5.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles5 = main_articles5[:3]
+    title5 = Category.objects.get(id=11).name
+    title5_en = Category.objects.get(id=11).name_en
+
+    main_article_models6 = ArticleModel.objects.filter(category=12)
+    main_articles6 = []
+    for article in main_article_models6[::-1]:
+        main_articles6.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles6 = main_articles6[:3]
+    title6 = Category.objects.get(id=12).name
+    title6_en = Category.objects.get(id=12).name_en
+
+    main_article_models7 = ArticleModel.objects.filter(category=13)
+    main_articles7 = []
+    for article in main_article_models7[::-1]:
+        main_articles7.append({
+            'title': article.title,
+            'excerpt': pattern.sub('', article.content)[:show_word_num]+"...",
+            'url': '/article-'+str(article.id),
+        })
+    main_articles7 = main_articles7[:3]
+    title7 = Category.objects.get(id=13).name
+    title7_en = Category.objects.get(id=13).name_en
+
     pa40_records = SettingsModel.objects.filter(key='pa40_comment')
     pa40_comments = []
     for i in pa40_records:
+        if len(i.sValue2)<2 or len(i.sValue)<2: # 留空则不显示
+            continue
         pa40_comments.append({
             'id': i.id,
             'title': i.sValue,
@@ -562,6 +626,23 @@ def pa40Page(request):
         'main_articles2': main_articles2,
         'main_articles3': main_articles3,
         'main_articles4': main_articles4,
+        'main_articles5': main_articles5,
+        'main_articles6': main_articles6,
+        'main_articles7': main_articles7,
+        'title2': title2,
+        'title3': title3,
+        'title4': title4,
+        'title5': title5,
+        'title6': title6,
+        'title7': title7,
+        'title2_en': title2_en,
+        'title3_en': title3_en,
+        'title4_en': title4_en,
+        'title5_en': title5_en,
+        'title6_en': title6_en,
+        'title7_en': title7_en,
         'pa40_comments': pa40_comments,
+        'pa40_comment_num': len(pa40_comments),
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))

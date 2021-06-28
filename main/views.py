@@ -14,8 +14,18 @@ import requests
 
 logger = logging.getLogger(__name__)
 
+def is_pa40(cat_id):
+    return 5<=cat_id<=13
+
+def getGlobalConfig(context):
+    pa40_tag = Category.objects.get(id=5).name
+    pa40_tag_en = Category.objects.get(id=5).name_en
+    context['config_pa40_tag'] = pa40_tag
+    context['config_pa40_tag_en'] = pa40_tag_en
+
 def showMain(request):
-    return HttpResponse('<h1>抱歉，页面正在维护中，请稍后再试。</h1>')
+    return showHome(request)
+    #return HttpResponse('<h1>抱歉，页面正在维护中，请稍后再试。</h1>')
 
 def showHome(request):
     logger.info(f'Accessed {request.get_full_path()} with showHome')
@@ -23,7 +33,7 @@ def showHome(request):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        if category.name != '俱乐部' and '小组' not in category.name:
+        if not is_pa40(category.id):
             cats.append({
                 'id': category.id,
                 'name': category.name,
@@ -33,13 +43,22 @@ def showHome(request):
 
     try:
         import random
+        from django.core.cache import cache
         main_text = random.choice(SettingsModel.objects.filter(key="main-text")).sValue
+        while main_text == cache.get('main-text'):
+            main_text = random.choice(SettingsModel.objects.filter(key="main-text")).sValue
         title, subtitle, link_text, link_src = main_text.split('嗄')
+        cache.set('main-text', main_text)
 
         bg_pics = []
         for i in SettingsModel.objects.filter(key="main-bg"):
             bg_pics.append(i.sValue)
-        bg_pics = str(bg_pics)[1:-1]
+        bg_pic_id = random.randint(0, len(bg_pics)-1)
+        try_times = 100
+        while try_times and bg_pic_id == cache.get('bg_pic_id'):
+            bg_pic_id = random.randint(0, len(bg_pics)-1)
+        cache.set('bg_pic_id', bg_pic_id)
+        bg_pics = '"' + bg_pics[bg_pic_id] + '"'
     except Exception as e:
         logger.error(e)
         main_text = "提供全球经济与政治洞见"
@@ -61,6 +80,7 @@ def showHome(request):
         'bgpics': bg_pics,
         'language_en': lang=='en',
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def showInfo(request):
@@ -69,7 +89,7 @@ def showInfo(request):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        if category.name != '俱乐部' and '小组' not in category.name:
+        if not is_pa40(category.id):
             cats.append({
                 'id': category.id,
                 'name': category.name,
@@ -88,6 +108,7 @@ def showInfo(request):
         'username': request.user.username,
         'language_en': lang=='en',
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
     
 def showLogin(request, alert=""):
@@ -99,7 +120,7 @@ def showLogin(request, alert=""):
     categories = Category.objects.all()
     cats = []
     for category in categories:
-        if category.name != '俱乐部' and '小组' not in category.name:
+        if not is_pa40(category.id):
             cats.append({
                 'id': category.id,
                 'name': category.name,
@@ -119,6 +140,7 @@ def showLogin(request, alert=""):
         'alert': alert,
         'language_en': lang=='en',
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def showLoginAdmin(request, alert=""):
@@ -129,13 +151,14 @@ def showLoginAdmin(request, alert=""):
     context = {
         'alert': alert,
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def changeLanga(request):
     lang = request.GET.get('to')
     if lang!='ch' and lang!='en':return None
     request.session['language']=lang
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/home'))
 
 def doLogin(request):
     logger.info(f'Accessed {request.get_full_path()} with doLogin')
@@ -156,6 +179,33 @@ def doLogin(request):
         return HttpResponseRedirect('/home')
     else:
         return showLogin(request, "用户名或密码错误，请重试。")
+    
+def showChangePassword(request):
+    template = loader.get_template('login_changePassword.html')
+
+    categories = Category.objects.all()
+    cats = []
+    for category in categories:
+        if not is_pa40(category.id):
+            cats.append({
+                'id': category.id,
+                'name': category.name,
+                'name_en': category.name_en,
+            })
+    cats = cats[::-1]
+    
+    lang = request.session.get('language', '')
+    if not lang:
+        request.session['language'] = 'ch'
+        lang = 'ch'
+
+    context = {
+        'cats': cats,
+        'language_en': lang=='en',
+    }
+    getGlobalConfig(context)
+    return HttpResponse(template.render(context, request))
+
 
 def doRegister(request, action):
     if action=='0':
@@ -164,7 +214,7 @@ def doRegister(request, action):
         categories = Category.objects.all()
         cats = []
         for category in categories:
-            if category.name != '俱乐部' and '小组' not in category.name:
+            if not is_pa40(category.id):
                 cats.append({
                     'id': category.id,
                     'name': category.name,
@@ -187,7 +237,7 @@ def doRegister(request, action):
         email = request.GET.get('e')
         if email:
             import random
-            captcha = request.session['captcha'] = random.choice(['8888', '8688', '8868', '1234', '2345', '3456', '4567', '5678', '6789', '7890'])
+            captcha = request.session['captcha'] = random.choice(['6666', '8888', '8688', '8868', '1234', '2345', '3456', '4567', '5678', '6789', '7890', '2333'])
             sendEmailCaptcha(captcha, email, request.session['language'])
             return HttpResponse('{"success": true}')
     
@@ -209,8 +259,31 @@ def doRegister(request, action):
         user.save()
         UsersModel.objects.create(username=username, password=password)
         return JsonResponse({'success': True})
+    
+    if action=='3':
+        nowp = request.GET.get('nowp')
+        newp = request.GET.get('newp')
+        user = request.user
+        if not user.is_authenticated:
+            return JsonResponse({'success': False, 'msg': '请登录后再修改密码！'})
+        if not nowp or not newp:
+            return JsonResponse({'success': False})
+        if len(newp)<6:
+            return JsonResponse({'success': False, 'msg': '密码过于简单。'})
+        try:
+            um = UsersModel.objects.get(username=user.username)
+            if nowp != um.password:
+                return JsonResponse({'success': False, 'msg': '原密码错误！'})
+            um.password = newp
+            user.set_password(newp)
+            um.save()
+            user.save()
+        except Exception as e:
+            sendAlertToWechat('/reg3修改密码接口出现异常：'+str(e))
+            logger.error(str(e))
+            return JsonResponse({'success': False, 'msg': '未知错误，请联系管理员。'})
 
-    return HttpResponse('')
+    return HttpResponse({'success': True})
 
 def doLogout(request):
     logger.info(f'Accessed {request.get_full_path()} with doLogout')
@@ -311,7 +384,7 @@ def showAdmin(request):
         pa40_commentall.append({
             'id': i.id,
             'username': i.username,
-            'content': i.content
+            'content': i.content,
         })
     
     categories = Category.objects.all()
@@ -345,6 +418,7 @@ def showAdmin(request):
         'pa40_comments': pa40_comments,
         'pa40_commentall': pa40_commentall,
     }
+    getGlobalConfig(context)
     return HttpResponse(template.render(context, request))
 
 def doAdminAction(request):
@@ -431,14 +505,14 @@ def doAdminAction(request):
             pid = int(request.GET.get('pid'))
             txt = request.GET.get('txt')
             category = Category.objects.get(id=pid)
-            if txt and 1<=len(txt)<=10:
+            if txt and 1<=len(txt)<=20:
                 category.name = txt
                 category.save()
         elif actionid=='rename_en_ban':
             pid = int(request.GET.get('pid'))
             txt = request.GET.get('txt')
             category = Category.objects.get(id=pid)
-            if txt and 1<=len(txt)<=18:
+            if txt and 1<=len(txt)<=36:
                 category.name_en = txt
                 category.save()
         elif actionid=='add_ban':
@@ -552,7 +626,7 @@ def showImages(request, path):
     return HttpResponse(None)
 
 def showIcon(request):
-    with open('./images/favicon.ico', mode="rb") as f:
+    with open('./favicon.ico', mode="rb") as f:
         icon = f.read()
     return HttpResponse(icon, content_type='image/x-icon')
 

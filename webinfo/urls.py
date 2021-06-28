@@ -16,6 +16,7 @@ urlpatterns = [
     path('logout_', mainViews.doLogout),
     path('dologin', mainViews.doLogin),
     re_path(r'^doreg(?P<action>[0-9]+)/?$', mainViews.doRegister),
+    path('cp_', mainViews.showChangePassword),
     path('login_admin', mainViews.showLoginAdmin),
     path('dologin_admin', mainViews.doLoginAdmin),
     path('admin', mainViews.showAdmin),

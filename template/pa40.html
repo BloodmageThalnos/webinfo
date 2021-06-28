@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=0.4,maximum-scale=0.8">
-        <title>{%if language_en%}{{cat_name_en}} | GM Associates{%else%}{{cat_name}} | 光华茂源{%endif%}</title>
+        <title>{%if language_en%}PA40 Forum | GM Associates{%else%}跨国企业公共事务俱乐部 | 光华茂源{%endif%}</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <style>
             body{
@@ -120,18 +120,18 @@
     </head>
     <body style="overflow-x: hidden;">
         {% if username %}
-        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
             {% if language_en %}
-            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
             {% else %}
-            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
             {% endif %}
         </div>
         {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -143,7 +143,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -154,9 +154,7 @@
         <div class="main-content" style="margin-top: 0;">
             <div class="main-content-inner">
                 <div class="list-wrapper">
-                    <div style="height: 375px;">
-                        <img src="{{cat_img}}" style="width:100%; height: 100%;">
-                    </div>
+                    <img src="{{cat_img}}" style="width:100%;">
                 </div>
                 <div style="text-align: center;">
                     <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
@@ -171,7 +169,7 @@
                                     top: 49.99%;
                                     width: 2000px;
                                     content: '';"></div>
-                        PA40 {%if language_en %}Forum{%else%}俱乐部{%endif%}
+                        {%if language_en %}PA40 Forum{%else%}跨国企业公共事务俱乐部{%endif%}
                         <div style="border-color: rgba(51,51,51,0.12);
                                     border-top-width: 1px;
                                     border-top-style: dashed;
@@ -186,40 +184,25 @@
                     </div>
                 </div>
                 <div style="display: flex;">
-                    <div style="flex: 1; background-color: #fcfefa;">
+                    <div style="flex: 2; background-color: #fcfefa;">
                         <div style="text-align: center;
-                        margin: 5px;
-                        font: normal 15px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
-                        padding: 10px;">
-PA40 俱乐部成立于1790年。<br/>
-我们分为三个兴趣小组，分别探讨金融、科技、医药的相关话题。<br/>
-<br/>
-在一个困惑的时代，有这么一群人，坚持去追求一些共同的东西，是非常难得的。<br/>
-这个项目旨在帮助那些想通过交易为生的朋友们避免交易路上的陷阱，掌握经过验证的交易方法。<br/>
-如今，项目取得的进展远远超出当初预期。<br/>
-除了交易上的救赎，我们还需要人生的救赎。而这两种救赎中，我们都需要他人的帮助，而这个帮助，就是我们的初心，是助人，更是助己。<br/>
-                        </div>
-                    </div>
-                    <div style="flex: 1; background-color: #f7f7f7; padding: 15px 20px 15px 20px;">
-                        {% for main_article in main_articles %}
-                        <div style="color: #333333;
-                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
-                                    font-weight: bold;
-                                    margin-top: 5px;
-                                    cursor: pointer;"
-                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
-                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
-                                    color: #3e3e3e;
-                                    word-spacing: normal;
-                                    margin-top: 5px;">
-                            {{ main_article.excerpt }}
-                        </div>
-                        {% endfor %}
-                        <div style="text-align: right;">
-                            <a href="/list-article?fid=5">更多&gt;</a>
+                        margin: 5px 20px 5px 20px;
+                        font: normal 18px / 30px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                        padding: 10px 30px 10px 30px;">
+                        {% if language_en %}
+The Multinational Corporation’s Public Affairs 40 Forum, known as the “PA40 Forum”,<br>
+was first established with 17 multinational enterprise (MNC) founding members in Beijing in December of 2014,<br>
+ as a communication platform for discussion on China’s investment policies and business environment.<br/><br/>
+The PA40 Forum sets 40 seats for corporations, with GM & Associates functioning as its secretariat. 
+{%else%}
+跨国企业公共事务俱乐部（英文名称PA40 Forum），是著名全球企业的联谊平台，<br/>
+2014年12月由17家创始成员在北京成立，目标是就中国政策与投资环境进行非正式交流。<br/><br/>
+俱乐部设40席企业成员，秘书处设在北京光华茂源管理咨询中心。
+{%endif%}
                         </div>
                     </div>
                 </div>
+
                 
                 <div style="text-align: center;">
                     <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
@@ -234,7 +217,7 @@ PA40 俱乐部成立于1790年。<br/>
                                     top: 49.99%;
                                     width: 2000px;
                                     content: '';"></div>
-                        {%if language_en %}Groups{%else%}兴趣小组{%endif%}
+                        {%if language_en %}Groups{%else%}行业小组{%endif%}
                         <div style="border-color: rgba(51,51,51,0.12);
                                     border-top-width: 1px;
                                     border-top-style: dashed;
@@ -251,7 +234,7 @@ PA40 俱乐部成立于1790年。<br/>
 
                 <div style="display: flex;">
                     <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
-                        <div style="font-size: 23px; text-align: center; line-height: 48px;">医药</div>
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title2_en}}{%else%}{{title2}}{%endif%}</div>
                         
                         {% for main_article in main_articles2 %}
                         <div style="color: #333333;
@@ -269,11 +252,11 @@ PA40 俱乐部成立于1790年。<br/>
                         {% endfor %}
                     
                         <div style="text-align: right;">
-                            <a href="/list-article?fid=6">更多&gt;</a>
+                            <a href="/list-article?fid=6">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
                         </div>
                     </div>
                     <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
-                        <div style="font-size: 23px; text-align: center; line-height: 48px;">金融</div>
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title3_en}}{%else%}{{title3}}{%endif%}</div>
                     
                         {% for main_article in main_articles3 %}
                         <div style="color: #333333;
@@ -291,11 +274,11 @@ PA40 俱乐部成立于1790年。<br/>
                         {% endfor %}
                     
                         <div style="text-align: right;">
-                            <a href="/list-article?fid=7">更多&gt;</a>
+                            <a href="/list-article?fid=7">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
                         </div>
                     </div>
                     <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;">
-                        <div style="font-size: 23px; text-align: center; line-height: 48px;">科技</div>
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title4_en}}{%else%}{{title4}}{%endif%}</div>
                     
                         {% for main_article in main_articles4 %}
                         <div style="color: #333333;
@@ -313,10 +296,82 @@ PA40 俱乐部成立于1790年。<br/>
                         {% endfor %}
                     
                         <div style="text-align: right;">
-                            <a href="/list-article?fid=8">更多&gt;</a>
+                            <a href="/list-article?fid=8">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
                         </div>
                     </div>
                 </div>
+                <div style="display: {%if title5 == title6 and title6 == title7 %}none{%else%}flex{%endif%};" >
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;
+                        {% if title5 == "预留小组" %}visibility: hidden;{%endif%}">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title5_en}}{%else%}{{title5}}{%endif%}</div>
+                        
+                        {% for main_article in main_articles5 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=11">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
+                        </div>
+                    </div>
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;
+                        {% if title6 == "预留小组" %}visibility: hidden;{%endif%}">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title6_en}}{%else%}{{title6}}{%endif%}</div>
+                    
+                        {% for main_article in main_articles6 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=12">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
+                        </div>
+                    </div>
+                    <div style="background-color: #f7f7f7; margin: 10px; padding: 10px; flex: 1;
+                        {% if title7 == "预留小组" %}visibility: hidden;{%endif%}">
+                        <div style="font-size: 23px; text-align: center; line-height: 48px;">{%if language_en%}{{title7_en}}{%else%}{{title7}}{%endif%}</div>
+                    
+                        {% for main_article in main_articles7 %}
+                        <div style="color: #333333;
+                                    font: normal normal normal 18px / 29px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    cursor: pointer;"
+                            onclick="window.location.href='{{main_article.url}}';">{{ main_article.title }}</div>
+                        <div style="font: normal 14px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                    color: #3e3e3e;
+                                    word-spacing: normal;
+                                    margin-top: 5px;">
+                            {{ main_article.excerpt }}
+                        </div>
+                        {% endfor %}
+                    
+                        <div style="text-align: right;">
+                            <a href="/list-article?fid=13">{%if language_en%}More{%else%}更多{%endif%}&gt;</a>
+                        </div>
+                    </div>
+                </div>
+                
                 
                 <div style="text-align: center;">
                     <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
@@ -331,7 +386,7 @@ PA40 俱乐部成立于1790年。<br/>
                                     top: 49.99%;
                                     width: 2000px;
                                     content: '';"></div>
-                        {%if language_en %}Comments{%else%}组员评语{%endif%}
+                        {%if language_en %}Comments{%else%}我们客户及成员的评价{%endif%}
                         <div style="border-color: rgba(51,51,51,0.12);
                                     border-top-width: 1px;
                                     border-top-style: dashed;
@@ -345,20 +400,60 @@ PA40 俱乐部成立于1790年。<br/>
                                     content: '';"></div>
                     </div>
                 </div>
-                <div style="display: flex;">
-                    {% for i in pa40_comments %}
-                    <div style="flex: 1; margin: 10px; padding: 15px; background-color: #f7f7f7; border-radius: 15px;">
-                        <div style="font: normal normal normal 20px / 30px Roboto, Helvetica, Arial, Verdana, sans-serif;
-                                    font-weight: bold;">{{i.title}}</div>
-                        <div style="font: normal 13px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
-                                    font-weight: normal;
-                                    color: #8d8d8d;">评论 · 2019-01-04 20:55:08</div>
-                        <div style="font-size: 14px;
-                                    line-height: 25px;
-                                    padding-top: 5px;">{{i.content}}</div>
+                <div style="position: relative;">
+                    <div style="display: inline-block;height:212px;width: 36px;">
+                        <div style="margin-top: 100px;" onclick="switchLeft();">
+                            <svg width="36px" height="36px" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="#3b8ced" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+                            </svg>
+                        </div>
                     </div>
-                    {% endfor %}
+                    <div style="display: inline-block; overflow: hidden; vertical-align: top; margin-top: 0;width: calc(100% - 100px);">
+                        <div style="width: 1000%;position: relative;">
+                            <div id="magicDIv" style="width: 100%; transition: all 1s;">
+                                {% for i in pa40_comments %}
+                                <div style="display: inline-block; width: 3.333%; height: 188px; vertical-align: top; ">
+                                    <div style="margin: 10px; padding: 15px; background-color: #f7f7f7;border-radius: 15px; height: 100%;">
+                                        <div style="font: normal normal normal 20px / 30px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                                    font-weight: bold;">{{i.title}}</div>
+                                        <div style="font: normal 13px / 27px Roboto, Helvetica, Arial, Verdana, sans-serif;
+                                                    font-weight: normal;
+                                                    color: #8d8d8d;">评论 · {{i.datetime}}</div>
+                                        <div style="font-size: 14px;
+                                                    line-height: 25px;
+                                                    padding-top: 5px;">{{i.content}}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;height:212px;width: 36px;">
+                        <div style="margin-top: 100px;" onclick="switchRight();">
+                        <svg width="36px" height="36px" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="#3b8ced" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                        </svg>
+                        </div>
+                    </div>
                 </div>
+                <script>
+                    let num_comment = {{pa40_comment_num}};
+                    let now_id = 0;
+                    function switchLeft(){
+                        if(now_id > 0){
+                            now_id --;
+                            left_percent = -10.0*now_id/3.0;
+                            $('#magicDIv').css('margin-left', left_percent+'%');
+                        }
+                    }
+                    function switchRight(){
+                        if(now_id + 3 < num_comment){
+                            now_id ++;
+                            left_percent = -10.0*now_id/3.0;
+                            $('#magicDIv').css('margin-left', left_percent+'%');
+                        }
+                    }
+                </script>
                 
                 <div style="text-align: center;">
                     <div style="position:relative; top: 50%;  margin: 32px 0 32px 0;display: inline-block;color: #1e73be; font: normal bold 24px / 34px Roboto, Helvetica, Arial, Verdana, sans-serif;">
@@ -397,13 +492,26 @@ PA40 俱乐部成立于1790年。<br/>
         </div>
         <style>
             .footer{
+                position: relative;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                background: #1a1c20 none repeat center top;
+                color: #85868c;
+            }
+            .footer-inner{
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 5px 50px 0 50px;
                 text-align: center;
-                font-size: 12px;
-                padding: 20px;
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+            京ICP备10010489号-1 <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>

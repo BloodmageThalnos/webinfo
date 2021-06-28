@@ -10,7 +10,7 @@ class ArticleModel(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryModel(admin.ModelAdmin):
     list_display=('id', 'name', 'desc', 'extra', 'coverimg')
-    list_editable=('desc', 'extra', 'coverimg')
+    list_editable=('name', 'desc', 'extra', 'coverimg')
 
 @admin.register(SettingsModel)
 class SettingsModelAdmin(admin.ModelAdmin):

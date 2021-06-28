@@ -1,10 +1,42 @@
 {% if no_access %}
-<script>
-    alert("请登录后再访问该页面！");
-</script>
-<meta http-equiv="refresh" content="2;url=/login_">
-请登录后再访问该页面。<br/>
-若页面未自动跳转，请点击<a href="/login_">这里</a>跳转到登录。
+    {% if not user.is_authenticated %}
+    <script>
+        alert("请登录后再访问该页面！");
+    </script>
+    <meta http-equiv="refresh" content="2;url=/login_">
+    请登录后再访问该页面。<br/>
+    若页面未自动跳转，请点击<a href="/login_">这里</a>跳转到登录。
+    {% else %}
+    <html>
+    <head>
+        <style type="text/css">
+            body{
+                width: 100%;
+                background: #444444;
+            }
+            .notice{
+                width: 100%;
+                position: fixed;
+                top: 200px;
+                text-align: center;
+                font-weight: 600;
+                font-size: 24px;
+                color: #fff;
+            }
+            .notice a{
+                color: #5fb878;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="notice">
+        <p>本栏目仅对会员开放</p>
+        <p>请联系gma@gm-associates.cn申请加入会员</p>
+        <p>若您已是会员，请用会员邮箱注册并登陆。</p>
+    </body>
+    </html>
+    {% endif %}
 {% else %}
 <html>
     <head>
@@ -14,10 +46,6 @@
         <style>
             body{
                 margin: 0;
-            }
-            a {
-                color: black;
-                text-decoration: none;
             }
             a:link {
                 color: black;
@@ -160,7 +188,6 @@
                 padding-right: 55px;
                 font-size: 16.5px;
                 line-height: 27px;
-                text-indent:2em;
                 font-family: "Microsoft Yahei";
             }
             #article-content p{
@@ -221,7 +248,7 @@
             }
             .article-subtitle{
                 padding: 10px 0 10px 80px;
-                font-size: 22px;
+                font-size: 20px;
                 color: #2c3e50;
             }
             hr{
@@ -235,15 +262,16 @@
             }
             .comment-username{
                 font-weight: 600;
-                font-size: 17px;
+                font-size: 14px;
             }
             .comment-content{
                 padding-top: 3px;
-                font-size: 17px;
+                font-size: 14px;
                 line-height: 33px;
                 margin-left: 10px;
             }
             .comment-pager{
+                color: grey;
                 text-align: right;
                 margin-right: 60px;
             }
@@ -256,7 +284,7 @@
                 line-height: 60px;
                 margin: 10px 10px 10px 10px;
                 background-color: #fafbfc;
-                font-size: 20px;
+                font-size: 18px;
                 display: block;
                 text-align: center;
                 border-radius: 10px;
@@ -275,15 +303,21 @@
                 padding-top: 22px;
             }
             #nav-search{
-                border: 1.5px solid rgb(1, 0, 48);
+                border: 1.5px solid rgb(197, 195, 221);
                 border-radius: 7px;
                 height: 40px;
                 width: 80%;
                 margin: 0 auto;
                 line-height: 40px;
-                font-size: 17px;
+                font-size: 14px;
                 padding-left: 15px;
-                color: grey;
+                color: rgb(167, 167, 167);
+            }
+            #nav-search-button{
+                position: absolute;
+                right: calc(10% + 5px);
+                top: 36px;
+                cursor: pointer;
             }
             #nav-author-w{
                 margin-top: 30px;
@@ -292,20 +326,14 @@
                 margin-right: 45px;
                 line-height: 30px;
             }
-            #nav-search-button{
-                position: absolute;
-                right: calc(10% + 5px);
-                top: 30px;
-                cursor: pointer;
-            }
             .nav-title{
-                font-size: 17px;
+                font-size: 14px;
                 line-height: 50px;
                 font-weight: bold;
                 cursor: default;
             }
             #nav-author-w > a{
-                font-size: 17px;
+                font-size: 14px;
                 display: inline-block;
                 min-width: 40px;
                 text-align: justify;
@@ -326,7 +354,7 @@
                 margin-right: 25px;
             }
             #nav-hotest-title{
-                font-size: 20px;
+                font-size: 18px;
                 text-align: center;
             }
             #nav-hotest-title > a{
@@ -364,9 +392,9 @@
                 overflow: hidden;
                 text-overflow:ellipsis;
                 color: #364856;
-                font-size: 17px;
+                font-size: 14px;
                 -webkit-line-clamp:1;
-                line-height: 32px;
+                line-height: 25px;
             }
             #nav-hotest-news > hr{
                 width: 96%;
@@ -394,9 +422,10 @@
                 margin: 0 auto;
             }
             #head-bar-inner h1{
-                font: normal bold 18px / 28px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+                font: normal bold 18px / 48px "Roboto", Helvetica, Arial, Verdana, sans-serif;
                 color: #333333;
                 text-transform: uppercase;
+                margin: 0;
             }
             #head-bar-inner a,
             #head-bar-inner span{
@@ -407,18 +436,18 @@
     </head>
     <body>
         {% if username %}
-        <div style="height: 20px; line-height: 20px; font-size: 13px; background-color: black;color: #eee; text-align: right; padding-right: 26px;">
+        <div style="height: 32px; line-height: 32px; font-size: 13px; background-color: #23282d;color: #eee; text-align: right; padding-right: 26px;">
             {% if language_en %}
-            <div>Welcome, {{username}}. <a style="color:#eee;" href="/logout_">Click to logout</a></div>
+            <div>Welcome, {{username}}. <a style="color:#eee;" href="/cp_">Click to change password.</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">Click to logout.</a></div>
             {% else %}
-            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/logout_">注销</a></div>
+            <div>欢迎您，{{username}}。 <a style="color:#eee;" href="/cp_">修改密码</a>&nbsp;&nbsp;&nbsp;<a style="color:#eee;" href="/logout_">注销</a></div>
             {% endif %}
         </div>
         {% endif %}
         <div class="header">
             <div id="header-inner">
                 <div id="header-logo">
-                    <img src="/s/logo.jpg" style="height:60%; margin-top: 20%;"/>
+                    <img src="/s/logo-3.png" style="margin: -36% 0 0 -36%; height: 180px;"/>
                 </div>
                 <div id="header-icons">
                     {% if language_en %}
@@ -430,7 +459,7 @@
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/login_">{%if language_en%}Login{%else%}登录{%endif%}</a></div>
                     {% endif %}
                     <div class="header-icon"><a style="color:#2a2a3a;" href="/info">{%if language_en %}About GMA{%else%}关于我们{%endif%}</a></div>
-                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}PA40 Forum{%else%}PA40俱乐部{%endif%}</a></div>
+                    <div class="header-icon"><a style="color:#2a2a3a;" href="/pa40">{%if language_en %}{{config_pa40_tag_en}}{%else%}{{config_pa40_tag}}{%endif%}</a></div>
                     {% for cat in cats %}
                     <div class="header-icon"><a style="color: {%if cat.id != cat_id%} #2a2a3a; {%else%}#2a2a3a; padding: 0 0 6px 0; border-bottom: red 2px solid; {%endif%}" href="/list-article?fid={{cat.id}}">{% if language_en %}{{cat.name_en}}{%else%}{{cat.name}}{%endif%}</a></div>
                     {% endfor %}
@@ -442,7 +471,7 @@
             <div id="head-bar-inner">
                 <h1>{{category}}</h1>
                 <span>
-                    <a href="/home">首页</a>
+                    <a href="/home">{%if language_en %}首页{%else%}Home{%endif%}</a>
                     &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/list-article?fid={{cat_id}}">{{category}}
                     &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">{{title}}</a>
                     </a></span>
@@ -462,7 +491,7 @@
                         <img id="article-coverimg" src="{{cover_img}}" onerror="this.src='/s/coverimg-1.png';"/>
                     </div-->
                     <div id="article-info">
-                        Category · {{category}} · {{author}} · {{date}} · 评论
+                        Category · {{category}} · {{author}} · {{date}} · {%if language_en %}评论{%else%}Comment{%endif%}
                     </div>
                     <div id="article-title">
                         {{title}}
@@ -515,7 +544,7 @@
                                 <div style="font-size: 16px; line-height: 20px;">微信扫描二维码，然后点击右上角“...”并选择转发到微信</div>
                             </div>
                             <svg class="Zi Zi--Share Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em" style="position:relative; top:4px;"><path d="M2.931 7.89c-1.067.24-1.275 1.669-.318 2.207l5.277 2.908 8.168-4.776c.25-.127.477.198.273.39L9.05 14.66l.927 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.242c.584-.892-.212-2.029-1.234-1.796L2.93 7.89z" fill-rule="evenodd"></path></svg>
-                            <a href="mailto:请输入收件人@example.com?subject={{title}}&body=文章地址：http:%2F%2Fgm-associates.cn%2Farticle-{{aid}}%2F">分享到邮箱</a>
+                            <a href="mailto:请输入收件人@example.com?subject={{title}}&body=文章标题：{{title}}%0A文章地址：http:%2F%2Fgm-associates.cn%2Farticle-{{aid}}%2F">分享到邮箱</a>
                         </div>
                     </div>
                     <hr style="width: 90%;">
@@ -536,7 +565,7 @@
                         </div>
                         {%endfor%}
                         <div class="comment-pager">
-                            <span>共{{comment_len}}条评论，当前第1/1页。</span>
+                            <span>共{{comment_len}}条评论。</span>
                         </div>
                         {% else %}
                         <div class="comment-wrapper">
@@ -554,7 +583,7 @@
                     <hr style="width: 90%;">
                     <form action="/postcomment" method="POST" >
                         <input type="hidden" name="aid" value="{{aid}}">
-                        <textarea name="content" id="my-comment" style="margin: 10px 60px 10px 90px;width: calc(100% - 150px);min-height: 150px; font-size: 17px;"></textarea>
+                        <textarea name="content" id="my-comment" style="margin: 10px 60px 10px 90px;width: calc(100% - 150px);min-height: 150px; font-size: 14px;"></textarea>
                         <div style="display: block;width:100%;">
                             <button id="submit-comment" style="display: block;margin: 0 auto;font-size: 16px;">发表</button>
                         </div>
@@ -576,12 +605,12 @@
                 <div id="nav-wrapper">
                     <div id="nav-search-w">
                         <div id="nav-search" contenteditable="true">
-                            输入关键词搜索文章...
+                            输入关键词搜索...
                         </div>
                         <div id="nav-search-button">
                             <svg x="0px" y="0px" width="21px" height="21px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                            <g id="1itt1edva">
-                                <path fill="#333" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
+                            <g>
+                                <path fill="#888" d="M25.915,52.205c6.377,0,12.206-2.344,16.708-6.196L59.98,63.365c0.392,0.391,0.904,0.587,1.418,0.587
                                     c0.513,0,1.025-0.196,1.418-0.587c0.392-0.393,0.588-0.904,0.588-1.418s-0.196-1.027-0.588-1.419L45.459,43.172
                                     c3.853-4.5,6.197-10.331,6.197-16.707c0-14.194-11.549-25.741-25.741-25.741c-14.194,0-25.742,11.547-25.742,25.741
                                     C0.173,40.658,11.721,52.205,25.915,52.205z M25.915,4.735c11.98,0,21.729,9.747,21.729,21.729c0,11.98-9.749,21.729-21.729,21.729
@@ -625,8 +654,8 @@
                             按日检索
                         </p>
                         <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
-                            <input type="date" name="day" style="font-size: 18px;"/>
-                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                            <input type="date" name="day" style="font-size: 15px;"/>
+                            <input type="submit" value="检索" style="font-size: 15px;"/>
                         </form>
                     </div>
                     <div id="nav-perday-w">
@@ -634,8 +663,8 @@
                             按月检索
                         </p>
                         <form method="POST" action="/list-article?fid={{cat_id}}" style="text-align: center;">
-                            <input type="month" name="month" style="font-size: 18px;"/>
-                            <input type="submit" value="检索" style="font-size: 18px;"/>
+                            <input type="month" name="month" style="font-size: 15px;"/>
+                            <input type="submit" value="检索" style="font-size: 15px;"/>
                     </form>
                     </div>
                 </div>
@@ -644,13 +673,26 @@
         </div>
         <style>
             .footer{
+                position: relative;
+                width: 100%;
+                line-height: 23px;
+                font-size: 13px;
+                height: 60px;
+                background: #1a1c20 none repeat center top;
+                color: #85868c;
+            }
+            .footer-inner{
+                width: 1300px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 5px 50px 0 50px;
                 text-align: center;
-                font-size: 12px;
-                padding: 20px;
             }
         </style>
         <div class="footer">
-            京ICP备10010489号 <br/> Copyright © 2012 GM &amp; Associates
+            <div class="footer-inner">
+                <a style="color: #85868c;" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备10010489号-1</a> <br/> Copyright © 2012 GM &amp; Associates
+            </div>
         </div>
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script>
@@ -661,14 +703,14 @@
 
             let search_div = $('#nav-search');
             search_div.focus((event)=>{
-                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                if(search_div.text().trim()=="输入关键词搜索..."){
                     search_div.text("");
                     search_div.css("color", "black");
                 }
             });
             search_div.blur((event)=>{
                 if(search_div.text().trim()==""){
-                    search_div.text("输入关键词搜索文章...");
+                    search_div.text("输入关键词搜索...");
                     search_div.css("color", "grey");    
                 }
             });
@@ -684,7 +726,7 @@
                 return true;
             });
             $('#nav-search-button').click((e)=>{
-                if(search_div.text().trim()=="输入关键词搜索文章..."){
+                if(search_div.text().trim()=="输入关键词搜索..."){
                     search_div.focus();
                     return;
                 }
